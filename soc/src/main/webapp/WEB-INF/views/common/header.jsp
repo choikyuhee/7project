@@ -85,20 +85,7 @@
 			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="#"><strong>뉴스</strong></a></li>
 			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="#"><strong>자유</strong></a></li>
 			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="#"><strong>축구몰</strong></a></li>
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="#"><strong>마이페이지</strong></a></li>
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="#"><strong>장바구니</strong></a></li>
-			<li class = "btn btn-lg btn-default">
-				<c:choose>
-					<c:when test="${isLogOn == true && member != null }">
-						<h3>환영합니다. ${member.id }님</h3>
-						<a class = "nav-link" href="${contextPath }/member/logout.do"><strong>로그아웃</strong></a>
-					</c:when>
-					<c:otherwise>
-						<a class = "nav-link" href="${contextPath }/member/loginForm.do"><strong>로그인</strong></a>
-					</c:otherwise>
-				</c:choose>
-			</li>
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/member/userList.do"><strong>회원리스트</strong></a></li>
+	
 		</ul>
 	</nav>	
 </body>

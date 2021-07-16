@@ -39,18 +39,18 @@
 <center>
 	<form action="${contextPath }/member/login.do" method="post">
 	    <div class="col-md-4 col-md-offset-3" >
-	   		<input type="text" name="id" class="form-control" placeholder="아이디">
+	   		<input type="text" name="u_id" class="form-control" placeholder="아이디">
 	    </div>
 	    <p></p>
 	    <br>
 	    <div class="col-md-4 col-md-offset-3">
-	    	<input type="password" name="pw" class="form-control" placeholder="비밀번호">
+	    	<input type="password" name="u_pw" class="form-control" placeholder="비밀번호">
 	    </div>
 	    <div class="checkbox mb-3">
 	    	<label>
 	        	<input type="checkbox" value="remember-me"> 아이디 저장하기
 	      	</label>
-	      	<a href="#" id="idFind">ID/PW 찾기</a>
+	      	<a href="${contextPath }/member/findForm.do" id="idFind">ID/PW 찾기</a>
 	    </div>
 	    <input value="로그인" class="btn btn-primary" type="submit"/><br><br>
 	    <input type="button" value="회원가입" class="btn btn-primary" onClick="location.href='${contextPath}/member/joinForm.do'">   

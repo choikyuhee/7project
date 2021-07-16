@@ -1,6 +1,8 @@
 package com.team.soc.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -55,16 +57,16 @@ public class MemberControllerImpl implements MemberController {
 		response.setCharacterEncoding("utf-8");
 		int result = 0;
 		result = memberService.joinMember(member);
-		ModelAndView mav = new ModelAndView("redirect:/member/userList.do");
+		ModelAndView mav = new ModelAndView("redirect:/main.do");
 		return mav;
 	}
 	
 	@Override
 	@RequestMapping(value="/member/deleteMember.do", method=RequestMethod.GET)
-	public ModelAndView deleteMember(@RequestParam("id") String id,
+	public ModelAndView deleteMember(@RequestParam("u_id") String u_id,
 			HttpServletRequest request, HttpServletResponse response)throws Exception {
 		request.setCharacterEncoding("utf-8");
-		memberService.deleteMember(id);
+		memberService.deleteMember(u_id);
 		ModelAndView mav = new ModelAndView("redirect:/member/userList.do");
 		return mav;
 	}
@@ -75,13 +77,12 @@ public class MemberControllerImpl implements MemberController {
 	public ModelAndView login(@ModelAttribute("member") MemberVO member, RedirectAttributes rAttr,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		MemberVO login = memberService.login(member);
-		System.out.println(member);
-		if(login != null) {
+		memberVO = memberService.login(member);
+		if(memberVO != null) {
 			HttpSession session = request.getSession();
-			session.setAttribute("member", login);
+			session.setAttribute("member", memberVO);
 			session.setAttribute("isLogOn", true);
-			mav.setViewName("redirect:/member/main.do");
+			mav.setViewName("redirect:/main.do");
 		}
 		else {
 			rAttr.addAttribute("result", "loginFailed");
@@ -101,17 +102,40 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/member/*Form.do", method = RequestMethod.GET)
+	@RequestMapping(value="/member/*Form.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView form(@RequestParam(value = "result", required=false) String result,
 							HttpServletRequest request, HttpServletResponse response)throws Exception {
 		//String viewName = getViewName(request);//
 		String viewName = (String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView();
-		
 		mav.addObject("result", result);
 		mav.setViewName(viewName);
 		return mav;
 	}
+	
+	@Override
+	@RequestMapping(value="/member/findId.do", method=RequestMethod.POST)
+	public ModelAndView findId(@ModelAttribute("member") MemberVO member,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		ModelAndView mav = new ModelAndView();
+		memberVO = memberService.findId(member); 
+		request.setCharacterEncoding("utf-8");
+		System.out.println(memberVO);
+		if(memberVO != null) {
+			HttpSession session = request.getSession(); 
+			session.setAttribute("member1",memberVO);
+			mav.addObject("member", memberVO);
+			mav.setViewName("redirect:/member/findForm.do");
+		
+		}
+		else {
+			mav.setViewName("redirect:/member/findForm.do");
+		}
+		return mav;
+	}
+
+	
+	
 	
 	private String getViewName(HttpServletRequest request)throws Exception {
 		String contextPath = request.getContextPath();

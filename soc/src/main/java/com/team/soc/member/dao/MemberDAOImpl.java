@@ -29,14 +29,20 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
-	public int deleteMember(String id)throws DataAccessException {
-		int result = sqlSession.delete("mapper.member.deleteMember", id);
+	public int deleteMember(String u_id)throws DataAccessException {
+		int result = sqlSession.delete("mapper.member.deleteMember", u_id);
 		return result;
 	}
 	
 	@Override
 	public MemberVO login(MemberVO memberVO)throws DataAccessException {
-		MemberVO login = sqlSession.selectOne("mapper.member.login", memberVO);
-		return login;
+		MemberVO vo = sqlSession.selectOne("mapper.member.login", memberVO);
+		return vo;
+	}
+	
+	@Override
+	public MemberVO findId(MemberVO memberVO)throws DataAccessException {
+		MemberVO result = sqlSession.selectOne("mapper.member.findId", memberVO);
+		return result;
 	}
 }

@@ -14,6 +14,7 @@
 	<title>회원 정보 출력창</title>
 </head>
 <body>
+<div class="container">
 	<table border="1" align="center" width="80%">
 		<tr align="center" bgcolor="lightgreen">
 			<td><b>아이디</b></td>
@@ -26,16 +27,17 @@
 		</tr>
 		<c:forEach var="member" items="${membersList }">
 			<tr align="center">
-				<td>${member.id }</td>
-				<td>${member.pw }</td>
-				<td>${member.name }</td>
-				<td>${member.email}</td>
-				<td>${member.address }</td>
-				<td>${member.phone }</td>
-				<td><a href="${contextPath }/member/deleteMember.do?action=deleteMember&id=${member.id}">삭제하기</a></td>
+				<td>${member.u_id }</td>
+				<td>${member.u_pw }</td>
+				<td>${member.u_name }</td>
+				<td>${member.u_email}</td>
+				<td>${member.u_address }</td>
+				<td>${member.u_phone }</td>
+				<td><a href="${contextPath }/member/deleteMember.do?action=deleteMember&u_id=${member.u_id}">삭제하기</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<a href="${contextPath }/member/joinForm.do"><h1 style="text-align:center">회원가입</h1></a>
+</div>
 </body>
 </html>

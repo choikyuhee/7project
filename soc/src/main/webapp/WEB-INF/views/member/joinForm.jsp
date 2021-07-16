@@ -29,8 +29,10 @@
     <script type="text/javascript">
     /*유효성 검사*/
     function Validation(){
-    	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 한글체크
-    	var RegExp = /^[a-zA-Z0-9]{4,12}$/;
+    	var check_phone = /^\d{3}-\d{3,4}-\d{4}$/; //전화번호 정규식
+    	var check_email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; //이메일 정규식
+    	var check_kor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; // 이름 정규식
+    	var RegExp = /^[a-zA-Z0-9]{4,12}$/; //
     	var objId = document.getElementById("id");
         var objPwd = document.getElementById("floatingPassword"); //비밀번호
         var objPwd2 = document.getElementById("floatingRePassword"); //비밀번호확인
@@ -80,10 +82,20 @@
             return false;
        	}
         
+        if(!check_email.test(objEmail.value)){
+        	alert("이메일을 정확히 입력해주세요");
+        	return false;
+        }
+        
         if(objNum.value==""){
             alert("휴대전화번호를 입력해주세요.");
             return false;
        	}
+        
+        if(!check_phone.test(objNum.value)){
+        	alert("전화번호를 정확히 입력해주세요");
+        	return false;
+        }
         
         if(objAddress.value==""){
         	alert("주소를 입력해주세요.");
@@ -91,7 +103,7 @@
         }
 		
         alert("회원가입 성공");
-    	document.location.href="${contextPath }/member/userList.do";
+    	
     }
     
     
@@ -135,12 +147,12 @@
 
     <div class="col-md-4 offset-md-4" >
       <label for="inputId"><strong>아이디</strong></label>
-      <input type="text" class="form-control" name="id" id="id" maxlength="12" placeholder="4~12자의 영문 대소문자 숫자로만 입력">
+      <input type="text" class="form-control" name="u_id" id="id" maxlength="12" placeholder="4~12자의 영문 대소문자 숫자로만 입력">
     </div>
     <p></p>
     <div class="col-md-4 offset-md-4">
       <label for="inputPassword"><strong>비밀번호</strong></label>
-      <input type="password" class="form-control" name="pw" id="floatingPassword" placeholder="4~12자의 영문 대소문자 숫자로만 입력">
+      <input type="password" class="form-control" name="u_pw" id="floatingPassword" placeholder="4~12자의 영문 대소문자 숫자로만 입력">
     </div>
     <p></p>
      <div class="col-md-4 offset-md-4">
@@ -150,23 +162,23 @@
     <p></p>
     <div class="col-md-4 offset-md-4">
       <label for="inputName"><strong>이름</strong></label>
-      <input type="text" class="form-control" name="name" id="name" placeholder="예)홍길동">
+      <input type="text" class="form-control" name="u_name" id="name" placeholder="예)홍길동">
     </div>
     <p></p>
     <div class="col-md-4 offset-md-4">
       <label for="inputEmail"><strong>이메일</strong></label>
-      <input type="text" class="form-control" name="email" id="email" placeholder="예)id@domain.com">
+      <input type="text" class="form-control" name="u_email" id="email" placeholder="예)id@domain.com">
     </div> 
     <p></p>
     <div class="col-md-4 offset-md-4">
     	<label for="inputAddress"><strong>주소</strong></label>
-    	<input type="text" class="form-control" name="address" id="address" placeholder="예)oo시 oo구"/>
+    	<input type="text" class="form-control" name="u_address" id="address" placeholder="예)oo시 oo구"/>
     </div>
     <p></p>
     </div>
     <div class="col-md-4 offset-md-4">
       <label for="inputPhoneNumber"><strong>휴대전화번호</strong></label>
-      <input type="text" class="form-control" name="phone" id="phoneNumber" placeholder="예)010-1234-6578">
+      <input type="text" class="form-control" name="u_phone" id="phoneNumber" placeholder="예)010-1234-6578">
     </div>
     <p></p>
  	<div class="col-md-4 offset-md-4">

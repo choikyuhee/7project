@@ -5,13 +5,13 @@
 	
 <mapper namespace="mapper.member">
 	<resultMap id="memResult" type="memberVO">
-		<result property="id" column="u_id"/>
-		<result property="pw" column="u_pw"/>
-		<result property="name" column="u_name"/>
-		<result property="phone" column="u_phone"/>
-		<result property="address" column="u_address"/>
-		<result property="email" column="u_email"/>
-		<result property="no" column="u_no"/>
+		<result property="u_id" column="u_id"/>
+		<result property="u_pw" column="u_pw"/>
+		<result property="u_name" column="u_name"/>
+		<result property="u_phone" column="u_phone"/>
+		<result property="u_address" column="u_address"/>
+		<result property="u_email" column="u_email"/>
+		<result property="u_no" column="u_no"/>
 	</resultMap>
 	
 	<select id="selectAllUser" resultMap="memResult">
@@ -23,14 +23,14 @@
 	<insert id="joinMember" parameterType="memberVO">
 		<![CDATA[
 			insert into user_tbl(u_id, u_pw, u_name, u_phone, u_address, u_email, u_no)
-			values(#{id}, #{pw}, #{name}, #{phone}, #{address}, #{email}, null)
+			values(#{u_id}, #{u_pw}, #{u_name}, #{u_phone}, #{u_address}, #{u_email}, null)
 		]]>
 	</insert>
 	
 	<delete id="deleteMember" parameterType="memberVO">
 		<![CDATA[
 			delete from user_tbl
-			where u_id = #{id}
+			where u_id = #{u_id}
 		]]>
 	</delete>
 	
@@ -38,9 +38,15 @@
 		<![CDATA[
 			select*from user_tbl
 			where
-			u_id=#{id} and u_pw=#{pw}
+			u_id=#{u_id} and u_pw=#{u_pw}
 		]]>
 	</select>
 
-	
+	<select id="findId" resultType="memberVO" parameterType="memberVO">
+		<![CDATA[
+			select u_id, u_name from user_tbl
+			where
+			u_name = #{u_name}
+		]]>
+	</select>
 </mapper>

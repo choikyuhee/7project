@@ -23,6 +23,9 @@ public interface MemberController {
 
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
-	public ModelAndView deleteMember(@RequestParam("id") String id,
+	public ModelAndView deleteMember(@RequestParam("u_id") String u_id,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView findId(@ModelAttribute("member") MemberVO member,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 }
