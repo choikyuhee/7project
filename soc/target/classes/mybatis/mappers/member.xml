@@ -49,4 +49,14 @@
 			u_name = #{u_name}
 		]]>
 	</select>
+	
+	<update id="updateUser" parameterType="memberVO">
+		<![CDATA[
+			update user_tbl
+			set
+			u_pw=#{u_pw}, u_phone=#{u_phone}, u_address=#{u_address}, u_email=#{u_email}
+			where u_id=#{u_id}
+		]]>
+	</update>
+	
 </mapper>

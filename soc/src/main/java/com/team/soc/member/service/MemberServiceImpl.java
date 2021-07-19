@@ -45,4 +45,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.findId(memberVO);
 	}
 	
+	@Override
+	public int modi(MemberVO memberVO)throws DataAccessException {
+		return memberDAO.modi(memberVO);
+	}
+	
 }

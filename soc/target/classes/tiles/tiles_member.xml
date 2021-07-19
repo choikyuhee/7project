@@ -40,5 +40,15 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/findForm.jsp"/>
 	</definition>
 	
+	<definition name="member/modiForm" extends="baseLayout">
+		<put-attribute name="title" value="회원정보 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/modiForm.jsp"/>
+	</definition>
+	
+	<definition name="member/mypageForm" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/mypageForm.jsp"/>
+	</definition>
+	
 	
 </tiles-definitions>

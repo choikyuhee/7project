@@ -44,7 +44,7 @@
 	<h3>아이디/비밀번호 찾기 &nbsp;&nbsp;</h3>
 	<hr/>
 	<br>
-	<p>${aaa}
+	<p>${member.userID}
 	
 	<form action="${contextPath }/member/findId.do" method="post">
    	<div class="row">
@@ -82,11 +82,11 @@
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <c:choose>
-	<c:when test = "${aaa != null }">
+	<c:when test = "${member != null }">
 <script>
 	function find(){
 	
-		 var user_Id = "<c:out value="${member.u_id}" />";
+		 var user_Id = "<c:out value="${userID}" />";
       	  if(user_Id != null){
             alert("아이디 : " + user_Id + "입니다");
            

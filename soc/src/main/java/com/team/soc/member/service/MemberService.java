@@ -12,4 +12,5 @@ public interface MemberService {
 	public int deleteMember(String u_id)throws DataAccessException;
 	public MemberVO login(MemberVO memberVO)throws Exception;
 	public MemberVO findId(MemberVO memberVO)throws DataAccessException;
+	public int modi(MemberVO memberVO)throws DataAccessException;
 }

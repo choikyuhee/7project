@@ -28,4 +28,9 @@ public interface MemberController {
 	
 	public ModelAndView findId(@ModelAttribute("member") MemberVO member,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView modi(@ModelAttribute("member") MemberVO member,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	
 }

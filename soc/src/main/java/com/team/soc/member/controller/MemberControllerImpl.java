@@ -120,10 +120,10 @@ public class MemberControllerImpl implements MemberController {
 		ModelAndView mav = new ModelAndView();
 		memberVO = memberService.findId(member); 
 		request.setCharacterEncoding("utf-8");
-		System.out.println(memberVO);
+		
+		System.out.println(member);
 		if(memberVO != null) {
-			HttpSession session = request.getSession(); 
-			session.setAttribute("member1",memberVO);
+
 			mav.addObject("member", memberVO);
 			mav.setViewName("redirect:/member/findForm.do");
 		
@@ -135,7 +135,18 @@ public class MemberControllerImpl implements MemberController {
 	}
 
 	
-	
+	@Override
+	@RequestMapping(value="/member/modi.do", method=RequestMethod.POST)
+	public ModelAndView modi(@ModelAttribute("member") MemberVO member,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		int result = 0;
+		result = memberService.modi(member);
+		ModelAndView mav = new ModelAndView("redirect:/member/userList.do");
+		return mav;
+		
+	}
 	
 	private String getViewName(HttpServletRequest request)throws Exception {
 		String contextPath = request.getContextPath();

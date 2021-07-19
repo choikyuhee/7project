@@ -27,7 +27,16 @@
 			padding:5px;
 		}
 		
+		#sidebar{
+			
+		}
+		
 		#sidebar-right {
+			display:flex;
+			flex-direction:column;
+			flex-wrap:wrap;
+			flex-basis:15%;
+			
 			width:15%;
 			height:700px;
 			padding:5px;
