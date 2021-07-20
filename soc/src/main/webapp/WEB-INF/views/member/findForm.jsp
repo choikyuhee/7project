@@ -93,12 +93,13 @@
       	  } 
 	}
 	
-	function popup(){
-        var url="www.naver.com";
-        var option="width=200, height=300, top=200"
-        window.open(url, "", option);
-    }
-
 </script>
 </c:when>
 </c:choose>
+<script type="text/javascript">
+	function popup(){
+	    var url="findId.do";
+	    var option="width=200, height=300, top=200"
+	    window.open(url, "", option);
+	}
+</script>

@@ -113,6 +113,19 @@ public class MemberControllerImpl implements MemberController {
 		return mav;
 	}
 	
+	
+	@RequestMapping(value="/member/*pop.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView pop(@RequestParam(value = "result", required=false) String result,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		//String viewName = getViewName(request);//
+		String viewName = (String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("result", result);
+		mav.setViewName(viewName);
+		return mav;
+	}
+	
+	
 	@Override
 	@RequestMapping(value="/member/findId.do", method=RequestMethod.POST)
 	public ModelAndView findId(@ModelAttribute("member") MemberVO member,

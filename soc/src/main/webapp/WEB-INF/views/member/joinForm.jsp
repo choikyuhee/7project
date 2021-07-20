@@ -174,8 +174,8 @@
     	<label for="inputAddress"><strong>주소</strong></label>
     	<input type="text" class="form-control" name="u_address" id="address" placeholder="예)oo시 oo구"/>
     </div>
-    <p></p>
-    </div>
+    <br>
+    
     <div class="col-md-4 offset-md-4">
       <label for="inputPhoneNumber"><strong>휴대전화번호</strong></label>
       <input type="text" class="form-control" name="u_phone" id="phoneNumber" placeholder="예)010-1234-6578">
