@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,5 +33,7 @@ public interface MemberController {
 	public ModelAndView modi(@ModelAttribute("member") MemberVO member,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
+	public String userList2(Model model, HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
+
 }

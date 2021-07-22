@@ -42,7 +42,7 @@
 		<a class="btn btn-primary" href="${contextPath }/member/joinForm.do" role="button">회원가입</a>
 		<br>
 		<br>
-		<a href="${contextPath }/member/userList.do" class="no-underline">회원관리</a><br>
+		<a href="${contextPath }/list.do" class="no-underline">회원관리</a><br>
 		<br>
 		<a href="#" class="no-underline">상품관리</a><br>
 </div>

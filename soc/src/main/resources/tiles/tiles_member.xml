@@ -25,6 +25,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/userList.jsp"/>
 	</definition>
 	
+	<definition name="/member/userList2" extends="baseLayout">
+		<put-attribute name="title" value="회원목록창"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/userList2.jsp"/>
+	</definition>
+	
 	<definition name="member/loginForm" extends="baseLayout">
 		<put-attribute name="title" value="로그인창"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp"/>

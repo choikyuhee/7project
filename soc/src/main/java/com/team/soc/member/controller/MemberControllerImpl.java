@@ -1,5 +1,7 @@
 package com.team.soc.member.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,11 +23,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.team.soc.HomeController;
 import com.team.soc.member.service.MemberService;
 import com.team.soc.member.vo.MemberVO;
 
 @Controller("memberController")
 public class MemberControllerImpl implements MemberController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
 	private MemberService memberService;
@@ -35,6 +44,7 @@ public class MemberControllerImpl implements MemberController {
 		mav.setViewName(viewName);
 		return mav;
 	}
+	
 	
 	@Override
 	@RequestMapping(value="/member/userList.do", method = RequestMethod.GET)
@@ -193,4 +203,38 @@ public class MemberControllerImpl implements MemberController {
 		}
 		return viewName;
 	}
+	
+	@Override
+	@Scheduled(cron="0/10 * * * * * ?")
+	@RequestMapping(value="/list.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String userList2(Model model, HttpServletRequest req, HttpServletResponse res)throws Exception {
+		
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		String batchResult = "성공";
+		try {
+			List membersList = memberService.userList();
+			model.addAttribute("membersList", membersList);
+		}
+		catch(Exception e) {
+			batchResult = "실패";
+		}
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		logger.info("스케쥴 실행 : [" + batchResult + "] " + dateFormat.format(calendar.getTime()));
+		return "/member/userList2"; 
+		
+	}
+
+	
+	/*
+	 * @Scheduled(cron="0/10 * * * * * ?") public void scheduleRun() { String
+	 * batchResult = "성공"; try { List<MemberVO> userList = memberService.userList();
+	 * 
+	 * } catch(Exception e) { batchResult = "실패"; }
+	 * 
+	 * Calendar calendar = Calendar.getInstance(); SimpleDateFormat dateFormat = new
+	 * SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); logger.info("스케쥴 실행 : [" +
+	 * batchResult + "] " + dateFormat.format(calendar.getTime())); }
+	 */
 }	
