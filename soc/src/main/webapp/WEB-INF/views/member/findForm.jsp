@@ -12,23 +12,8 @@
 <head>
 <meta charset="utf-8">
 <title>아이디/비번찾기</title>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
 <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-       
-      }
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
       h3{
       	text-align:center;
       }
@@ -37,6 +22,17 @@
       	padding-bottom:50px;
       }
 </style>
+<c:choose>
+		<c:when test="${result == 'notFound' }">
+	
+    <script type="text/javascript">
+	    	window.onload=function(){
+				alert("회원정보가 없습니다");
+			}
+	</script>
+	</c:when>
+</c:choose>
+
 </head>
 
 <body class>
@@ -80,26 +76,4 @@
     </form>
 </div>
 </body>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<c:choose>
-	<c:when test = "${member != null }">
-<script>
-	function find(){
-	
-		 var user_Id = "<c:out value="${userID}" />";
-      	  if(user_Id != null){
-            alert("아이디 : " + user_Id + "입니다");
-           
-      	  } 
-	}
-	
-</script>
-</c:when>
-</c:choose>
-<script type="text/javascript">
-	function popup(){
-	    var url="findId.do";
-	    var option="width=200, height=300, top=200"
-	    window.open(url, "", option);
-	}
-</script>
+</html>

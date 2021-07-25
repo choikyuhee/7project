@@ -50,9 +50,14 @@
 		<put-attribute name="body" value="/WEB-INF/views/member/modiForm.jsp"/>
 	</definition>
 	
-	<definition name="member/mypageForm" extends="baseLayout">
+	<definition name="member/myPageForm" extends="baseLayout">
 		<put-attribute name="title" value="마이페이지"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/mypageForm.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/myPageForm.jsp"/>
+	</definition>
+	
+	<definition name="member/findId" extends="baseLayout">
+		<put-attribute name="title" value="ID찾기"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/idFind.jsp"/>
 	</definition>
 	
 	

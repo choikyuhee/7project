@@ -60,21 +60,25 @@
 				<th>작성일</th>
 				<th>작성자</th>
 				<th>조회수</th>
-				<th>추천수</th>
+				
 			</tr>
-			<tr align="center">
-				<td>EPL</td>
-				<td>1</td>
-				<td>으아아아</td>
-				<td>2021.6.10</td>
-				<td>관리자1</td>
-				<td>1</td>
-				<td>1</td>
+			<c:forEach var="osArticle" items="${allList }">
+			<tr align="center" >
+				<td>${osArticle.category}</td>
+				<td>${osArticle.no }</td>
+				<td><a href="${contextPath}/board/osView.do?no=${osArticle.no}">
+					${osArticle.title }</a>
+				</td>
+				<td>${osArticle.regdate }</td>
+				<td>${osArticle.u_id }</td>
+				<td>${osArticle.view }</td>
+				
 			</tr>
+			</c:forEach>
 		</table>
 		<hr/>
 		<p id="a1">
-		<a id="a1" class="btn btn-primary" href="#">글쓰기</a>
+		<a id="a1" class="btn btn-primary" href="${contextPath }/board/osWriteForm.do">글쓰기</a>
 		</p>
 		<br>
 		

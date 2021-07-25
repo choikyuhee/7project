@@ -14,9 +14,22 @@
 	<title>ID 찾기</title>
 </head>
 <body>
-	<div>
-		<p>아이디 : ${member.u_id }</p>
+	<div class="contanier">
+		<div class="row">
+			<div class="col"></div>
+			<div class="col">
+				<p>아이디는 ${member.u_id } 입니다</p>
+			</div>
+			<div class="col"></div>
+		</div>
 	</div>
+	<div class="row">
+			<div class="col"></div>
+			<div class="col">
+				<button onclick="location.href='${contextPath}/member/loginForm.do'" class="btn btn-primary">로그인하기</button>
+			</div>
+			<div class="col"></div>
+		</div>
 </body>
 
 </html>

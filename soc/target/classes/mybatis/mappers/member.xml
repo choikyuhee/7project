@@ -42,7 +42,7 @@
 		]]>
 	</select>
 
-	<select id="findId" resultType="memberVO" parameterType="memberVO">
+	<select id="findId" resultMap="memResult" parameterType="memberVO">
 		<![CDATA[
 			select u_id, u_name from user_tbl
 			where

@@ -143,15 +143,11 @@ public class MemberControllerImpl implements MemberController {
 		ModelAndView mav = new ModelAndView();
 		memberVO = memberService.findId(member); 
 		request.setCharacterEncoding("utf-8");
-		
-		System.out.println(member);
 		if(memberVO != null) {
-
 			mav.addObject("member", memberVO);
-			mav.setViewName("redirect:/member/findForm.do");
-		
 		}
 		else {
+			mav.addObject("result", "notFound");
 			mav.setViewName("redirect:/member/findForm.do");
 		}
 		return mav;

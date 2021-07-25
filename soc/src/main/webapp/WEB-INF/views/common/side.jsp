@@ -31,7 +31,7 @@
 				<br>
 				<a class ="btn btn-primary btn-sm" href="#" role="button">장바구니</a>
 				&nbsp;
-				<a class="btn btn-primary btn-sm" href="${contextPath }/member/mypageForm.do" role="button">마이페이지</a><br>
+				<a class="btn btn-primary btn-sm" href="${contextPath }/member/myPageForm.do" role="button">마이페이지</a><br>
 				</c:when>
 				<c:otherwise>
 					<a class = "no-underline" href="${contextPath }/member/loginForm.do"><strong>로그인</strong></a><br>

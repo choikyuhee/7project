@@ -9,10 +9,36 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
 	</definition>
 	
-	<definition name="/board/osSoccer" extends="baseLayout">
+	<definition name="board/osSoccer" extends="baseLayout">
 		<put-attribute name="title" value="해외축구"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/osSoccer.jsp"/>
 	</definition>
+	
+	<definition name="board/osWriteForm" extends="baseLayout">
+		<put-attribute name="title" value="해외축구 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/osWriteForm.jsp"/>
+	</definition>
+	
+	<definition name="board/osView" extends="baseLayout">
+		<put-attribute name="title" value="해외축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/osView.jsp"/>
+	</definition>
+	
+	<definition name="board/krSoccer" extends="baseLayout">
+		<put-attribute name="title" value="국내축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krSoccer.jsp"/>
+	</definition>
+	
+	<definition name="board/news" extends="baseLayout">
+		<put-attribute name="title" value="뉴스"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/news.jsp"/>
+	</definition>
+	
+	<definition name="board/free" extends="baseLayout">
+		<put-attribute name="title" value="자유"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/free.jsp"/>
+	</definition>
+	
 
 </tiles-definitions>
 	
