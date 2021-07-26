@@ -21,4 +21,9 @@ public class ShopDAOImpl implements ShopDAO {
 		shopList = sqlSession.selectList("mapper.shop.shopList");
 		return shopList;
 	}
+	
+	@Override
+	public ShopVO prodInfo(int p_no)throws DataAccessException {
+		return sqlSession.selectOne("mapper.shop.prodInfo", p_no);
+	}
 }

@@ -14,6 +14,22 @@ public class ShopVO {
 	private String p_filename;
 	private int p_stock;
 	
+	public ShopVO() {
+		
+	}
+	
+	public ShopVO(int p_no, String p_name, String p_price, String p_category, String p_content, String p_option,
+			String p_filename, int p_stock) {
+		this.p_name = p_name;
+		this.p_no = p_no;
+		this.p_price = p_price;
+		this.p_content = p_content;
+		this.p_category = p_category;
+		this.p_option = p_option;
+		this.p_stock = p_stock;
+		this.p_filename = p_filename;
+	}
+	
 	public int getP_no() {
 		return p_no;
 	}

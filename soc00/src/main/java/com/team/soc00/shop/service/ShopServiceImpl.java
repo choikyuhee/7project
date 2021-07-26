@@ -7,6 +7,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.team.soc00.shop.dao.ShopDAO;
+import com.team.soc00.shop.vo.ShopVO;
 
 @Service("shopService")
 public class ShopServiceImpl implements ShopService {
@@ -19,5 +20,10 @@ public class ShopServiceImpl implements ShopService {
 		List shopList = null;
 		shopList = shopDAO.shopList();
 		return shopList;
+	}
+	
+	@Override
+	public ShopVO prodInfo(int p_no)throws DataAccessException{
+		return shopDAO.prodInfo(p_no);
 	}
 }

@@ -56,24 +56,25 @@
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">${shopList.p_name }<small class="text-muted fw-light"></small></h1>
+            <h3 class="card-title pricing-card-title">${shopList.p_name }<small class="text-muted fw-light"></small></h3>
             
-            <img src="${shopList.p_filename }" style="max-width: 100%; height: auto;">
+            <img src="${contextPath }/resources/image/${shopList.p_filename }" style="max-width: 100%; height: auto;">
             
             <ul class="list-unstyled mt-3 mb-4">
               <li>${shopList.p_name }</li>
               <li>${shopList.p_option }</li>
               <li>${shopList.p_price }</li>
             </ul>
-            <button type="button" class="w-100 btn btn-lg btn-primary" href="">구매하기</button>
+    
+            <a role="button" class="w-100 btn btn-lg btn-primary" 
+            	onclick="location.href='${contextPath}/shop/prodInfo.do?p_no=${shopList.p_no }'">구매하기</a>
           </div>
         </div>
-      </div>
-	</c:forEach>
-      
     </div>
     <br>
-    
+    </c:forEach>
+    </div>
+    <br>
     <div class="row" >
 		<div class="col-md-6" id="search2">
   			  <div class="input-group">
