@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+	
+	<definition name="main" extends="baseLayout">
+		<put-attribute name="title" value="메인페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/best.jsp"/>
+	</definition>
+	
+	<definition name="" extends="baseLayout">
+		<put-attribute name="title" value="메인페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/best.jsp"/>
+	</definition>
+	
+	<definition name="member/userList" extends="baseLayout">
+		<put-attribute name="title" value="회원목록창"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/userList.jsp"/>
+	</definition>
+	
+	<definition name="/member/userList2" extends="baseLayout">
+		<put-attribute name="title" value="회원목록창"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/userList2.jsp"/>
+	</definition>
+	
+	<definition name="member/loginForm" extends="baseLayout">
+		<put-attribute name="title" value="로그인창"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/loginForm.jsp"/>
+	</definition>
+	
+	<definition name="member/joinForm" extends="baseLayout">
+		<put-attribute name="title" value="회원가입창"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/joinForm.jsp"/>
+	</definition>
+	
+	<definition name="member/findForm" extends="baseLayout">
+		<put-attribute name="title" value="ID/PW 찾기"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/findForm.jsp"/>
+	</definition>
+	
+	<definition name="member/modiForm" extends="baseLayout">
+		<put-attribute name="title" value="회원정보 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/modiForm.jsp"/>
+	</definition>
+	
+	<definition name="member/mypageForm" extends="baseLayout">
+		<put-attribute name="title" value="마이페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/mypageForm.jsp"/>
+	</definition>
+
+	<definition name="member/idFind" extends="baseLayout">
+		<put-attribute name="title" value="ID찾기"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/idFind.jsp"/>
+	</definition>
+	
+	<!-- 팝업창 -->
+	<definition name="popUp" template="/WEB-INF/views/common/popLayout.jsp">
+		<put-attribute name="body" value=""/>
+	</definition>
+	
+	<definition name="member/*pop" extends="popUp">
+		<put-attribute name="body" value="/WEB-INF/views/member/idFindpop.jsp"/>
+	</definition>
+	
+</tiles-definitions>

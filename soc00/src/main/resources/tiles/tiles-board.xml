@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+	
+	<definition name="board/osSoccer" extends="baseLayout">
+		<put-attribute name="title" value="해외축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/osSoccer.jsp"/>
+	</definition>
+	
+	<definition name="board/osWriteForm" extends="baseLayout">
+		<put-attribute name="title" value="해외축구 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/osWriteForm.jsp"/>
+	</definition>
+	
+	<definition name="board/osView" extends="baseLayout">
+		<put-attribute name="title" value="해외축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/osView.jsp"/>
+	</definition>
+	
+	<definition name="board/krSoccer" extends="baseLayout">
+		<put-attribute name="title" value="국내축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krSoccer.jsp"/>
+	</definition>
+	
+	<definition name="board/krWriteForm" extends="baseLayout">
+		<put-attribute name="title" value="해외축구 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krWriteForm.jsp"/>
+	</definition>
+	
+	<definition name="board/krView" extends="baseLayout">
+		<put-attribute name="title" value="해외축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krView.jsp"/>
+	</definition>
+	
+	
+	<definition name="board/news" extends="baseLayout">
+		<put-attribute name="title" value="뉴스"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/news.jsp"/>
+	</definition>
+	
+	<definition name="board/free" extends="baseLayout">
+		<put-attribute name="title" value="자유"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/free.jsp"/>
+	</definition>
+	
+	<!-- 국내축구 -->
+	<definition name="board/krSoccer" extends="baseLayout">
+		<put-attribute name="title" value="국내축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krSoccer.jsp"/>
+	</definition>
+
+</tiles-definitions>
+	
