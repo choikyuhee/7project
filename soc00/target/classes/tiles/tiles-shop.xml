@@ -15,5 +15,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/shop/shopList.jsp"/>
 	</definition>
 	
+	<definition name="shop/prodInfo" extends="baseLayout">
+		<put-attribute name="title" value="상품정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/shop/prodInfo.jsp"/>
+	</definition>
+	
 	
 </tiles-definitions>

@@ -21,4 +21,11 @@
 		]]>
 	</select>
 	
+	<select id="prodInfo" parameterType="shopVO" resultMap="shopResult">
+		<![CDATA[
+			select*from products
+			where p_no = #{p_no}
+		]]>
+	</select>
+	
 </mapper>
