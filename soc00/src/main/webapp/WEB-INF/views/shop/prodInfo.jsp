@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -44,7 +45,10 @@
 						<table>
 							<tr>
 									<td>&#8361;</td>
-								<td>${prodInfo.p_price }</td>
+								<td>
+									<fmt:formatNumber value="${prodInfo.p_price }" pattern="###,###,###"/>
+									원
+								</td>
 							</tr>
 						</table>
 						<div id="set_option">
@@ -64,10 +68,12 @@
 											<option value="5">5</option>
 										</select>
 									</h6>
-									<table>
+									<table >
 										<tr>
 											<td>
-												<button type="button" class="btn btn-primary" href="">장바구니</button><b></b>
+												<button type="button" class="btn btn-primary" href="">장바구니</button>
+											</td>
+											<td>
 												<button type="button" class="btn btn-primary" href="">바로구매</button>
 											</td>
 										</tr>

@@ -1,0 +1,54 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.qna">
+	<!-- QnA  -->
+	<resultMap id="qnaResult" type="qnaVO">
+		<result property="q_no" column="q_no"/>
+		<result property="q_category" column="q_category"/>
+		<result property="q_title" column="q_title"/>
+		<result property="q_content" column="q_content"/>
+		<result property="q_regdate" column="q_regdate"/>
+		<result property="q_view" column="q_view"/>
+		<result property="u_id" column="u_id"/>
+	</resultMap>
+	
+	<select id="qnaList" resultMap="qnaResult">
+		<![CDATA[
+			select*from question
+		]]>
+	</select>
+	
+	<select id="qnaView" resultMap="qnaResult">
+		<![CDATA[
+			select*from question
+			where
+			q_no = #{q_no}
+		]]>
+	</select>
+	
+	<insert id="qnaWrite" parameterType="qnaVO">
+		<![CDATA[
+			insert into question(q_no, q_category, q_title, q_content, q_regdate, u_id)
+			values(null, #{q_category}, #{q_title} , #{q_content}, now(), #{u_id})
+		]]>
+	</insert>
+	
+	<!-- faq -->
+	<resultMap id="faqResult" type="faqVO">
+		<result property="f_no" column="f_no"/>
+		<result property="f_category" column="f_category"/>
+		<result property="f_title" column="f_title"/>
+		<result property="f_content" column="f_content"/>
+		<result property="f_regdate" column="f_regdate"/>
+		<result property="f_view" column="f_view"/>
+		<result property="u_id" column="u_id"/>
+	</resultMap>
+	
+	<select id="faqList" resultMap="faqResult">
+		<![CDATA[
+			select*from faq
+		]]>
+	</select>
+	
+</mapper>

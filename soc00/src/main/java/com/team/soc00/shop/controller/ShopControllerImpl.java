@@ -44,7 +44,6 @@ public class ShopControllerImpl implements ShopController {
 		res.setContentType("text/html; charset=utf-8");
 		shopVO = shopService.prodInfo(p_no);
 		ModelAndView mav = new ModelAndView();
-		System.out.println(shopVO);
 		mav.addObject("prodInfo", shopVO);
 		return mav;
 	}

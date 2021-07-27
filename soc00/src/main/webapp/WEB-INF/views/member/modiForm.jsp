@@ -46,6 +46,10 @@
     	<input type="passwordRe" class="form-control" placeholder="비밀번호확인">
     </div>
     <p></p>
+     <div class="col-md-4 offset-md-4">
+    	<input type="text" name="u_name" class="form-control" placeholder="이름">
+    </div>
+    <p></p>
     <div class="col-md-4 offset-md-4">
     	<input type="text" name="u_email" class="form-control" placeholder="이메일">
     <p></p>
