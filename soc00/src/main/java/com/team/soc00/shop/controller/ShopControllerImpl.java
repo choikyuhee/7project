@@ -49,6 +49,15 @@ public class ShopControllerImpl implements ShopController {
 		return mav;
 	}
 	
+	@Override
+	@RequestMapping(value="/shop/prodReg.do", method=RequestMethod.POST)
+	public String prodReg(ShopVO shopVO, HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		shopService.prodReg(shopVO);
+		return "redirect:/shop/shopList.do";
+	}
+	
 	@RequestMapping(value="/shop/*Form.do", method = RequestMethod.GET)
 	private ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		String viewName = (String)request.getAttribute("viewName");

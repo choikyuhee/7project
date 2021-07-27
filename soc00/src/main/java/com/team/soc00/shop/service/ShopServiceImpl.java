@@ -26,4 +26,9 @@ public class ShopServiceImpl implements ShopService {
 	public ShopVO prodInfo(int p_no)throws DataAccessException{
 		return shopDAO.prodInfo(p_no);
 	}
+	
+	@Override
+	public void prodReg(ShopVO shopVO)throws DataAccessException {
+		shopDAO.prodReg(shopVO);
+	}
 }

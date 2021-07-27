@@ -13,6 +13,7 @@
 		<result property="p_option" column="p_option"/>
 		<result property="p_filename" column="p_filename"/>
 		<result property="p_stock" column="p_stock"/>
+		<result property="p_thumb" column="p_thumb"/>
 	</resultMap>
 	
 	<select id="shopList" resultMap="shopResult">
@@ -27,5 +28,12 @@
 			where p_no = #{p_no}
 		]]>
 	</select>
+	
+	<insert id="prodReg" parameterType="shopVO">
+		<![CDATA[
+			insert into products(p_no, p_name, p_price, p_category, p_content, p_option, p_stock)
+			values (null, #{p_name}, #{p_price}, #{p_category}, #{p_content}, #{p_option}, #{p_stock})
+		]]>
+	</insert>
 	
 </mapper>

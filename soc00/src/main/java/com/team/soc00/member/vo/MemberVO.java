@@ -11,18 +11,20 @@ public class MemberVO {
 	private String u_address;
 	private String u_email;
 	private int u_no;
+	private int u_admin;
 	
 	public MemberVO() {
 		
 	}
 	
-	public MemberVO(String u_id, String u_pw, String u_name, String u_phone, String u_address, String u_email) {
+	public MemberVO(String u_id, String u_pw, String u_name, String u_phone, String u_address, String u_email, int u_admin) {
 		this.u_id = u_id;
 		this.u_pw = u_pw;
 		this.u_name = u_name;
 		this.u_phone = u_phone;
 		this.u_address = u_address;
 		this.u_email = u_email;
+		this.u_admin = u_admin;
 	}
 	
 	public String getU_id() {
@@ -71,6 +73,22 @@ public class MemberVO {
 	
 	public void setU_email(String u_email) {
 		this.u_email = u_email;
+	}
+	
+	public int getU_admin() {
+		return u_admin;
+	}
+	
+	public void setU_admin(int u_admin) {
+		this.u_admin = u_admin;
+	}
+	
+	public int getU_no() {
+		return u_no;
+	}
+	
+	public void setU_no(int u_no) {
+		this.u_no = u_no;
 	}
 	
 	@Override

@@ -20,5 +20,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/shop/prodInfo.jsp"/>
 	</definition>
 	
+	<definition name="shop/prodRegForm" extends="baseLayout">
+		<put-attribute name="title" value="상품등록"/>
+		<put-attribute name="body" value="/WEB-INF/views/shop/prodRegForm.jsp"/>
+	</definition>
 	
 </tiles-definitions>

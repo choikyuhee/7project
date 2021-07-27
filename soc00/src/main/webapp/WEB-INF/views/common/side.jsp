@@ -23,28 +23,30 @@
 </head>
 <body>
 <div class="container" id="sidebar">
-		<c:choose>
-			<c:when test="${isLogOn == true && member != null }">
-				<p>환영합니다. ${member.u_id }님</p>
-				<a href="${contextPath }/member/login.do" class="no-underline">	</a>
-				<a class = "no-underline" href="${contextPath }/member/logout.do"><strong>로그아웃</strong></a><br>
-				<br>
-				<a class ="btn btn-primary btn-sm" href="#" role="button">장바구니</a>
-				&nbsp;
-				<a class="btn btn-primary btn-sm" href="${contextPath }/member/mypageForm.do" role="button">마이페이지</a><br>
-				</c:when>
-				<c:otherwise>
-					<a class = "no-underline" href="${contextPath }/member/loginForm.do"><strong>로그인</strong></a><br>
-				</c:otherwise>
-			</c:choose>
-	
-		<br>
-		<a class="btn btn-primary" href="${contextPath }/member/joinForm.do" role="button">회원가입</a>
-		<br>
+	<c:choose>
+		<c:when test="${isLogOn == true && member != null }">
+			<p>환영합니다. ${member.u_id }님</p>
+			<a href="${contextPath }/member/login.do" class="no-underline">	</a>
+			<a class = "no-underline" href="${contextPath }/member/logout.do"><strong>로그아웃</strong></a><br>
+			<br>
+			<a class ="btn btn-primary btn-sm" href="#" role="button">장바구니</a>
+			&nbsp;
+			<a class="btn btn-primary btn-sm" href="${contextPath }/member/mypageForm.do" role="button">마이페이지</a><br>
+		</c:when>
+		<c:otherwise>
+			<a class = "no-underline" href="${contextPath }/member/loginForm.do"><strong>로그인</strong></a><br>
+			<br>
+			<a class="btn btn-primary" href="${contextPath }/member/joinForm.do" role="button">회원가입</a>
+			<br>
+			<br>
+		</c:otherwise>
+	</c:choose>
+	<c:if test="${member.u_admin == 1 }">
 		<br>
 		<a href="${contextPath }/list.do" class="no-underline">회원관리</a><br>
 		<br>
-		<a href="#" class="no-underline">상품관리</a><br>
+		<a href="${contextPath }/shop/prodRegForm.do" class="no-underline">상품등록</a><br>
+	</c:if>
 </div>
 </body>
 </html>

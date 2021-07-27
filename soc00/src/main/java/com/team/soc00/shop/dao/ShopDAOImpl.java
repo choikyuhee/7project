@@ -26,4 +26,9 @@ public class ShopDAOImpl implements ShopDAO {
 	public ShopVO prodInfo(int p_no)throws DataAccessException {
 		return sqlSession.selectOne("mapper.shop.prodInfo", p_no);
 	}
+	
+	@Override
+	public void prodReg(ShopVO shopVO)throws DataAccessException {
+		sqlSession.insert("mapper.shop.prodReg", shopVO);
+	}
 }

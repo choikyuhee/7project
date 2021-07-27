@@ -12,6 +12,7 @@
 		<result property="u_address" column="u_address"/>
 		<result property="u_email" column="u_email"/>
 		<result property="u_no" column="u_no"/>
+		<result property="u_admin" column="u_admin"/>
 	</resultMap>
 	
 	<select id="selectAllUser" resultMap="memResult">

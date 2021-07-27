@@ -11,4 +11,6 @@ public interface ShopService {
 	public List shopList() throws DataAccessException;
 	
 	public ShopVO prodInfo(int p_no)throws DataAccessException;
+	
+	public void prodReg(ShopVO shopVO)throws DataAccessException;
 }
