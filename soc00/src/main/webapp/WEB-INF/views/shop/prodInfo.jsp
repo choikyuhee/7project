@@ -42,9 +42,9 @@
 				<div class="col-md-6">
 					<div class="h-100 p-5 bg-light border rounded-3">
 						<h2>${prodInfo.p_name }</h2>
-						<table>
+						<table style="text-align:center;">
 							<tr>
-									<td>&#8361;</td>
+								<td>&#8361;</td> <!-- 원화 표시 -->
 								<td>
 									<fmt:formatNumber value="${prodInfo.p_price }" pattern="###,###,###"/>
 									원
@@ -74,7 +74,8 @@
 												<button type="button" class="btn btn-primary" href="">장바구니</button>
 											</td>
 											<td>
-												<button type="button" class="btn btn-primary" href="">바로구매</button>
+												<button class="btn btn-primary"
+												 onclick="location.href='${contextPath }/shop/prodBuy.do?p_no=${prodInfo.p_no}'">바로구매</button>
 											</td>
 										</tr>
 									</table>

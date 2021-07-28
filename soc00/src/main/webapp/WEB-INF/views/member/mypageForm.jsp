@@ -32,7 +32,7 @@
 			<ul class="navbar-nav">
 				<li class="nav-item btn btn-sm btn-default"><a href="#">회원정보수정</a>
 				<li class="nav-item btn btn-sm btn-default"><a href="#">작성글보기</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">구매내역조회</a>
+				<li class="nav-item btn btn-sm btn-default"><a href="/shop/orderList.do">구매내역조회</a>
 			</ul>
 		</nav>
 		<br>

@@ -37,39 +37,4 @@
 		]]>
 	</insert>
 	
-	<resultMap id="orderResult" type="orderVO">
-		<result property="o_no" column="o_no"/>
-		<result property="o_date" column="o_date"/>
-		<result property="o_price" column="o_price"/>
-		<result property="o_name" column="o_name"/>
-		<result property="o_phone" column="o_phone"/>
-		<result property="o_count" column="o_count"/>
-		<result property="p_no" column="p_no"/>
-		<result property="u_id" column="u_id"/>
-	</resultMap>
-	
-	<select id="orderList" resultMap="orderResult">
-		<![CDATA[
-			select*from orderr
-			where
-			u_id = #{u_id}
-			order by o_no desc
-		]]>
-	</select>
-	
-	<select id="orderView" resultMap="orderResult">
-		<![CDATA[
-			select*from orderr
-			where
-			o_no = #{o_no}
-		]]>
-	</select>
-	
-	<insert id="prodBuy" parameterType="orderVO">
-		<![CDATA[
-			insert into orderr(o_no, o_date, o_price, o_name, o_phone, o_count, p_no, u_id)
-			values(null, now(), #{o_price}, #{o_name}, #{o_phone}, #{o_coutn}, #{p_no}, #{u_id})
-		]]>
-	</insert>
-	
 </mapper>
