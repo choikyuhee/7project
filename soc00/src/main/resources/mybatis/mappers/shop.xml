@@ -19,6 +19,7 @@
 	<select id="shopList" resultMap="shopResult">
 		<![CDATA[
 			select*from products
+			order by p_no desc
 		]]>
 	</select>
 	

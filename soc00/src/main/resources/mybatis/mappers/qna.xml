@@ -16,6 +16,7 @@
 	<select id="qnaList" resultMap="qnaResult">
 		<![CDATA[
 			select*from question
+			order by q_no desc
 		]]>
 	</select>
 	
@@ -34,21 +35,69 @@
 		]]>
 	</insert>
 	
+	<update id="qnaModi" parameterType="qnaVO" >
+		<![CDATA[
+			update question
+			set
+			q_category = #{q_category}, q_title = #{q_title}, q_content = #{q_content}, q_regdate = now()
+			where q_no = #{q_no}
+		]]>
+	</update>
+	
+	<delete id="qnaDelete" parameterType="qnaVO">
+		<![CDATA[
+			delete from question
+			where q_no = #{q_no}
+		]]>
+	</delete>
+	
 	<!-- faq -->
 	<resultMap id="faqResult" type="faqVO">
-		<result property="f_no" column="f_no"/>
-		<result property="f_category" column="f_category"/>
-		<result property="f_title" column="f_title"/>
-		<result property="f_content" column="f_content"/>
-		<result property="f_regdate" column="f_regdate"/>
-		<result property="f_view" column="f_view"/>
+		<result property="f_no" column="fa_no"/>
+		<result property="f_category" column="fa_category"/>
+		<result property="f_title" column="fa_title"/>
+		<result property="f_content" column="fa_content"/>
+		<result property="f_regdate" column="fa_regdate"/>
+		<result property="f_view" column="fa_view"/>
 		<result property="u_id" column="u_id"/>
 	</resultMap>
 	
 	<select id="faqList" resultMap="faqResult">
 		<![CDATA[
 			select*from faq
+			order by fa_no desc
 		]]>
 	</select>
+	
+	<select id="faqView" resultMap="faqResult">
+		<![CDATA[
+			select*from faq
+			where
+			fa_no = #{f_no}
+		]]>
+	</select>
+	
+	<insert id="faqWrite" parameterType="faqVO">
+		<![CDATA[
+			insert into faq(fa_no, fa_category, fa_title, fa_content, fa_regdate, u_id)
+			values(null, #{f_category}, #{f_title} , #{f_content}, now(), #{u_id})
+		]]>
+	</insert>
+	
+	<update id="faqModi" parameterType="faqVO" >
+		<![CDATA[
+			update faq
+			set
+			fa_category = #{f_category}, fa_title = #{f_title}, fa_content = #{f_content}, fa_regdate = now()
+			where fa_no = #{f_no}
+		]]>
+	</update>
+	
+	<delete id="faqDelete" parameterType="faqVO">
+		<![CDATA[
+			delete from faq
+			where fa_no = #{f_no}
+		]]>
+	</delete>
 	
 </mapper>

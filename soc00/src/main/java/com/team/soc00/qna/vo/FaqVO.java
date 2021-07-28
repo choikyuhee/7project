@@ -13,6 +13,7 @@ public class FaqVO {
 	private String f_category;
 	private Date f_regdate;
 	private int f_view;
+	private String u_id;
 	
 	public int getf_no() {
 		return f_no;
@@ -60,6 +61,14 @@ public class FaqVO {
 	
 	public void setf_view(int f_view) {
 		this.f_view = f_view;
+	}
+	
+	public String getU_id() {
+		return u_id;
+	}
+	
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
 	}
 	
 }

@@ -39,6 +39,66 @@ public class QnaControllerImpl implements QnaController {
 	}
 	
 	@Override
+	@RequestMapping(value="/cs/faqWrite.do", method=RequestMethod.POST)
+	public ModelAndView faqWrite(@ModelAttribute("faq") FaqVO faq,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		int result = 0;
+		result = qnaService.faqWrite(faq);
+		ModelAndView mav = new ModelAndView("redirect:/cs/help.do");
+		return mav;
+		
+	}
+	
+	@Override
+	@RequestMapping(value="/cs/faqView.do", method=RequestMethod.GET)
+	public ModelAndView faqView(@RequestParam("f_no") int f_no,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		faqVO = qnaService.faqView(f_no);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("faq", faqVO);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/cs/faqModiView.do", method=RequestMethod.GET)
+	public ModelAndView faqModiView(@RequestParam("f_no") int f_no,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		faqVO = qnaService.faqView(f_no);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("faq", faqVO);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/cs/faqModi.do", method=RequestMethod.POST)
+	public ModelAndView faqModi(@ModelAttribute("faq") FaqVO faq,
+			HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		int result = 0;
+		result = qnaService.faqModi(faq);
+		ModelAndView mav = new ModelAndView("redirect:/cs/help.do");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/cs/faqDelete.do", method=RequestMethod.GET)
+	public ModelAndView faqDelete(@RequestParam("f_no") int f_no,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		qnaService.faqDelete(f_no);
+		ModelAndView mav = new ModelAndView("redirect:/cs/help.do");
+		return mav;
+	}
+	
+	@Override
 	@RequestMapping(value="/cs/qnaWrite.do", method=RequestMethod.POST)
 	public ModelAndView qnaWrite(@ModelAttribute("qna") QnaVO qna,
 			HttpServletRequest req, HttpServletResponse res)throws Exception {
@@ -46,7 +106,7 @@ public class QnaControllerImpl implements QnaController {
 		res.setContentType("text/html; charset=utf-8");
 		int result = 0;
 		result = qnaService.qnaWrite(qna);
-		ModelAndView mav = new ModelAndView("redirect/cs/question.do");
+		ModelAndView mav = new ModelAndView("redirect:/cs/question.do");
 		return mav;
 		
 	}
@@ -71,6 +131,41 @@ public class QnaControllerImpl implements QnaController {
 		qnaVO = qnaService.qnaView(q_no);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("question", qnaVO);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/cs/qnaModiView.do", method=RequestMethod.GET)
+	public ModelAndView qnaModiView(@RequestParam("q_no") int q_no,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		qnaVO = qnaService.qnaView(q_no);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("question", qnaVO);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/cs/qnaModi.do", method=RequestMethod.POST)
+	public ModelAndView qnaModi(@ModelAttribute("qna") QnaVO qna,
+			HttpServletRequest req, HttpServletResponse res) throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		int result = 0;
+		result = qnaService.qnaModi(qna);
+		ModelAndView mav = new ModelAndView("redirect:/cs/question.do");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/cs/qnaDelete.do", method=RequestMethod.GET)
+	public ModelAndView qnaDelete(@RequestParam("q_no") int q_no,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		qnaService.qnaDelete(q_no);
+		ModelAndView mav = new ModelAndView("redirect:/cs/question.do");
 		return mav;
 	}
 	

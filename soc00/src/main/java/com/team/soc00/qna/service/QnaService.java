@@ -11,9 +11,21 @@ public interface QnaService {
 
 	public List<FaqVO> faqList()throws DataAccessException;
 	
+	public FaqVO faqView(int f_no)throws DataAccessException;
+	
+	public int faqWrite(FaqVO faq)throws DataAccessException;
+	
+	public int faqModi(FaqVO vo)throws DataAccessException;
+	
+	public int faqDelete(int f_no)throws DataAccessException;
+	
 	public int qnaWrite(QnaVO qna)throws DataAccessException;
 	
 	public List<QnaVO> qnaList()throws DataAccessException;
 	
 	public QnaVO qnaView(int q_no)throws DataAccessException;
+	
+	public int qnaModi(QnaVO vo)throws DataAccessException;
+	
+	public int qnaDelete(int q_no)throws DataAccessException;
 }

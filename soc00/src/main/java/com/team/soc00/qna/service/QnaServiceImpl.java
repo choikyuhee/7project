@@ -24,6 +24,26 @@ public class QnaServiceImpl implements QnaService {
 	}
 	
 	@Override
+	public FaqVO faqView(int f_no)throws DataAccessException {
+		return qnaDAO.faqView(f_no);
+	}
+	
+	@Override
+	public int faqWrite(FaqVO faq)throws DataAccessException {
+		return qnaDAO.faqWrite(faq);
+	}
+	
+	@Override
+	public int faqModi(FaqVO vo)throws DataAccessException {
+		return qnaDAO.faqModi(vo);
+	}
+	
+	@Override
+	public int faqDelete(int f_no)throws DataAccessException {
+		return qnaDAO.faqDelete(f_no);
+	}
+	
+	@Override
 	public int qnaWrite(QnaVO qna)throws DataAccessException {
 		return qnaDAO.qnaWrite(qna);
 	}
@@ -39,4 +59,13 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDAO.qnaView(q_no);
 	}
 	
+	@Override
+	public int qnaModi(QnaVO vo)throws DataAccessException {
+		return qnaDAO.qnaModi(vo);
+	}
+	
+	@Override
+	public int qnaDelete(int q_no)throws DataAccessException {
+		return qnaDAO.qnaDelete(q_no);
+	}
 }

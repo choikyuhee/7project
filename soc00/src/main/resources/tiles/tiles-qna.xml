@@ -14,6 +14,21 @@
 		<put-attribute name="body" value="/WEB-INF/views/cs/help.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="cs/faqWriteForm" extends="baseLayout">
+		<put-attribute name="title" value="FAQ 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/cs/faqWriteForm.jsp"/>
+	</definition>
+	
+	<definition name="cs/faqView" extends="baseLayout">
+		<put-attribute name="title" value="faq 상세보기"/>
+		<put-attribute name="body" value="/WEB-INF/views/cs/faqView.jsp"/>
+	</definition>
+	
+	<definition name="cs/faqModiView" extends="baseLayout">
+		<put-attribute name="title" value="faq 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/cs/faqModiView.jsp"/>
+	</definition>
+	
 	<definition name="cs/question" extends="baseLayout">
 		<put-attribute name="title" value="1:1문의"/>
 		<put-attribute name="body" value="/WEB-INF/views/cs/question.jsp"></put-attribute>
@@ -27,6 +42,11 @@
 	<definition name="cs/qnaView" extends="baseLayout">
 		<put-attribute name="title" value="1:1문의 상세보기"/>
 		<put-attribute name="body" value="/WEB-INF/views/cs/qnaView.jsp"/>
+	</definition>
+	
+	<definition name="cs/qnaModiView" extends="baseLayout">
+		<put-attribute name="title" value="qna 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/cs/qnaModiView.jsp"/>
 	</definition>
 	
 </tiles-definitions>

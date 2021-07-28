@@ -18,6 +18,7 @@
 	<select id="osSoccerList" resultMap="osSoccerResult">
 		<![CDATA[
 			select*from soccer1
+			order by s1_no desc
 		]]>
 	</select>
 	

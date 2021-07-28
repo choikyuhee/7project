@@ -48,7 +48,17 @@
 		<p>조회수${question.q_view }</p>
 		<hr/>
 		<p id="a1">
-		<a id="a1" class="btn btn-primary" href="#">글쓰기</a>
+			<c:if test ="${member.u_id == question.u_id && member.u_admin == 1}">
+				<a id="a1" class="btn btn-primary" href="${contextPath }/cs/qnaModiView.do?q_no=${question.q_no}">글수정</a>
+				<a id="a1" class="btn btn-primary" href="${contextPath }/cs/qnaDelete.do?q_no=${question.q_no}">글삭제</a>
+			</c:if>
+			
+			
+			<c:if test ="${member.u_admin == 1}">
+				<a id="a1" class="btn btn-primary" href="${contextPath }/cs/qnaModiView.do?q_no=${question.q_no}">글수정</a>
+				<a id="a1" class="btn btn-primary" href="${contextPath }/cs/qnaDelete.do?q_no=${question.q_no}">글삭제</a>
+			</c:if>
+			<a id="a2" class="btn btn-primary" href="${contextPath }/board/osSoccer.do">글목록</a>
 		</p>
 		<br>
 

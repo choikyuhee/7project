@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -32,6 +33,9 @@
 		}
 		#a2{
 			text-align:center;
+		}
+		#b1{
+			text-align:right;
 		}
 		.pagination{
 			justify-content: center;
@@ -72,17 +76,26 @@
 				<th>조회수</th>
 				<th>추천수</th>
 			</tr>
+			<c:forEach var="faqList" items="${faqList }">
 			<tr align="center">
-				<td>회원</td>
-				<td>1</td>
-				<td>회원가입관련 문의</td>
-				<td>2021.6.10</td>
-				<td>관리자</td>
-				<td>1</td>
-				<td>1</td>
+				<td>${faqList.f_category }</td>
+				<td>${faqList.f_no }</td>
+				<td><a href="${contextPath}/cs/faqView.do?f_no=${faqList.f_no}">
+					${faqList.f_title }</a>
+				</td>
+				<td>${faqList.u_id }</td>
+				<td>
+					<fmt:formatDate value="${faqList.f_regdate }" pattern="yyyy-MM-dd"/>
+				</td>
+				<td>${faqList.f_view }</td>
 			</tr>
+			</c:forEach>
+			
 		</table>
 		<hr/>
+			<c:if test="${isLogOn == true && member.u_admin == 1 }">
+				<button id="b1" class="btn btn-primary" onclick="location.href='${contextPath}/cs/faqWriteForm.do'">글쓰기</button>
+			</c:if>
 		<br>
 		<br>
 		<div class="row">
