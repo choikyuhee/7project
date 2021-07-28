@@ -16,7 +16,21 @@ import com.team.soc00.board.vo.ArticleVO;
 public interface BoardController {
 
 	public ModelAndView osSoccer(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView osModi(@ModelAttribute("article") ArticleVO vo,
+			HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	public ModelAndView osDelete(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
 
+	public String osWrite2(ArticleVO articleVO, HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	public ModelAndView osView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;	
+	
+	public ModelAndView osModiView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
 	/*
 	 * public ResponseEntity osWrite(MultipartHttpServletRequest
 	 * multipartRequest,HttpServletResponse response) throws Exception;
@@ -32,8 +46,5 @@ public interface BoardController {
 	
 	public ModelAndView free(HttpServletRequest request, HttpServletResponse response)throws Exception;
 
-	public String osWrite2(ArticleVO articleVO, HttpServletRequest req, HttpServletResponse res)throws Exception;
-	
-	public ModelAndView osView(@RequestParam("no") int no,
-			HttpServletRequest request, HttpServletResponse response)throws Exception;
+
 }

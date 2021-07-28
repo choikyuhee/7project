@@ -48,10 +48,13 @@
 		<p>조회수${article.view }</p>
 		<hr/>
 		<p id="a1">
-		<a id="a1" class="btn btn-primary" href="#">글쓰기</a>
+			<c:if test ="${member.u_id == article.u_id }">
+				<a id="a1" class="btn btn-primary" href="${contextPath }/board/osModiView.do?no=${article.no}">글수정</a>
+				<a id="a1" class="btn btn-primary" href="${contextPath }/board/osDelete.do?no=${article.no}">글삭제</a>
+			</c:if>
+			<a id="a2" class="btn btn-primary" href="${contextPath }/board/osSoccer.do">글목록</a>
 		</p>
 		<br>
-
 	</div>
 </body>
 </html>

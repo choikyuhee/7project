@@ -33,29 +33,17 @@ public class BoardDAOImpl implements BoardDAO {
 	public ArticleVO osView(int no) throws DataAccessException {
 		return sqlSession.selectOne("mapper.board.selectOsView", no);
 	}
-	
-	@Override
-	public int osWrite(Map articleMap) throws DataAccessException{
-		int No = selectOsSoccerNO();
-		articleMap.put("no", No);
-		sqlSession.insert("mapper.board.insertOsSoccer",articleMap);
-		return No;
-	}
-	
-	@Override
-	public ArticleVO selectOsSoccer(int no) throws DataAccessException {
-		return sqlSession.selectOne("mapper.board.selectOsSoccer", no);
-	}
 
 	@Override
-	public void updateOsSoccer(Map articleMap) throws DataAccessException {
-		sqlSession.update("mapper.board.updateOsSoccer",articleMap);
+	public int osModi(ArticleVO vo)throws DataAccessException {
+		int result = sqlSession.update("mapper.board.osModi", vo);
+		return result;
 	}
-
+	
 	@Override
-	public void deleteOsSoccer(int no) throws DataAccessException {
-		sqlSession.delete("mapper.board.deleteOsSoccer",no);
-		
+	public int osDelete(int no)throws DataAccessException {
+		int result = sqlSession.delete("mapper.board.osDelete", no);
+		return result;
 	}
 	
 	@Override
@@ -87,7 +75,5 @@ public class BoardDAOImpl implements BoardDAO {
 		return freeList;
 	}
 	
-	private int selectOsSoccerNO() throws DataAccessException{
-		return sqlSession.selectOne("mapper.board.selectOsSoccerNO");
-	}
+
 }

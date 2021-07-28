@@ -24,6 +24,13 @@
 		<put-attribute name="body" value="/WEB-INF/views/board/osView.jsp"/>
 	</definition>
 	
+	<definition name="board/osModiView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/osModiView.jsp"/>
+	</definition>
+	
+	
+	
 	<definition name="board/krSoccer" extends="baseLayout">
 		<put-attribute name="title" value="국내축구"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/krSoccer.jsp"/>

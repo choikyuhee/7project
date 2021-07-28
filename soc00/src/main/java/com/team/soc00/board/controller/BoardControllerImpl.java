@@ -86,6 +86,41 @@ public class BoardControllerImpl implements BoardController {
 		return mav;
 	}
 	
+	@Override
+	@RequestMapping(value="/board/osModiView.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView osModiView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		articleVO = boardService.osView(no);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("article", articleVO);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/board/osModi.do", method=RequestMethod.POST)
+	public ModelAndView osModi(@ModelAttribute("article") ArticleVO vo,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		req.setCharacterEncoding("utf-8");
+		res.setContentType("text/html; charset=utf-8");
+		int result = 0; 
+		result = boardService.osModi(vo);
+		ModelAndView mav = new ModelAndView("redirect:/board/osSoccer.do");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/board/osDelete.do", method=RequestMethod.GET)
+	public ModelAndView osDelete(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		boardService.osDelete(no);
+		ModelAndView mav = new ModelAndView("redirect:/board/osSoccer.do");
+		return mav;
+	}
+	
+	
 	/*
 	 * @Override
 	 * 

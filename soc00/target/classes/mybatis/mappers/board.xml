@@ -35,17 +35,22 @@
 		]]>
 	</select>
 	
-	<select id = "selectOsSoccerNO" parameterType="int">
+	<update id="osModi" parameterType="articleVO" >
 		<![CDATA[
-			selcet nvl(max(no), 0) + 1 from soccer1
+			update soccer1
+			set
+			s1_category = #{category}, s1_title = #{title}, s1_content = #{content}, s1_regdate = now()
+			where s1_no = #{no}
 		]]>
-	</select>
+	</update>
 	
-	<select id = "selectOsSoccer" resultType="articleVO" parameterType="int">
+	<delete id="osDelete" parameterType="articleVO">
 		<![CDATA[
-			select * from soccer1 where no = #{no}
+			delete from soccer1
+			where s1_no = #{no}
 		]]>
-	</select>
+	</delete>
+	
 	
 	<!-- 국내축구 -->
 	<resultMap id="krSoccerResult" type="articleVO">
