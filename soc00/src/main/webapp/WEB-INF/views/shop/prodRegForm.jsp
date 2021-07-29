@@ -67,6 +67,25 @@
 			</div>
 		</div>
 		<div class="form-group row">
+			<label class="col-sm-2>" for="gdsImg">이미지</label>
+			<div class="col-sm-3">
+				<input type="file" id="gdsImg" name="q_filename" />
+			</div>
+				<div class="select_img"><img src="" /></div>
+					 
+				<script>
+					$("#gdsImg").change(function(){
+						if(this.files && this.files[0]) {
+							var reader = new FileReader;
+								reader.onload = function(data) {
+									$(".select_img img").attr("src", data.target.result).width(500);        
+								}
+						reader.readAsDataURL(this.files[0]);
+						}
+					});
+			</script>
+		</div>
+		<div class="form-group row">
 			<div class="col-sm-10 offset-sm-2">
 				<input type="submit" class="btn btn-primary" value="등록"/>
 			</div>

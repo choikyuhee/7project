@@ -59,14 +59,8 @@
 										사이즈 ${prodInfo.p_option }
 									</h6>
 									<p></p>
-									<h6>
-										개수 <select name="goods_option2"><option value="">필수사항</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-										</select>
+									<h6>개수
+										<input type="text" 
 									</h6>
 									<table >
 										<tr>

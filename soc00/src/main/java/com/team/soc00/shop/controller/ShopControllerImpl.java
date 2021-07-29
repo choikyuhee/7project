@@ -2,10 +2,12 @@ package com.team.soc00.shop.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,8 @@ public class ShopControllerImpl implements ShopController {
 	private ShopVO shopVO;
 	@Autowired
 	private OrderVO orderVO;
+	@Resource(name="uploadPath")
+	private String uploadPath;
 
 	@Override
 	@RequestMapping(value="/shop/shopList.do", method = RequestMethod.GET)
@@ -89,14 +93,14 @@ public class ShopControllerImpl implements ShopController {
 	@RequestMapping(value="/shop/orderList.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView orderList(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		String viewName = (String)request.getAttribute("viewName");
-		List allList = shopService.orderList();
+		List orderList = shopService.orderList();
 		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("allList", allList);
+		mav.addObject("orderList", orderList);
 		return mav;
 	}
 	
 	@Override
-	@RequestMapping(value="/shop/prodBuy.do", method= {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value="/shop/orderView.do", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView orderView(@RequestParam("o_no") int o_no,
 			HttpServletRequest req, HttpServletResponse res)throws Exception {
 		res.setCharacterEncoding("utf-8");

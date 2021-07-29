@@ -51,39 +51,40 @@
 		</table>
 		<hr/>
 		<br>
-		<form>
-		<div class="row">
-			<div style="width:50%; padding-left:20px">
-				<h4>주문자 정보</h4>
+		<form action="${contextPath }/shop/buy.do" method="post" class="form-horizontal">
+				<h4>구매자 정보</h4>
+				<input type="text" name="o_pname" class="hidden" value="${prodInfo.p_name }"/>
+				<input type="text" name="o_price" class="hidden" value="${prodInfo.p_price }"/>
+				<input type="text" name="p_no" class="hidden" value="${prodInfo.p_no }"/>
 				<div class="form-group row">
-					<label class="col-md-4">주문자</label>
-					<input type="text" id="name" height=""/>
+					<label class="col-md-4">이름</label>
+					<input type="text" id="name" value="${member.u_name }" readonly/>
 				</div>
 				<div class="form-group row">
 					<label class="col-md-4">연락처</label>
-					<input type="text" id="name" height=""/>
+					<input type="text" id="phone" value="${member.u_phone }" readonly/>
 				</div>
 				<div class="form-group row">
 					<label class="col-md-4">이메일</label>
-					<input type="text" id="name" height=""/>
+					<input type="text" id="email" value="${member.u_email }" readonly/>
 				</div>
-			</div>
-			<div style="width:50%;">
-				<h4>배송정보</h4>
-				<div class="form-group row" >
-					<label class="col-md-4">배송지</label>
-					<input type="text" id="name" height=""/>
-				</div>
+				<h4>받는사람 정보</h4>
 				<div class="form-group row">
-					<label class="col-md-4">받는사람</label>
-					<input type="text" id="name" height=""/>
+					<label class="col-md-4">이름</label>
+					<input type="text" name="o_name" value="${member.u_name }"/>
 				</div>
 				<div class="form-group row">
 					<label class="col-md-4">연락처</label>
-					<input type="text" id="name" height=""/>
+					<input type="text" name="o_phone" value="${member.u_phone }"/>
 				</div>
-			</div>
-		</div>	
+				<div class="form-group row" >
+					<label class="col-md-4">배송지</label>
+					<input type="text" name="o_address" value="${member.u_address }"/>
+				</div>
+				<div class="form-group row">
+					<label class="col-md-4">요청사항</label>
+					<input type="text" name="o_request" height=""/>
+				</div>
 		</form>
 		<br>
 		<h4>결제방법</h4>
@@ -97,10 +98,10 @@
 		</div>
 		<div class="row">
 			<div class="col-md-6" style="text-align:right;">
-				<button class="btn btn-defalut">주문하기</button>
+				<input type="submit" role="button" class="btn btn-defalut" value="주문하기"/>
 			</div>
 			<div class="col-md-6" style="text-align:left;">
-				<button class="btn btn-default" type="submit">결제취소</button>
+				<input role="button" class="btn btn-default" type="reset" value="취소"/>
 			</div>
 		</div>
 	</div>

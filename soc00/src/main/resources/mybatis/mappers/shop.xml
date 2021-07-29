@@ -44,11 +44,14 @@
 		<result property="o_name" column="o_name"/>
 		<result property="o_phone" column="o_phone"/>
 		<result property="o_count" column="o_count"/>
+		<result property="o_address" column="o_address"/>
 		<result property="p_no" column="p_no"/>
 		<result property="u_id" column="u_id"/>
+		<result property="o_pname" column="p_name"/>
+		<result property="o_request" column="o_request"/>
 	</resultMap>
 	
-	<select id="orderList" resultMap="orderResult">
+	<select id="orderList" resultType="orderVO">
 		<![CDATA[
 			select*from orderr
 			where
@@ -67,9 +70,11 @@
 	
 	<insert id="prodBuy" parameterType="orderVO">
 		<![CDATA[
-			insert into orderr(o_no, o_date, o_price, o_name, o_phone, o_count, p_no, u_id)
-			values(null, now(), #{o_price}, #{o_name}, #{o_phone}, #{o_coutn}, #{p_no}, #{u_id})
+			insert into orderr(o_no, o_date, o_price, o_name, o_phone, o_count, p_no, u_id, p_name, o_request)
+			values(null, now(), #{o_price}, #{o_name}, #{o_phone}, #{o_coutn}, #{p_no}, #{u_id}, #{o_pname}, #{o_request})
 		]]>
 	</insert>
+	
+
 	
 </mapper>
