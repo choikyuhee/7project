@@ -48,7 +48,7 @@
 		<p>조회수${article.view }</p>
 		<hr/>
 		<p id="a1">
-			<c:if test ="${member.u_id == article.u_id }">
+			<c:if test ="${member.u_id == article.u_id || member.u_admin == 1 }">
 				<a id="a1" class="btn btn-primary" href="${contextPath }/board/osModiView.do?no=${article.no}">글수정</a>
 				<a id="a1" class="btn btn-primary" href="${contextPath }/board/osDelete.do?no=${article.no}">글삭제</a>
 			</c:if>
