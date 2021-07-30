@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -39,6 +40,21 @@
 		<h3>국내축구</h3>
 		<hr/>
 		<br>
+	<table class="table table-hover">
+		<tr style="width=100%;">
+			<td >제목</td>
+			<td>${article.title }</td>
+		</tr>
+		<tr>
+			<td>작성자</td>
+			<td>${article.u_id }</td>
+			<td>작성일</td>
+			<td><fmt:formatDate value="${article.regdate }" pattern="yyyy-MM-dd"/></td>
+		</tr>
+		<tr>
+			<td>${article.content }</td>
+		</tr>
+	</table>
 		<p>카테고리${article.category}</p>
 		<p>글번호${article.no }</p>
 		<p>글제목${article.title }</p>
