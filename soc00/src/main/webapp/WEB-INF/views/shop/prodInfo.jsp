@@ -60,7 +60,7 @@
 									</h6>
 									<p></p>
 									<h6>개수
-										<input type="text" 
+										${prodInfo.p_stock } 
 									</h6>
 									<table >
 										<tr>
