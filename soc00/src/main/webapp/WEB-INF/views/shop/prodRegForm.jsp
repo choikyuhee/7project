@@ -19,7 +19,7 @@
 <div class="container">
 <h3>상품등록</h3>
 <hr/>
-	<form action="${contextPath }/shop/prodReg.do" method="post" class="form-horizontal">
+	<form action="${contextPath }/shop/prodReg.do" method="post" class="form-horizontal" enctype="multipart/form-data">
 		<div class="form-group row">
 			<label class="col-sm-2">상품이름</label>
 			<div class="col-sm-3">
@@ -69,7 +69,7 @@
 		<div class="form-group row">
 			<label class="col-sm-2>" for="gdsImg">이미지</label>
 			<div class="col-sm-3">
-				<input type="file" id="gdsImg" name="q_filename" />
+				<input type="file" id="gdsImg" name="p_filename" />
 			</div>
 				<div class="select_img"><img src="" /></div>
 					 

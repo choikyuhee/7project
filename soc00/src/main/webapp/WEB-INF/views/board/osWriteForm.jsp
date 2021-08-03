@@ -7,10 +7,10 @@
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>SummerNoteExample</title>
+<title>해외축구 글쓰기</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -25,14 +25,26 @@
   <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
   <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css">
   <!--  -->
-  
+<style>
+	.container{
+		padding:2em;
+	}
+	table{
+		padding-left:170px;
+	}
+	h3{
+		text-align:center;
+	}
+	
+	
+</style>
 </head>
 <body>
-<div class="container">
+<div class="container" align="right">
 <h3>글쓰기</h3>
 <hr/>
 <form id="frm" action="${contextPath }/board/osWrite.do" method="post" >
-<table align="center">
+<table  align="center">
         <tr>
             <td>제목</td>
             <td><input type="text" id="title" name="title" style="width:850px"/></td>
@@ -48,21 +60,20 @@
         	<td>
         	<select class="col-md-2 form-control" id="category" name="category">
   				<option>EPL</option>
-  				<option>세리에</option>
-  				<option>라리가</option>
   				<option>분데스리가</option>
   				<option>리그앙</option>
-  				<option>기타리그</option>
+  				<option>세리에</option>
+  				<option>기타</option>
 			</select>
         	</td>
         </tr>
-     	<tr>
+        <tr>
             <td>내용</td>
             <td>
-             	<textarea class="summernote" name="content"></textarea>
+            	<textarea class="summernote" name="content"></textarea>
             </td>
         </tr>
-		<tr>
+      	<tr>
 			<td colspan="2" align="center">
 				<input type="submit" value="글쓰기"  />
 				<input type="button" value="취소"/>
@@ -71,7 +82,7 @@
 </table>
 </form>
 </div>
-
+</body>
 <script>
 $('.summernote').summernote({
 	  width: 850,
@@ -79,5 +90,5 @@ $('.summernote').summernote({
 	  lang: "ko-KR"
 	});
 </script>
-</body>
+
 </html>

@@ -39,8 +39,7 @@
 	</beans:bean>
 	
 	
-	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="52428800"/>	
 	</beans:bean>
 		
@@ -53,6 +52,8 @@
 	
 	<!-- 일반 파일 업로드 경로 -->
 	<resources mapping="/imgUpload/**" location="/resources/imgUpload/" />
-		
+	
+	<!-- 대체 이미지 경로 -->
+	<resources mapping="/images/**" location="/resources/images/" />
 	
 </beans:beans>

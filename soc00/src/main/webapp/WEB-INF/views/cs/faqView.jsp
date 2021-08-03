@@ -39,14 +39,26 @@
 		<h3>FAQ</h3>
 		<hr/>
 		<br>
-		<p>카테고리${faq.f_category}</p>
-		<p>글번호${faq.f_no }</p>
-		<p>글제목${faq.f_title }</p>
-		<p>글제목${faq.f_content }</p>
-		<p>등록일${faq.f_regdate }</p>
-		<p>작성자${member.u_id }</p>
-		<p>조회수${faq.f_view }</p>
-		<hr/>
+	<table border=1 align="center">
+        <tr>
+            <td>제목 ${faq.f_title }</td>
+        </tr>
+        <tr>
+        	<td>아이디 ${member.u_id }</td>
+        	<td>조회수 ${faq.f_view }</td>
+        	<td>등록일 ${faq.f_regdate }</td>
+        </tr>
+        <tr>
+        	<td>카테고리 ${faq.f_category}</td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>
+                <div>${faq.f_content }</div>
+            </td>
+        </tr>
+	</table>
+	<br>
 		<p id="a1">
 			<c:if test ="${member.u_id == faq.u_id && member.u_admin == 1}">
 				<a id="a1" class="btn btn-primary" href="${contextPath }/cs/faqModiView.do?f_no=${faq.f_no}">글수정</a>

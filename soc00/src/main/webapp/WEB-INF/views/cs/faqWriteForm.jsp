@@ -10,34 +10,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>SmartEditor</title>
-<script type="text/javascript" src="/WEB-INF/SE/js/HuskyEZCreator.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-<script type="text/javascript">
-var oEditors = [];
-$(function(){
-      nhn.husky.EZCreator.createInIFrame({
-          oAppRef: oEditors,
-          elPlaceHolder: "f_content",
-          sSkinURI: "/WEB-INF/SE/SmartEditor2Skin.html",  
-          htParams : {
-              bUseToolbar : true,             
-              bUseVerticalResizer : true,     
-              bUseModeChanger : true,         
-              fOnBeforeUnload : function(){
-                   
-              }
-          }, 
-          fOnAppLoad : function(){
-              oEditors.getById["f_content"].exec("PASTE_HTML", ["내용을 입력해주세요"]);
-          },
-          fCreator: "createSEditor2"
-      });
-});
-
-
-</script>
+<title>faq글쓰기</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> 
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+  <script src=" https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
+  
+  <!-- 서머노트를 위해 추가해야할 부분 -->
+  <script src="${contextPath}/resources/summernote/summernote-lite.js"></script>
+  <script src="${contextPath}/resources/summernote/lang/summernote-ko-KR.js"></script>
+  <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css">
+  <!--  -->
 <style>
 	.container{
 		padding:2em;
@@ -57,10 +44,10 @@ $(function(){
 <h3>글쓰기</h3>
 <hr/>
 <form id="frm" action="${contextPath }/cs/faqWrite.do" method="post" >
-<table width="70%" align="center">
+<table  align="center">
         <tr>
             <td>제목</td>
-            <td><input type="text" id="title" name="f_title" style="width:650px"/></td>
+            <td><input type="text" id="title" name="f_title" style="width:850px"/></td>
         </tr>
         <tr>
         	<td>아이디</td>
@@ -83,21 +70,25 @@ $(function(){
         <tr>
             <td>내용</td>
             <td>
-                <textarea rows="10" cols="30" id="ir1" name="f_content" style="width:650px; height:350px; "></textarea>
+            	<textarea class="summernote" name="f_content"></textarea>
             </td>
         </tr>
-        <tr>
-				<td align="right">첨부파일 : </td>
-				<td><input type="file" name="imageFileName" onchange="readURL(this);" /></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center">
-					<input type="submit" value="글쓰기"  />
-					<input type="button" value="취소"/>
-				</td>
-			</tr>
+      	<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="글쓰기"  />
+				<input type="button" value="취소"/>
+			</td>
+		</tr>
 </table>
 </form>
 </div>
 </body>
+<script>
+$('.summernote').summernote({
+	  width: 850,
+	  height: 250,
+	  lang: "ko-KR"
+	});
+</script>
+
 </html>

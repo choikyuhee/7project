@@ -32,8 +32,8 @@
 	
 	<insert id="prodReg" parameterType="shopVO">
 		<![CDATA[
-			insert into products(p_no, p_name, p_price, p_category, p_content, p_option, p_stock)
-			values (null, #{p_name}, #{p_price}, #{p_category}, #{p_content}, #{p_option}, #{p_stock})
+			insert into products(p_no, p_name, p_price, p_category, p_content, p_option, p_stock, p_filename, p_thumb)
+			values (null, #{p_name}, #{p_price}, #{p_category}, #{p_content}, #{p_option}, #{p_stock}, #{p_filename}, #{p_thumb})
 		]]>
 	</insert>
 	
