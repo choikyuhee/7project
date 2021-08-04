@@ -58,7 +58,7 @@
           <div class="card-body">
             <h3 class="card-title pricing-card-title">${shopList.p_name }<small class="text-muted fw-light"></small></h3>
             
-            <img src="${contextPath }/resources/image/${shopList.p_filename }" style="max-width: 100%; height: auto;">
+            <img src="${contextPath }/${shopList.pr_filename }" style="max-width: 100%; height: auto;">
             
             <ul class="list-unstyled mt-3 mb-4">
               <li>${shopList.p_name }</li>

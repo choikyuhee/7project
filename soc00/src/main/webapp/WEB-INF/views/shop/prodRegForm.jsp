@@ -14,6 +14,10 @@
 	<meta charset="utf-8">
 	<title>상품등록</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+	
+</style>
 </head>
 <body>
 <div class="container">
@@ -66,32 +70,39 @@
 				<input type="text" name="p_stock" class="form-control"/>
 			</div>
 		</div>
+		
 		<div class="form-group row">
 			<label class="col-sm-2>" for="gdsImg">이미지</label>
-			<div class="col-sm-3">
-				<input type="file" id="gdsImg" name="p_filename" />
+			<div class="col-sm-5">
+				<input type="file" id="gdsImg" name="p_filename" class="form-control" />
 			</div>
+		</div>
+		
+		<div class="form-group row">	
+			<label class="col-sm-2">미리보기</label>
+			<div class="col-sm-5">
 				<div class="select_img"><img src="" /></div>
-					 
 				<script>
 					$("#gdsImg").change(function(){
 						if(this.files && this.files[0]) {
 							var reader = new FileReader;
 								reader.onload = function(data) {
-									$(".select_img img").attr("src", data.target.result).width(500);        
+									$(".select_img img").attr("src", data.target.result).width(100);        
 								}
 						reader.readAsDataURL(this.files[0]);
 						}
 					});
-			</script>
+				</script>
+			</div> 
 		</div>
+		
 		<div class="form-group row">
-			<div class="col-sm-10 offset-sm-2">
+			<div class="col-md-4">
 				<input type="submit" class="btn btn-primary" value="등록"/>
 			</div>
 		</div>
 	</form>
 </div>
 </body>
-
+	
 </html>

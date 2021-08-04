@@ -20,8 +20,10 @@ public interface ShopController {
 	public ModelAndView prodInfo(@RequestParam("p_no") int p_no,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
-	public String prodReg(ShopVO shopVO,
+	public String prodReg(ShopVO shopVO, @RequestParam("pr_filename") MultipartFile file,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	
 	
 	//public ResponseEntity prodReg1(MultipartHttpServletRequest mreq, HttpServletResponse res)throws Exception;
 	

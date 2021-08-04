@@ -11,7 +11,7 @@ public class ShopVO {
 	private String p_category;
 	private String p_content;
 	private String p_option;
-	private String p_filename;
+	private String pr_filename;
 	private int p_stock;
 	private String p_thumb;
 	
@@ -20,7 +20,7 @@ public class ShopVO {
 	}
 	
 	public ShopVO(int p_no, String p_name, String p_price, String p_category, String p_content, String p_option,
-			String p_filename, int p_stock, String p_thumb) {
+			String pr_filename, int p_stock, String p_thumb) {
 		this.p_name = p_name;
 		this.p_no = p_no;
 		this.p_price = p_price;
@@ -28,7 +28,7 @@ public class ShopVO {
 		this.p_category = p_category;
 		this.p_option = p_option;
 		this.p_stock = p_stock;
-		this.p_filename = p_filename;
+		this.pr_filename = pr_filename;
 		this.p_thumb = p_thumb;
 	}
 	
@@ -80,12 +80,12 @@ public class ShopVO {
 		this.p_option = p_option;
 	}
 	
-	public String getP_filename() {
-		return p_filename;
+	public String getPr_filename() {
+		return pr_filename;
 	}
 	
-	public void setP_filename(String p_filename) {
-		this.p_filename= p_filename;
+	public void setPr_filename(String pr_filename) {
+		this.pr_filename= pr_filename;
 	}
 	
 	public int getP_stock() {

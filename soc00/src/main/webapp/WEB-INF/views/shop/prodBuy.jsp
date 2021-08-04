@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="#"><img src="./image/korea.jpg" style="float:left;" alt="한국국대유니폼">
+					<a href="#"><img src="${contextPath }/${prodInfo.pr_filename}" style="float:left; width:100px;">
 						<p style="color:black;">${prodInfo.p_name }</p></a>
 				</td>
 				<td>

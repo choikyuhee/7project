@@ -11,9 +11,16 @@
 		<result property="p_category" column="p_category"/>
 		<result property="p_content" column="p_content"/>
 		<result property="p_option" column="p_option"/>
-		<result property="p_filename" column="p_filename"/>
+		<result property="pr_filename" column="p_filename"/>
 		<result property="p_stock" column="p_stock"/>
 		<result property="p_thumb" column="p_thumb"/>
+	</resultMap>
+	
+	<resultMap id="imgResult" type="imageVO">
+		<result property="i_no" column="i_no" />
+		<result property="p_no" column="p_no" />
+		<result property="i_filename" column="i_filename" />
+		<result property="i_regdate" column="i_regddate"/>
 	</resultMap>
 	
 	<select id="shopList" resultMap="shopResult">
@@ -33,9 +40,12 @@
 	<insert id="prodReg" parameterType="shopVO">
 		<![CDATA[
 			insert into products(p_no, p_name, p_price, p_category, p_content, p_option, p_stock, p_filename, p_thumb)
-			values (null, #{p_name}, #{p_price}, #{p_category}, #{p_content}, #{p_option}, #{p_stock}, #{p_filename}, #{p_thumb})
+			values (null, #{p_name}, #{p_price}, #{p_category}, #{p_content}, #{p_option}, #{p_stock}, #{pr_filename}, #{p_thumb})
 		]]>
 	</insert>
+	
+	
+	
 	
 	<resultMap id="orderResult" type="orderVO">
 		<result property="o_no" column="o_no"/>
