@@ -37,6 +37,12 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public int osViewCount(int no)throws DataAccessException {
+		int result = boardDAO.osViewCount(no);
+		return result;
+	}
+	
+	@Override
 	public int osModi(ArticleVO vo)throws DataAccessException {
 		int result = boardDAO.osModi(vo);
 		return result;
@@ -45,6 +51,10 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int osDelete(int no)throws DataAccessException {
 		return boardDAO.osDelete(no);
+	}
+	
+	public int s1Count()throws DataAccessException {
+		return boardDAO.s1Count();
 	}
 	
 	

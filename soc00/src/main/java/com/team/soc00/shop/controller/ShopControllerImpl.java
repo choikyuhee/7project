@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.soc00.shop.service.ShopService;
+import com.team.soc00.shop.vo.CartVO;
 import com.team.soc00.shop.vo.OrderVO;
 import com.team.soc00.shop.vo.ShopVO;
 import com.team.soc00.utils.FileUpload;
@@ -38,6 +39,8 @@ public class ShopControllerImpl implements ShopController {
 	private ShopVO shopVO;
 	@Autowired
 	private OrderVO orderVO;
+	@Autowired
+	private CartVO cartVO;
 	@Resource(name="uploadPath")
 	private String uploadPath;
 
@@ -66,6 +69,26 @@ public class ShopControllerImpl implements ShopController {
 		mav.addObject("prodInfo", shopVO);
 		return mav;
 	}
+	
+	@Override
+	@ResponseBody
+	@RequestMapping(value="/shop/insertCart.do", method=RequestMethod.POST)
+	public String insertCart(CartVO vo, HttpServletRequest req, HttpServletResponse res)throws Exception {
+		shopService.insertCart(vo);
+		return "redirect:/shop/shopList.do";
+	}
+	
+	@Override
+	@RequestMapping(value="/shop/cartList.do", method=RequestMethod.GET)
+	public ModelAndView cartList(@RequestParam("u_id") String u_id,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		ModelAndView mav = new ModelAndView();
+		List cartList = shopService.cartList(u_id);
+		mav.addObject("cartList", cartList);
+		return mav;
+	}
+
+	
 		
 	@Override
 	@RequestMapping(value="/shop/prodReg.do", method = {RequestMethod.GET, RequestMethod.POST})

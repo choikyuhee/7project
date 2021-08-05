@@ -32,6 +32,8 @@
 	<div class="container py-4">
 		<h3 id="asd">상품페이지</h3>
 		<hr/>
+		<input type="hidden" class="u_id" value="${member.u_id }"/>
+		<input type="hidden" class="p_no" value="${prodInfo.p_no }"/>
 		<div class="row align-items-md-stretch">
 			<div class="col-md-6">
 				<div class="h-100 p-5 bg-light border rounded-3">
@@ -81,7 +83,37 @@
 								</p>
 						</div>
 						<div>
-							<button type="button" class="btn btn-primary" href="">장바구니</button>	
+						<p class="insertCart">
+							<button type="button" id="insertCart_btn" class="btn btn-primary">장바구니</button>
+							
+							<script>
+							  $("#insertCart_btn").click(function(){
+							   var p_no = $(".p_no").val();
+							   var c_count = $(".numBox").val();
+							   var u_id = $(".u_id").val();
+							      
+							   var data = {
+							     p_no : p_no,
+							     c_count : c_count,
+							     u_id : u_id
+							     };
+							   
+							   $.ajax({
+							    url : "http://localhost:8080/soc00/shop/insertCart.do",
+							    type : "post",
+							    data : data,
+							    success : function(result){
+							     alert("카트 담기 성공");
+							     $(".numBox").val("1");
+							    },
+							    error : function(){
+							     alert("카트 담기 실패");
+							    }
+							   });
+							  });
+							 </script>
+							
+						</p>	
 							<button class="btn btn-primary"
 								 onclick="location.href='${contextPath }/shop/prodBuy.do?p_no=${prodInfo.p_no}'">바로구매</button>
 						</div>

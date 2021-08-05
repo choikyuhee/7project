@@ -16,13 +16,6 @@
 		<result property="p_thumb" column="p_thumb"/>
 	</resultMap>
 	
-	<resultMap id="imgResult" type="imageVO">
-		<result property="i_no" column="i_no" />
-		<result property="p_no" column="p_no" />
-		<result property="i_filename" column="i_filename" />
-		<result property="i_regdate" column="i_regddate"/>
-	</resultMap>
-	
 	<select id="shopList" resultMap="shopResult">
 		<![CDATA[
 			select*from products
@@ -44,8 +37,38 @@
 		]]>
 	</insert>
 	
+	<resultMap type="cartVO" id="cartResult">
+		<result property="c_no" column="c_no"/>
+		<result property="c_count" column="c_count"/>
+		<result property="p_no" column="p_no"/>
+		<result property="u_id" column="u_id"/>
+	</resultMap>
 	
+	<insert id="insertCart" parameterType="cartVO">
+		insert into cart(c_no, c_count, p_no, u_id)
+		values(null, #{c_count}, #{p_no}, #{u_id})
+	</insert>
 	
+	<resultMap id="cartListResult" type="cartListVO">
+		<result property="c_no" column="c_no"/>
+		<result property="c_count" column="c_count"/>
+		<result property="p_no" column="p_no"/>
+		<result property="u_id" column="u_id"/>
+		<result property="p_name" column="p_name"/>
+		<result property="p_price" column="p_price"/>
+		<result property="p_option" column="p_option"/>
+		<result property="pr_filename" column="p_filename"/>
+		<result property="p_thumb" column="p_thumb"/>
+	</resultMap>
+	
+	<select id="cartList" resultMap="cartListVO">
+		<![CDATA[
+			select*from cart c
+			inner join products p
+			on c.p_no = p.p_no
+			where u_id = #{u_id}
+		]]>
+	</select>
 	
 	<resultMap id="orderResult" type="orderVO">
 		<result property="o_no" column="o_no"/>

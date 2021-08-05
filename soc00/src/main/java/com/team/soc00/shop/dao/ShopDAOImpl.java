@@ -8,6 +8,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.team.soc00.member.vo.MemberVO;
+import com.team.soc00.shop.vo.CartListVO;
+import com.team.soc00.shop.vo.CartVO;
 import com.team.soc00.shop.vo.OrderVO;
 import com.team.soc00.shop.vo.ShopVO;
 
@@ -26,6 +28,18 @@ public class ShopDAOImpl implements ShopDAO {
 	@Override
 	public ShopVO prodInfo(int p_no)throws DataAccessException {
 		return sqlSession.selectOne("mapper.shop.prodInfo", p_no);
+	}
+	
+	@Override
+	public void insertCart(CartVO vo)throws DataAccessException {
+		sqlSession.insert("mapper.shop.insertCart", vo);
+	}
+	
+	@Override
+	public List cartList(String u_id)throws DataAccessException {
+		List<CartListVO> cartList = null;
+		cartList = sqlSession.selectList("mapper.shop.cartList", u_id);
+		return cartList;
 	}
 	
 	@Override

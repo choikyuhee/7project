@@ -19,6 +19,10 @@ public interface BoardService {
 	
 	public int osDelete(int no)throws DataAccessException;
 	
+	public int s1Count()throws DataAccessException;
+	
+	public int osViewCount(int no)throws DataAccessException;
+	
 	
 	public List<ArticleVO> krSoccerList() throws DataAccessException;
 	

@@ -33,6 +33,16 @@ public class BoardDAOImpl implements BoardDAO {
 	public ArticleVO osView(int no) throws DataAccessException {
 		return sqlSession.selectOne("mapper.board.selectOsView", no);
 	}
+	
+	@Override
+	public int osViewCount(int no)throws DataAccessException {
+		return sqlSession.update("mapper.board.osViewCount", no);
+	}
+	
+	@Override
+	public int s1Count()throws DataAccessException {
+		return sqlSession.selectOne("mapper.board.s1Count");
+	}
 
 	@Override
 	public int osModi(ArticleVO vo)throws DataAccessException {

@@ -80,6 +80,8 @@ public class BoardControllerImpl implements BoardController {
 			HttpServletRequest request, HttpServletResponse response)throws Exception {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+		int result = 0;
+		result = boardService.osViewCount(no);
 		articleVO = boardService.osView(no);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("article", articleVO);
@@ -119,43 +121,14 @@ public class BoardControllerImpl implements BoardController {
 		ModelAndView mav = new ModelAndView("redirect:/board/osSoccer.do");
 		return mav;
 	}
-	
-	
 	/*
-	 * @Override
-	 * 
-	 * @RequestMapping(value="/board/osWrite.do" ,method = RequestMethod.POST)
-	 * 
-	 * @ResponseBody public ResponseEntity osWrite(MultipartHttpServletRequest
-	 * multipartRequest, HttpServletResponse response) throws Exception {
-	 * multipartRequest.setCharacterEncoding("utf-8"); Map<String,Object> articleMap
-	 * = new HashMap<String, Object>(); Enumeration
-	 * enu=multipartRequest.getParameterNames(); while(enu.hasMoreElements()){
-	 * String name=(String)enu.nextElement(); String
-	 * value=multipartRequest.getParameter(name); articleMap.put(name,value); }
-	 * 
-	 * HttpSession session = multipartRequest.getSession(); MemberVO memberVO =
-	 * (MemberVO) session.getAttribute("member"); String id = memberVO.getU_id();
-	 * articleMap.put("no", 0); articleMap.put("u_id", id);
-	 * 
-	 * String message; ResponseEntity resEnt=null; HttpHeaders responseHeaders = new
-	 * HttpHeaders(); responseHeaders.add("Content-Type",
-	 * "text/html; charset=utf-8"); try { int articleNO =
-	 * boardService.osWrite(articleMap);
-	 * 
-	 * 
-	 * message = "<script>"; message += " alert('새글을 추가했습니다.');"; message +=
-	 * " location.href='"+multipartRequest.getContextPath()+"/board/osSoccer.do'; ";
-	 * message +=" </script>"; resEnt = new ResponseEntity(message, responseHeaders,
-	 * HttpStatus.CREATED); }catch(Exception e) {
-	 * 
-	 * message = " <script>"; message +=" alert('오류가 발생했습니다. 다시 시도해 주세요');');";
-	 * message +=" location.href='"+multipartRequest.getContextPath()
-	 * +"/board/osWriteForm.do'; "; message +=" </script>"; resEnt = new
-	 * ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-	 * e.printStackTrace(); } return resEnt; }
-	 */
-	
+	@Override
+	@RequestMapping(value="/board/osList.do", method=RequestMethod.GET)
+	public void getOsList(Model model)throws Exception {
+		List<ArticleVO> osList = null;
+		osList = boardService.s1Count();
+	}
+	*/
 
 	//국내축구게시판
 	@Override

@@ -14,7 +14,8 @@ public interface BoardDAO {
 	public ArticleVO osView(int no) throws DataAccessException;
 	public int osModi(ArticleVO vo)throws DataAccessException;
 	public int osDelete(int no)throws DataAccessException;
-	
+	public int s1Count()throws DataAccessException;
+	public int osViewCount(int no)throws DataAccessException;
 	
 	
 	public List krSoccerList() throws DataAccessException;
