@@ -40,6 +40,11 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	@Override
+	public void deleteCart(CartVO vo)throws DataAccessException {
+		shopDAO.deleteCart(vo);
+	}
+	
+	@Override
 	public List cartList(String u_id)throws DataAccessException {
 		List cartList = null;
 		cartList = shopDAO.cartList(u_id);

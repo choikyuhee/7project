@@ -1,5 +1,7 @@
 package com.team.soc00.shop.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,6 +28,10 @@ public interface ShopController {
 	
 	public String insertCart(CartVO vo,
 			HttpServletRequest req, HttpServletResponse res) throws Exception;
+	/*
+	
+	*/
+	public int deleteCart(@RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception;
 	
 	public ModelAndView cartList(@RequestParam("u_id") String u_id,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;

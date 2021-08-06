@@ -15,10 +15,13 @@ public class CartListVO {
 	
 	//상품정보
 	private String p_name;
-	private String p_pirce;
+	private String p_price;
 	private String p_option;
 	private String p_filename;
 	private String p_thumb;
+	private String p_category;
+	private String p_content;
+	private int p_stock;
 	
 	
 	public int getP_no() {
@@ -51,11 +54,11 @@ public class CartListVO {
 	public void setP_name(String p_name) {
 		this.p_name = p_name;
 	}
-	public String getP_pirce() {
-		return p_pirce;
+	public String getP_price() {
+		return p_price;
 	}
-	public void setP_pirce(String p_pirce) {
-		this.p_pirce = p_pirce;
+	public void setP_pirce(String p_price) {
+		this.p_price = p_price;
 	}
 	public String getP_option() {
 		return p_option;
@@ -74,5 +77,26 @@ public class CartListVO {
 	}
 	public void setP_thumb(String p_thumb) {
 		this.p_thumb = p_thumb;
+	}
+	public String getP_category() {
+		return p_category;
+	}
+	public void setP_category(String p_category) {
+		this.p_category = p_category;
+	}
+	public String getP_content() {
+		return p_content;
+	}
+	public void setP_content(String p_content) {
+		this.p_content = p_content;
+	}
+	public int getP_stock() {
+		return p_stock;
+	}
+	public void setP_stock(int p_stock) {
+		this.p_stock = p_stock;
+	}
+	public void setP_price(String p_price) {
+		this.p_price = p_price;
 	}
 }

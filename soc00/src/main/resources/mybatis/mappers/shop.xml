@@ -49,6 +49,11 @@
 		values(null, #{c_count}, #{p_no}, #{u_id})
 	</insert>
 	
+	<delete id="deleteCart" parameterType="cartVO">
+		delete from cart
+		where c_no = #{c_no}
+	</delete>
+	
 	<resultMap id="cartListResult" type="cartListVO">
 		<result property="c_no" column="c_no"/>
 		<result property="c_count" column="c_count"/>
@@ -57,16 +62,20 @@
 		<result property="p_name" column="p_name"/>
 		<result property="p_price" column="p_price"/>
 		<result property="p_option" column="p_option"/>
-		<result property="pr_filename" column="p_filename"/>
+		<result property="p_filename" column="p_filename"/>
 		<result property="p_thumb" column="p_thumb"/>
+		<result property="p_category" column="p_category"/>
+		<result property="p_content" column="p_content"/>
+		<result property="p_stock" column="p_stock"/>
 	</resultMap>
 	
-	<select id="cartList" resultMap="cartListVO">
+	<select id="cartList" resultMap="cartListResult">
 		<![CDATA[
 			select*from cart c
 			inner join products p
 			on c.p_no = p.p_no
 			where u_id = #{u_id}
+			order by c_no desc
 		]]>
 	</select>
 	

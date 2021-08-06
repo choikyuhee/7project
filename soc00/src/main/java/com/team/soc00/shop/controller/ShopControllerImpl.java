@@ -79,6 +79,21 @@ public class ShopControllerImpl implements ShopController {
 	}
 	
 	@Override
+	@ResponseBody
+	@RequestMapping(value="/shop/deleteCart.do", method=RequestMethod.POST)
+	public int deleteCart(@RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception {	 
+		int result = 0;
+		int cartNum = 0;
+		for(String i : chArr) {   
+			cartNum = Integer.parseInt(i);
+			cart.setC_no(cartNum);
+			shopService.deleteCart(cart);
+			}   
+		result = 1;
+		return result;  
+	}
+	
+	@Override
 	@RequestMapping(value="/shop/cartList.do", method=RequestMethod.GET)
 	public ModelAndView cartList(@RequestParam("u_id") String u_id,
 			HttpServletRequest req, HttpServletResponse res)throws Exception {

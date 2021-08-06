@@ -49,7 +49,7 @@
 			<p>전화번호 : 000-0000</p>
 			<p>주소 : 대전 광역시 서구 둔산동</p>
 			<p>FAX : 042-000-0000 / E-Mail : aaaa@naver.com</p>
-			<a href="${contextPath }/cs/help.do"><strong>고객센터 바로가기</strong></a>
+			<a role="button" class="btn btn-primary" href="${contextPath }/cs/help.do">고객센터 바로가기</a>
 		</div>
 		</div>
 	</div>

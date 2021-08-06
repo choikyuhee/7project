@@ -16,6 +16,8 @@ public interface ShopDAO {
 	
 	public void insertCart(CartVO vo)throws DataAccessException;
 	
+	public void deleteCart(CartVO vo)throws DataAccessException;
+	
 	public List cartList(String u_id)throws DataAccessException;
 	
 	public void prodReg(ShopVO shopVO)throws DataAccessException;

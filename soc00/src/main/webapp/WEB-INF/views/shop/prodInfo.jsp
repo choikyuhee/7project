@@ -34,6 +34,7 @@
 		<hr/>
 		<input type="hidden" class="u_id" value="${member.u_id }"/>
 		<input type="hidden" class="p_no" value="${prodInfo.p_no }"/>
+		<input type="hidden" class="p_price" value="${prodInfo.p_price }"/>
 		<div class="row align-items-md-stretch">
 			<div class="col-md-6">
 				<div class="h-100 p-5 bg-light border rounded-3">
@@ -43,7 +44,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="h-100 p-5 bg-light border rounded-3">
-					<p>${prodInfo.p_name }</p>
+					<p id="p_name">${prodInfo.p_name }</p>
 					<div>
 						<p>가격 : &#8361; <fmt:formatNumber value="${prodInfo.p_price }" pattern="###,###,###"/>원</p> <!-- 원화 표시 -->		
 					</div>
@@ -83,6 +84,9 @@
 								</p>
 						</div>
 						<div>
+							<p>총 구매금액 : ${prodInfo.p_price }
+						</div>
+						<div>
 						<p class="insertCart">
 							<button type="button" id="insertCart_btn" class="btn btn-primary">장바구니</button>
 							
@@ -103,8 +107,15 @@
 							    type : "post",
 							    data : data,
 							    success : function(result){
-							     alert("카트 담기 성공");
-							     $(".numBox").val("1");
+							    	alert("카트 담기 성공");
+								     $(".numBox").val("1");
+							    	var moveCartList = confirm("장바구니로 이동하시겠습니까?");
+							    	if (moveCartList == true){
+							    		location.href="${contextPath}/shop/cartList.do?u_id=${member.u_id}"
+							    	}
+							    	else{
+							    		return false;
+							    	}
 							    },
 							    error : function(){
 							     alert("카트 담기 실패");

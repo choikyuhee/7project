@@ -18,6 +18,8 @@ public interface ShopService {
 	
 	public void insertCart(CartVO vo)throws DataAccessException;
 	
+	public void deleteCart(CartVO vo)throws DataAccessException;
+	
 	public List cartList(String u_id)throws DataAccessException;
 	
 	public int buy(OrderVO vo)throws DataAccessException;

@@ -13,8 +13,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>주문내역</title>
+	<title>장바구니</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<style>
 		.container{
 			padding-top:20px;
@@ -33,52 +34,104 @@
 			margin:auto;
 			text-align:center;
 		}
+		#thumb{
+			width:100px;
+		}
+		.allCheck{
+			float:left;
+			padding-left:30px;
+		}
 	</style>
 </head>
 <body>
+
 	<div class="container">
-		<h3>주문내역</h3>
+		<h3>장바구니</h3>
 		<hr/>
 		<br>
+		  <div class="allCheck">
+		   <input type="checkbox" name="allCheck" id="allCheck" /><label for="allCheck">모두 선택</label> 
+		   	  <script>
+				$("#allCheck").click(function(){
+				 var chk = $("#allCheck").prop("checked");
+				 if(chk) {
+				  $(".chBox").prop("checked", true);
+				 } else {
+				  $(".chBox").prop("checked", false);
+				 }
+				});
+			</script>
+		  </div>
+		  <div class="delBtn">
+		   <button type="button" class="selectDelete_btn">선택 삭제</button> 
+		   <script>
+			 $(".selectDelete_btn").click(function(){
+			  var confirm_val = confirm("정말 삭제하시겠습니까?");
+			  
+			  if(confirm_val) {
+			   var checkArr = new Array();
+			   
+			   $("input[class='chBox']:checked").each(function(){
+			    checkArr.push($(this).attr("data-cartNum"));
+			   });
 
-		<br>
+			   $.ajax({
+			    url : "${contextPath}/shop/deleteCart.do",
+			    type : "post",
+			    data : { chbox : checkArr },
+			    success : function(){
+			     location.href = "${contextPath}/shop/cartList.do?u_id=${member.u_id}";
+			    }
+			   });
+			  } 
+			 });
+			</script>
+		  </div>
 		<table class="table table-hover">
 			<tr align="center">
+				<th></th>
+				<th>상품</th>
 				<th>상품정보</th>
 				<th>상품옵션</th>
 				<th>금액</th>
 			</tr>
 			<c:forEach var="cartList" items="${cartList }">
-			<tr align="center" >
-				<td>${cartList.o_no}</td>
-				<td><a href="${contextPath}/board/osView.do?no=${cartList.o_no}">${cartList.o_pname }</a>
-					<fmt:formatDate value="${cartList.o_date }" pattern="yyyy-MM-dd"/>
+			<tr>
+				<td>
+					<div class="checkBox">
+					   <input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.c_no}" />
+					 	<script>
+						 $(".chBox").click(function(){
+						  $("#allCheck").prop("checked", false);
+						 });
+						</script>
+					 </div>
+				</td>
+				<td><a href="${contextPath}/shop/prodInfo.do?p_no=${cartList.p_no}">
+					<img id="thumb" src="${contextPath}/${cartList.p_filename}"></a>
 				</td>
 				<td>
-					<fmt:formatNumber value="${cartList.o_price }" pattern="###,###,###"/>원
+					<a href="${contextPath}/shop/prodInfo.do?p_no=${cartList.p_no}">
+					${cartList.p_name }</a>
+				</td>
+				<td>
+					<p>${cartList.p_option }</p>
+					<p>${cartList.c_count }개</p>
+				</td>
+				<td>
+					<fmt:formatNumber value="${cartList.p_price * cartList.c_count }" pattern="###,###,###"/>원
 				</td>
 			</tr>
 			</c:forEach>
 		</table>
 		<hr/>
 		<br>
-		<div id="p0" class="row">
-			<div id="p1" class="col-md-6">
-				<p>총 상품금액</p>
-				<p>15,000원</p>
-			</div>
-			<div id="p2" class="col-md-6">
-				<p>금액</p>
-				<p>15,000</p>
-			</div>
-		</div>
-		<br>
 		<div class="row">
 			<div class="col-md-6" style="text-align:right;">
-				<button class="btn btn-defalut">쇼핑계속하기</button>
+				<a role="button" class="btn btn-primary" href="${contextPath}/shop/shopList.do">쇼핑계속하기</a>
 			</div>
 			<div class="col-md-6" style="text-align:left;">
-				<button class="btn btn-default" type="submit">주문하기</button>
+				<button class="btn btn-primary" type="submit">주문하기</button>
 			</div>
 		</div>
 	</div>

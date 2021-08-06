@@ -29,7 +29,7 @@
 			<a href="${contextPath }/member/login.do" class="no-underline">	</a>
 			<a class = "no-underline" href="${contextPath }/member/logout.do"><strong>로그아웃</strong></a><br>
 			<br>
-			<a class ="btn btn-primary btn-sm" href="#" role="button">장바구니</a>
+			<a class ="btn btn-primary btn-sm" href="${contextPath }/shop/cartList.do?u_id=${member.u_id}" role="button">장바구니</a>
 			&nbsp;
 			<a class="btn btn-primary btn-sm" href="${contextPath }/member/mypageForm.do" role="button">마이페이지</a><br>
 		</c:when>
