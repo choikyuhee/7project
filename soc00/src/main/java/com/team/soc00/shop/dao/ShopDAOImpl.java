@@ -65,6 +65,7 @@ public class ShopDAOImpl implements ShopDAO {
 		return orderList;
 	}
 	
+	
 	@Override
 	public OrderVO orderView(int o_no)throws DataAccessException {
 		return sqlSession.selectOne("mapper.shop.orderView", o_no);

@@ -225,15 +225,4 @@ public class MemberControllerImpl implements MemberController {
 		
 	}
 
-	
-	/*
-	 * @Scheduled(cron="0/10 * * * * * ?") public void scheduleRun() { String
-	 * batchResult = "성공"; try { List<MemberVO> userList = memberService.userList();
-	 * 
-	 * } catch(Exception e) { batchResult = "실패"; }
-	 * 
-	 * Calendar calendar = Calendar.getInstance(); SimpleDateFormat dateFormat = new
-	 * SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); logger.info("스케쥴 실행 : [" +
-	 * batchResult + "] " + dateFormat.format(calendar.getTime())); }
-	 */
 }	
