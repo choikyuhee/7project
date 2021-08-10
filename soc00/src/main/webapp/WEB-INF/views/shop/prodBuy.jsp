@@ -38,14 +38,15 @@
 			</tr>
 			<tr>
 				<td>
-					<a href="#"><img src="${contextPath }/${prodInfo.pr_filename}" style="float:left; width:100px;">
-						<p style="color:black;">${prodInfo.p_name }</p></a>
+					<a href="#"><img src="${contextPath }/${cartList.p_filename}" style="float:left; width:100px;">
+						<p style="color:black;">${cartList.p_name }</p></a>
 				</td>
 				<td>
-					<p>사이즈 : ${prodInfo.p_option }</p>
+					<p>${cartList.p_option }</p>
+					<p>${cartList.c_count }
 				</td>
 				<td>
-					<p>가격 : ${prodInfo.p_price }</p>
+					<p>가격 : ${cartList.p_price }</p>
 				</td>
 			</tr>
 		</table>
@@ -53,9 +54,9 @@
 		<br>
 		<form action="${contextPath }/shop/buy.do" method="post" class="form-horizontal">
 				<h4>구매자 정보</h4>
-				<input type="text" name="o_pname" class="hidden" value="${prodInfo.p_name }"/>
-				<input type="text" name="o_price" class="hidden" value="${prodInfo.p_price }"/>
-				<input type="text" name="p_no" class="hidden" value="${prodInfo.p_no }"/>
+				<input type="hidden" name="o_pname" class="hidden" value="${cartList.p_name }"/>
+				<input type="hidden" name="o_price" class="hidden" value="${cartList.p_price }"/>
+				<input type="hidden" name="p_no" class="hidden" value="${cartList.p_no }"/>
 				<div class="form-group row">
 					<label class="col-md-4">이름</label>
 					<input type="text" id="name" value="${member.u_name }" readonly/>

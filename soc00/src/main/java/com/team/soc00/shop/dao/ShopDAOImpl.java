@@ -43,6 +43,11 @@ public class ShopDAOImpl implements ShopDAO {
 	}
 	
 	@Override
+	public void prodbuy(CartListVO vo)throws DataAccessException {
+		sqlSession.selectOne("mapper.shop.cartList2", vo);
+	}
+	
+	@Override
 	public void deleteCart(CartVO vo)throws DataAccessException {
 		sqlSession.delete("mapper.shop.deleteCart", vo);
 	}

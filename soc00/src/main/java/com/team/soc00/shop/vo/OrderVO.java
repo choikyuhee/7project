@@ -11,12 +11,9 @@ public class OrderVO {
 	private Date o_date;
 	private int o_price;
 	private String o_address;
-	private String o_name;
 	private String o_phone;
-	private int o_count;
 	private String u_id;
 	private int p_no;
-	private String o_pname;
 	private String o_request;
 	
 	public int getO_no() {
@@ -51,13 +48,7 @@ public class OrderVO {
 		this.o_address = o_address;
 	}
 	
-	public String getO_name() {
-		return o_name;
-	}
-	
-	public void setO_name(String o_name) {
-		this.o_name = o_name;
-	}
+
 	
 	public String getO_phone() {
 		return o_phone;
@@ -67,13 +58,7 @@ public class OrderVO {
 		this.o_phone = o_phone;
 	}
 	
-	public int getO_count() {
-		return o_count;
-	}
-	
-	public void setO_count(int o_count) {
-		this.o_count = o_count;
-	}
+
 	
 	public String getU_id() {
 		return u_id;
@@ -91,13 +76,7 @@ public class OrderVO {
 		this.p_no = p_no;
 	}
 	
-	public String getO_pname() {
-		return o_pname;
-	}
-	
-	public void setO_pname(String o_pname) {
-		this.o_pname = o_pname;
-	}
+
 	
 	public String getO_request() {
 		return o_request;

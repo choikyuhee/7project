@@ -87,6 +87,7 @@
 			 });
 			</script>
 		  </div>
+		
 		<table class="table table-hover">
 			<tr align="center">
 				<th></th>
@@ -95,6 +96,7 @@
 				<th>상품옵션</th>
 				<th>금액</th>
 			</tr>
+			<c:set var="sum" value="0"/>
 			<c:forEach var="cartList" items="${cartList }">
 			<tr>
 				<td>
@@ -122,16 +124,41 @@
 					<fmt:formatNumber value="${cartList.p_price * cartList.c_count }" pattern="###,###,###"/>원
 				</td>
 			</tr>
+			<c:set var="sum" value="${sum + (cartList.p_price * cartList.c_count) }"/>
 			</c:forEach>
 		</table>
 		<hr/>
+		<br>
+		<div class="cartResult">
+			총 <fmt:formatNumber value="${sum }" pattern="###,###,###"/> 원
+		</div>
 		<br>
 		<div class="row">
 			<div class="col-md-6" style="text-align:right;">
 				<a role="button" class="btn btn-primary" href="${contextPath}/shop/shopList.do">쇼핑계속하기</a>
 			</div>
 			<div class="col-md-6" style="text-align:left;">
-				<button class="btn btn-primary" type="submit">주문하기</button>
+				<a role="button" id="asd" class="btn btn-primary">주문하기</a>
+				<script>
+				 $("#asd").click(function(){
+
+				   var checkArr = new Array();
+				   
+				   $("input[class='chBox']:checked").each(function(){
+				    checkArr.push($(this).attr("data-cartNum"));
+				   });
+	
+				   $.ajax({
+				    url : "${contextPath}/shop/prodBuy.do",
+				    type : "get",
+				    data : { chbox : checkArr },
+				    success : function(){
+				     location.href = "${contextPath}/shop/prodBuy.do";
+				    }
+				   });
+				  
+				 });
+				</script>
 			</div>
 		</div>
 	</div>

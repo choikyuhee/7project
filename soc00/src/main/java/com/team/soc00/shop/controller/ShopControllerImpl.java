@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.soc00.shop.service.ShopService;
+import com.team.soc00.shop.vo.CartListVO;
 import com.team.soc00.shop.vo.CartVO;
 import com.team.soc00.shop.vo.OrderVO;
 import com.team.soc00.shop.vo.ShopVO;
@@ -41,6 +42,8 @@ public class ShopControllerImpl implements ShopController {
 	private OrderVO orderVO;
 	@Autowired
 	private CartVO cartVO;
+	@Autowired
+	private CartListVO cartListVO;
 	@Resource(name="uploadPath")
 	private String uploadPath;
 
@@ -134,15 +137,18 @@ public class ShopControllerImpl implements ShopController {
 	
 	
 	@Override
+	@ResponseBody
 	@RequestMapping(value="/shop/prodBuy.do", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView prodBuy(@RequestParam("p_no") int p_no,
-			HttpServletRequest req, HttpServletResponse res)throws Exception {
-		res.setCharacterEncoding("utf-8");
-		res.setContentType("text/html; charset=utf-8");
-		shopVO = shopService.prodInfo(p_no);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("prodInfo", shopVO);
-		return mav;
+	public int prodBuy(@RequestParam(value = "chbox[]") List<String> chArr, CartVO vo)throws Exception {
+		int result = 0;
+		int cartNum = 0;
+		for(String i : chArr) {   
+			cartNum = Integer.parseInt(i);
+			vo.setC_no(cartNum);
+			shopService.prodbuy(vo);
+			}   
+		result = 1;
+		return result;  
 	}
 	
 	@Override

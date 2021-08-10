@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 
+import com.team.soc00.shop.vo.CartListVO;
 import com.team.soc00.shop.vo.CartVO;
 import com.team.soc00.shop.vo.OrderVO;
 import com.team.soc00.shop.vo.ShopVO;
@@ -21,6 +22,8 @@ public interface ShopService {
 	public void deleteCart(CartVO vo)throws DataAccessException;
 	
 	public List cartList(String u_id)throws DataAccessException;
+	
+	public void prodbuy(CartListVO vo)throws DataAccessException;
 	
 	public int buy(OrderVO vo)throws DataAccessException;
 	
