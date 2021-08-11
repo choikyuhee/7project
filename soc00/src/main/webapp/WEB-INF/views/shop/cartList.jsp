@@ -47,6 +47,7 @@
 
 	<div class="container">
 		<h3>장바구니</h3>
+		<p>${cartMap } 
 		<hr/>
 		<br>
 		  <div class="allCheck">

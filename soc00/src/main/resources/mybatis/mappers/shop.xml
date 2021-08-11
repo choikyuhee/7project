@@ -69,7 +69,7 @@
 		<result property="p_stock" column="p_stock"/>
 	</resultMap>
 	
-	<select id="cartList" resultMap="cartListResult">
+	<select id="cartList" parameterType="java.util.Map" resultMap="cartListResult">
 		<![CDATA[
 			select*from cart c
 			inner join products p

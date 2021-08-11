@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ImportResource;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.soc00.member.vo.MemberVO;
 import com.team.soc00.shop.service.ShopService;
 import com.team.soc00.shop.vo.CartListVO;
 import com.team.soc00.shop.vo.CartVO;
@@ -101,11 +103,13 @@ public class ShopControllerImpl implements ShopController {
 	public ModelAndView cartList(@RequestParam("u_id") String u_id,
 			HttpServletRequest req, HttpServletResponse res)throws Exception {
 		ModelAndView mav = new ModelAndView();
+		HttpSession session = req.getSession();
 		List cartList = shopService.cartList(u_id);
 		mav.addObject("cartList", cartList);
+		session.setAttribute("cartSession", cartList);
 		return mav;
 	}
-
+	
 	
 		
 	@Override
@@ -136,20 +140,6 @@ public class ShopControllerImpl implements ShopController {
 	}
 	
 	
-	@Override
-	@ResponseBody
-	@RequestMapping(value="/shop/prodBuy.do", method= {RequestMethod.POST, RequestMethod.GET})
-	public int prodBuy(@RequestParam(value = "chbox[]") List<String> chArr, CartVO vo)throws Exception {
-		int result = 0;
-		int cartNum = 0;
-		for(String i : chArr) {   
-			cartNum = Integer.parseInt(i);
-			vo.setC_no(cartNum);
-			shopService.prodbuy(vo);
-			}   
-		result = 1;
-		return result;  
-	}
 	
 	@Override
 	@RequestMapping(value="/shop/buy.do", method=RequestMethod.POST)
