@@ -55,6 +55,11 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	@Override
+	public void orderPageView(int c_no)throws DataAccessException {
+		shopDAO.orderPageView(c_no);
+	}
+	
+	@Override
 	public void prodbuy(CartListVO vo)throws DataAccessException {
 		shopDAO.prodbuy(vo);
 	}

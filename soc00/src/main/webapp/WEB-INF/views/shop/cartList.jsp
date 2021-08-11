@@ -150,11 +150,11 @@
 				   });
 	
 				   $.ajax({
-				    url : "${contextPath}/shop/prodBuy.do",
+				    url : "${contextPath}/shop/orderPage.do",
 				    type : "get",
 				    data : { chbox : checkArr },
 				    success : function(){
-				     location.href = "${contextPath}/shop/prodBuy.do";
+				     location.href = "${contextPath}/shop/orderPage.do";
 				    }
 				   });
 				  

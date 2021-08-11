@@ -110,6 +110,19 @@ public class ShopControllerImpl implements ShopController {
 		return mav;
 	}
 	
+	@Override
+	@RequestMapping(value="/shop/orderPage.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView orderPage(@RequestParam("chbox[]") List<String> chArr,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		ModelAndView mav = new ModelAndView();
+		int c_no = 0;
+		for(String i : chArr) {   
+			c_no = Integer.parseInt(i);
+			cartListVO.setC_no(c_no);
+			shopService.orderPageView(c_no);
+			}
+		return mav;
+	}
 	
 		
 	@Override

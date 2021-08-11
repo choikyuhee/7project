@@ -37,7 +37,8 @@ public interface ShopController {
 	public ModelAndView cartList(@RequestParam("u_id") String u_id,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
-	
+	public ModelAndView orderPage(@RequestParam("chbox[]") List<String> chArr,
+			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
 	public ModelAndView buy(@ModelAttribute("order") OrderVO order,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;

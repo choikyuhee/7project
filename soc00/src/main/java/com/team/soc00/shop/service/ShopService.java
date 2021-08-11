@@ -24,6 +24,8 @@ public interface ShopService {
 	
 	public List cartList(String u_id)throws DataAccessException;
 	
+	public void orderPageView(int c_no)throws DataAccessException;
+	
 	public void prodbuy(CartListVO vo)throws DataAccessException;
 	
 	public int buy(OrderVO vo)throws DataAccessException;
