@@ -44,15 +44,14 @@
 		<br>
 		<table class="table table-hover">
 			<tr align="center">
-				<th>주문번호</th>
+				<th>주문날짜</th>
 				<th>상품정보</th>
 				<th>금액</th>
 			</tr>
 			<c:forEach var="orderList" items="${orderList }">
 			<tr align="center" >
-				<td>${orderList.o_no}</td>
-				<td><a href="${contextPath}/board/osView.do?no=${orderList.o_no}">${orderList.o_pname }</a>
-					<fmt:formatDate value="${orderList.o_date }" pattern="yyyy-MM-dd"/>
+				<td><fmt:formatDate value="${orderList.o_date }" pattern="yyyy-MM-dd"/></td>
+				<td><a href="${contextPath}/shop/orderListView.do?o_no=${orderList.o_no}">${orderList.o_no }</a>
 				</td>
 				<td>
 					<fmt:formatNumber value="${orderList.o_price }" pattern="###,###,###"/>

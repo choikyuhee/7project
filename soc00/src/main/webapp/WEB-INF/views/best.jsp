@@ -40,7 +40,7 @@
 		<h3>베스트</h3>
 		<hr/>
 		<br>
-
+		
 		
 		<table class="table table-hover">
 			<tr align="center">

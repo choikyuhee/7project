@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.team.soc00.shop.dao.ShopDAO;
 import com.team.soc00.shop.vo.CartListVO;
 import com.team.soc00.shop.vo.CartVO;
+import com.team.soc00.shop.vo.OrderDetailVO;
+import com.team.soc00.shop.vo.OrderListVO;
 import com.team.soc00.shop.vo.OrderVO;
 import com.team.soc00.shop.vo.ShopVO;
 
@@ -55,8 +57,8 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	@Override
-	public void orderPageView(int c_no)throws DataAccessException {
-		shopDAO.orderPageView(c_no);
+	public void orderPageView(CartListVO vo)throws DataAccessException {
+		shopDAO.orderPageView(vo);
 	}
 	
 	@Override
@@ -70,10 +72,25 @@ public class ShopServiceImpl implements ShopService {
 	}
 	
 	@Override
-	public List orderList()throws DataAccessException {
+	public void buyDetail(OrderDetailVO od_vo)throws DataAccessException {
+		shopDAO.buyDetail(od_vo);
+	}
+	
+	@Override
+	public void deleteAllCart(String u_id)throws DataAccessException {
+		shopDAO.deleteAllCart(u_id);
+	}
+	
+	@Override
+	public List orderList(String u_id)throws DataAccessException {
 		List orderList = null;
-		orderList = shopDAO.orderList();
+		orderList = shopDAO.orderList(u_id);
 		return orderList;
+	}
+	
+	@Override
+	public List<OrderListVO> orderListView(OrderVO vo)throws DataAccessException {
+		return shopDAO.orderListView(vo);
 	}
 	
 	@Override

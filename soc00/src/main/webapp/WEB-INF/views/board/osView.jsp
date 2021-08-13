@@ -45,6 +45,8 @@
 		<tr>
 			<td>제목</td>
 			<td>${article.title }</td>
+			<td></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td>작성자</td>

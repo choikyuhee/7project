@@ -7,7 +7,8 @@ public class OrderDetailVO {
 
 	private int od_no;
 	private int od_count;
-	private int o_no;
+	private String od_price;
+	private String o_no;
 	private int p_no;
 	
 	public int getOd_no() {
@@ -22,10 +23,10 @@ public class OrderDetailVO {
 	public void setOd_count(int od_count) {
 		this.od_count = od_count;
 	}
-	public int getO_no() {
+	public String getO_no() {
 		return o_no;
 	}
-	public void setO_no(int o_no) {
+	public void setO_no(String o_no) {
 		this.o_no = o_no;
 	}
 	public int getP_no() {
@@ -33,5 +34,11 @@ public class OrderDetailVO {
 	}
 	public void setP_no(int p_no) {
 		this.p_no = p_no;
+	}
+	public String getOd_price() {
+		return od_price;
+	}
+	public void setOd_price(String od_price) {
+		this.od_price = od_price;
 	}
 }

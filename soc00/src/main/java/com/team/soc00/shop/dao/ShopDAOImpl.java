@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import com.team.soc00.member.vo.MemberVO;
 import com.team.soc00.shop.vo.CartListVO;
 import com.team.soc00.shop.vo.CartVO;
+import com.team.soc00.shop.vo.OrderDetailVO;
+import com.team.soc00.shop.vo.OrderListVO;
 import com.team.soc00.shop.vo.OrderVO;
 import com.team.soc00.shop.vo.ShopVO;
 
@@ -43,8 +45,8 @@ public class ShopDAOImpl implements ShopDAO {
 	}
 	
 	@Override
-	public void orderPageView(int c_no)throws DataAccessException {
-		sqlSession.selectOne("mapper.shop.cartList2", c_no);
+	public void orderPageView(CartListVO vo)throws DataAccessException {
+		sqlSession.selectOne("mapper.shop.cartList2", vo);
 	}
 	
 	@Override
@@ -64,15 +66,30 @@ public class ShopDAOImpl implements ShopDAO {
 	
 	@Override
 	public int buy(OrderVO vo)throws DataAccessException {
-		int result = sqlSession.insert("mapper.shop.prodBuy", vo);
+		int result = sqlSession.insert("mapper.shop.insertOrder", vo);
 		return result;
 	}
 	
 	@Override
-	public List orderList()throws DataAccessException {
+	public void buyDetail(OrderDetailVO od_vo)throws DataAccessException {
+		sqlSession.insert("mapper.shop.insertOrderDetail", od_vo);
+	}
+	
+	@Override
+	public void deleteAllCart(String u_id)throws DataAccessException {
+		sqlSession.delete("mapper.shop.deleteAllCart", u_id);
+	}
+	
+	@Override
+	public List orderList(String u_id)throws DataAccessException {
 		List<ShopVO> orderList = null;
-		orderList = sqlSession.selectList("mapper.shop.orderList");
+		orderList = sqlSession.selectList("mapper.shop.orderList", u_id);
 		return orderList;
+	}
+	
+	@Override
+	public List<OrderListVO> orderListView(OrderVO vo)throws DataAccessException {
+		return sqlSession.selectList("mapper.shop.orderListView", vo);
 	}
 	
 	

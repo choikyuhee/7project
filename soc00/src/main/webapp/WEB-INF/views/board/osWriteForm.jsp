@@ -26,17 +26,7 @@
   <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css">
   <!--  -->
 <style>
-	.container{
-		padding:2em;
-	}
-	table{
-		padding-left:170px;
-	}
-	h3{
-		text-align:center;
-	}
-	
-	
+
 </style>
 </head>
 <body>
@@ -52,8 +42,6 @@
         <tr>
         	<td>아이디</td>
         	<td><input class="col-md-2 form-control" type="text" name="u_id" value="${member.u_id }" readonly></td>
-
-        	
         </tr>
         <tr>
         	<td>카테고리</td>

@@ -94,9 +94,9 @@
 		<result property="o_price" column="o_price"/>
 		<result property="o_phone" column="o_phone"/>
 		<result property="o_address" column="o_address"/>
-		<result property="p_no" column="p_no"/>
 		<result property="u_id" column="u_id"/>
 		<result property="o_request" column="o_request"/>
+		<result property="o_name" column="o_name"/>
 	</resultMap>
 	
 	<resultMap id="orderDetailResult" type="orderDetailVO">
@@ -123,13 +123,59 @@
 		]]>
 	</select>
 	
-	<insert id="prodBuy" parameterType="orderVO">
+	<insert id="insertOrder">
 		<![CDATA[
-			insert into orderr(o_no, o_date, o_price, o_phone, p_no, u_id, o_request)
-			values(null, now(), #{o_price}, #{o_phone}, #{p_no}, #{u_id}, #{o_request})
+			insert into orderr(o_no, o_date, o_price, o_phone, u_id, o_request, o_address, o_name)
+			values(#{o_no}, now(), #{o_price}, #{o_phone}, #{u_id}, #{o_request}, #{o_address}, #{o_name})
 		]]>
 	</insert>
 	
+	<insert id="insertOrderDetail">
+		<![CDATA[
+			insert into orderdetail(od_no, od_count, o_no, p_no)
+			select null, c_count, #{o_no}, p_no from cart
+		]]>
+	</insert>
 
+	<delete id="deleteAllCart">
+		<![CDATA[
+			delete from cart
+			where u_id = #{u_id}
+		]]>
+	</delete>
+	
+	<resultMap id="orderListResult" type="orderListVO">
+		<result property="o_no" column="o_no"/>
+		<result property="o_date" column="o_date"/>
+		<result property="o_price" column="o_price"/>
+		<result property="o_phone" column="o_phone"/>
+		<result property="u_id" column="u_id"/>
+		<result property="o_request" column="o_request"/>
+		<result property="o_name" column="o_name"/>
+		<result property="od_no" column="od_no"/>
+		<result property="od_count" column="od_count"/>
+		<result property="od_price" column="od_price"/>
+		<result property="p_no" column="p_no"/>
+		<result property="p_name" column="p_name"/>
+		<result property="p_price" column="p_price"/>
+		<result property="p_category" column="p_category"/>
+		<result property="p_content" column="p_content"/>
+		<result property="p_option" column="p_option"/>
+		<result property="pr_filename" column="p_filename"/>
+		<result property="p_stock" column="p_stock"/>
+		<result property="p_thumb" column="p_thumb"/>
+	</resultMap>
+	
+	<select id="orderListView" resultMap="orderListResult">
+		<![CDATA[
+			select * 
+			from orderr o
+				inner join orderdetail od
+					on o.o_no = od.o_no
+				inner join products p
+					on p.p_no = od.p_no
+			where o.u_id = #{u_id} and o.o_no = #{o_no};
+		]]>
+	</select>
 	
 </mapper>

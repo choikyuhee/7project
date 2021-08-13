@@ -10,6 +10,7 @@
 		<typeAlias type="com.team.soc00.shop.vo.ShopVO" alias="shopVO"/>
 		<typeAlias type="com.team.soc00.shop.vo.OrderVO" alias="orderVO"/>
 		<typeAlias type="com.team.soc00.shop.vo.OrderDetailVO" alias="orderDetailVO"/>
+		<typeAlias type="com.team.soc00.shop.vo.OrderListVO" alias="orderListVO"/>
 		<typeAlias type="com.team.soc00.shop.vo.CartVO" alias="cartVO"/>
 		<typeAlias type="com.team.soc00.shop.vo.CartListVO" alias="cartListVO"/>
 		<typeAlias type="com.team.soc00.qna.vo.QnaVO" alias="qnaVO"/>

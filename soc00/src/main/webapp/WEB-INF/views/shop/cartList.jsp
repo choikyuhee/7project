@@ -41,6 +41,15 @@
 			float:left;
 			padding-left:30px;
 		}
+		
+		.orderInfo { border:5px solid #eee; padding:20px; display:none;}
+		.orderInfo .inputOrder { margin:10px 0; }
+		.orderInfo .inputOrder label { display:inline-block; width:120px; margin-right:10px; }
+		.orderInfo .inputOrder input { font-size:14px; padding:5px; }
+		#o_address { width:250px; }
+		
+		.orderInfo .inputOrder:last-child { margin-top:30px; }
+		.orderInfo .inputOrder button { font-size:20px; border:2px solid #ccc; padding:5px 10px; background:#fff; margin-right:20px;}
 	</style>
 </head>
 <body>
@@ -141,26 +150,47 @@
 			<div class="col-md-6" style="text-align:left;">
 				<a role="button" id="asd" class="btn btn-primary">주문하기</a>
 				<script>
-				 $("#asd").click(function(){
-
-				   var checkArr = new Array();
-				   
-				   $("input[class='chBox']:checked").each(function(){
-				    checkArr.push($(this).attr("data-cartNum"));
-				   });
-	
-				   $.ajax({
-				    url : "${contextPath}/shop/orderPage.do",
-				    type : "get",
-				    data : { chbox : checkArr },
-				    success : function(){
-				     location.href = "${contextPath}/shop/orderPage.do";
-				    }
-				   });
-				  
-				 });
+					$("#asd").click(function(){
+						$(".orderInfo").slideDown();
+						
+					})
 				</script>
 			</div>
+		</div>
+		<br>
+		<div class="orderInfo">
+		<p>${sum }</p>
+		<form action="${contextPath }/shop/buy.do" method="post">
+				<input type="hidden" name="u_id" value="${member.u_id }"/>
+				<input type="hidden" name="o_price" value="${sum }"/>
+				<h4>받는사람 정보</h4>
+				<div class="inputOrder">
+					<label>이름</label>
+					<input type="text" id="o_name" name="o_name" />
+				</div>
+				<div class="inputOrder">
+					<label>연락처</label>
+					<input type="text" id="o_phone" name="o_phone" />
+				</div>
+				<div class="inputOrder" >
+					<label >배송지</label>
+					<input type="text" id="o_address" name="o_address" />
+				</div>
+				<div class="inputOrder">
+					<label >요청사항</label>
+					<input type="text" id="o_request" name="o_request"/>
+				</div>
+				<div class="inputOrder">
+					<button type="submit" class="order_btn">주문</button>
+					<button type="button" class="cancel_btn">취소</button> 
+				</div>
+				<script>
+					$(".cancel_btn").click(function(){
+						$(".orderInfo").slideUp();
+						
+					});      
+				</script>
+		</form>
 		</div>
 	</div>
 </body>

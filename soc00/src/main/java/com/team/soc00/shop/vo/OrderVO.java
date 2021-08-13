@@ -7,20 +7,20 @@ import org.springframework.stereotype.Component;
 @Component("orderVO")
 public class OrderVO {
 
-	private int o_no;
+	private String o_no;
 	private Date o_date;
 	private int o_price;
 	private String o_address;
 	private String o_phone;
 	private String u_id;
-	private int p_no;
 	private String o_request;
+	private String o_name;
 	
-	public int getO_no() {
+	public String getO_no() {
 		return o_no;
 	}
 	
-	public void setO_no(int o_no) {
+	public void setO_no(String o_no) {
 		this.o_no = o_no;
 	}
 	
@@ -67,14 +67,7 @@ public class OrderVO {
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
-	
-	public int getP_no() {
-		return p_no;
-	}
-	
-	public void setP_no(int p_no) {
-		this.p_no = p_no;
-	}
+
 	
 
 	
@@ -84,5 +77,13 @@ public class OrderVO {
 	
 	public void setO_request(String o_request) {
 		this.o_request = o_request;
+	}
+
+	public String getO_name() {
+		return o_name;
+	}
+
+	public void setO_name(String o_name) {
+		this.o_name = o_name;
 	}
 }

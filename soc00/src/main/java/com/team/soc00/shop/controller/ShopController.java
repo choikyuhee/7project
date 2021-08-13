@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team.soc00.shop.vo.CartListVO;
 import com.team.soc00.shop.vo.CartVO;
+import com.team.soc00.shop.vo.OrderDetailVO;
 import com.team.soc00.shop.vo.OrderVO;
 import com.team.soc00.shop.vo.ShopVO;
 
@@ -37,13 +39,16 @@ public interface ShopController {
 	public ModelAndView cartList(@RequestParam("u_id") String u_id,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
-	public ModelAndView orderPage(@RequestParam("chbox[]") List<String> chArr,
+	public ModelAndView orderPage(@RequestParam("chbox[]") List<String> chArr, CartListVO vo,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
-	public ModelAndView buy(@ModelAttribute("order") OrderVO order,
+	public String buy(HttpSession session, OrderVO order, OrderDetailVO od_vo,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
-	public ModelAndView orderList(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView orderList(HttpSession session, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView orderListView(@RequestParam("o_no")String o_no, HttpSession session, OrderVO vo,
+			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
 	public ModelAndView orderView(@RequestParam("o_no") int o_no,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;

@@ -59,7 +59,7 @@
      	<tr>
             <td>내용</td>
             <td>
-             	<textarea class="summernote" name="content"></textarea>
+             	<textarea class="summernote" name="content">${article.content }</textarea>
             </td>
         </tr>
 		<tr>
