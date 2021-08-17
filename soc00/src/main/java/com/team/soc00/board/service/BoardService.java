@@ -9,6 +9,9 @@ import com.team.soc00.board.vo.ArticleVO;
 
 public interface BoardService {
 	
+	//해외축구
+	public List osUserFind(String u_id)throws DataAccessException;
+	
 	public List<ArticleVO> osSoccerList() throws DataAccessException;
 	
 	public int articleCount()throws DataAccessException;
@@ -28,6 +31,8 @@ public interface BoardService {
 	public int osViewCount(int no)throws DataAccessException;
 	
 	//국내축구
+	public List krUserFind(String u_id)throws DataAccessException;
+	
 	public int krArticleCount()throws DataAccessException;
 	
 	public List krSoccerList(int displayPost, int postNum)throws DataAccessException;
@@ -43,6 +48,8 @@ public interface BoardService {
 	public int krViewCount(int no)throws DataAccessException;
 	
 	//뉴스
+	public List newsUserFind(String u_id)throws DataAccessException;
+	
 	public int newsArticleCount()throws DataAccessException;
 	
 	public List newsList(int displayPost, int postNum)throws DataAccessException;
@@ -59,6 +66,8 @@ public interface BoardService {
 	
 	
 	//자유
+	public List freeUserFind(String u_id)throws DataAccessException;
+	
 	public int freeArticleCount()throws DataAccessException;
 	
 	public List freeList(int displayPost, int postNum)throws DataAccessException;

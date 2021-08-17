@@ -1,5 +1,7 @@
 package com.team.soc00.shop.vo;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 @Component("cartListVO")
@@ -22,13 +24,14 @@ public class CartListVO {
 	private String p_category;
 	private String p_content;
 	private int p_stock;
+	private Date p_regdate;
 	
 	public CartListVO () {
 		
 	}
 	
 	public CartListVO(int p_no, String u_id, int c_no, int c_count, String p_name, String p_price, String p_option,
-			String p_filename, String p_thumb, String p_category, String p_content, int p_stock) {
+			String p_filename, String p_thumb, String p_category, String p_content, int p_stock, Date p_regdate) {
 		this.p_no = p_no;
 		this.u_id = u_id;
 		this.c_no = c_no;
@@ -41,8 +44,17 @@ public class CartListVO {
 		this.p_category = p_category;
 		this.p_content = p_content;
 		this.p_stock = p_stock;
+		this.p_regdate = p_regdate;
 	}
 	
+	public Date getP_regdate() {
+		return p_regdate;
+	}
+
+	public void setP_regdate(Date p_regdate) {
+		this.p_regdate = p_regdate;
+	}
+
 	public int getP_no() {
 		return p_no;
 	}

@@ -20,11 +20,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/best.jsp"/>
 	</definition>
 	
-	<definition name="admin/adminPage" extends="baseLayout">
-		<put-attribute name="title" value="관리자페이지"/>
-		<put-attribute name="body" value="/WEB-INF/views/member/adminPage.jsp"/>
-	</definition>
-	
 	<definition name="member/userList" extends="baseLayout">
 		<put-attribute name="title" value="회원목록창"/>
 		<put-attribute name="body" value="/WEB-INF/views/member/userList.jsp"/>
@@ -72,6 +67,22 @@
 	
 	<definition name="member/*pop" extends="popUp">
 		<put-attribute name="body" value="/WEB-INF/views/member/idFindpop.jsp"/>
+	</definition>
+	
+	<!-- 관리자 -->
+	<definition name="admin/adminPage" extends="baseLayout">
+		<put-attribute name="title" value="관리자페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/adminPage.jsp"/>
+	</definition>
+	
+	<definition name="admin/shopList" extends="baseLayout">
+		<put-attribute name="title" value="관리자페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/adminShopList.jsp"/>
+	</definition>
+	
+	<definition name="admin/userArticle" extends="baseLayout">
+		<put-attribute name="title" value="관리자페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/member/userArticle.jsp"/>
 	</definition>
 	
 </tiles-definitions>

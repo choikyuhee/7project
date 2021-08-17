@@ -21,6 +21,12 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAO boardDAO;
 	
 	@Override
+	public List osUserFind(String u_id)throws DataAccessException {
+		return boardDAO.osUserFind(u_id);
+	}
+
+	
+	@Override
 	public List<ArticleVO> osSoccerList() throws DataAccessException {
 		List<ArticleVO> osSoccerList = boardDAO.osSoccerList();
 		return osSoccerList;
@@ -70,6 +76,12 @@ public class BoardServiceImpl implements BoardService {
 	//국내축구
 	
 	@Override
+	public List krUserFind(String u_id)throws DataAccessException {
+		return boardDAO.krUserFind(u_id);
+	}
+
+	
+	@Override
 	public int krArticleCount()throws DataAccessException {
 		return boardDAO.krArticleCount();
 	}
@@ -108,6 +120,12 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	// 뉴스
+	@Override
+	public List newsUserFind(String u_id)throws DataAccessException {
+		return boardDAO.newsUserFind(u_id);
+	}
+
+	
 	@Override
 	public int newsArticleCount()throws DataAccessException {
 		return boardDAO.newsArticleCount();
@@ -148,6 +166,12 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	// 자유
+	@Override
+	public List freeUserFind(String u_id)throws DataAccessException {
+		return boardDAO.freeUserFind(u_id);
+	}
+
+	
 	@Override
 	public int freeArticleCount()throws DataAccessException {
 		return boardDAO.freeArticleCount();

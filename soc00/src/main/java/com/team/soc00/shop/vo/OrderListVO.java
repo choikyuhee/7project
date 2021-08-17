@@ -29,8 +29,15 @@ public class OrderListVO {
 	private String p_filename;
 	private int p_stock;
 	private String p_thumb;
+	private Date p_regdate;
 	
 	
+	public Date getP_regdate() {
+		return p_regdate;
+	}
+	public void setP_regdate(Date p_regdate) {
+		this.p_regdate = p_regdate;
+	}
 	public String getO_no() {
 		return o_no;
 	}

@@ -1,5 +1,7 @@
 package com.team.soc00.shop.vo;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Component;
 
 @Component("shopVO")
@@ -14,13 +16,14 @@ public class ShopVO {
 	private String pr_filename;
 	private int p_stock;
 	private String p_thumb;
+	private Date p_regdate;
 	
 	public ShopVO() {
 		
 	}
 	
 	public ShopVO(int p_no, String p_name, String p_price, String p_category, String p_content, String p_option,
-			String pr_filename, int p_stock, String p_thumb) {
+			String pr_filename, int p_stock, String p_thumb, Date p_regdate) {
 		this.p_name = p_name;
 		this.p_no = p_no;
 		this.p_price = p_price;
@@ -30,8 +33,17 @@ public class ShopVO {
 		this.p_stock = p_stock;
 		this.pr_filename = pr_filename;
 		this.p_thumb = p_thumb;
+		this.p_regdate = p_regdate;
 	}
 	
+	public Date getP_regdate() {
+		return p_regdate;
+	}
+
+	public void setP_regdate(Date p_regdate) {
+		this.p_regdate = p_regdate;
+	}
+
 	public int getP_no() {
 		return p_no;
 	}
@@ -102,5 +114,12 @@ public class ShopVO {
 	
 	public void setP_thumb(String p_thumb) {
 		this.p_thumb = p_thumb;
+	}
+
+	@Override
+	public String toString() {
+		return "ShopVO [p_no=" + p_no + ", p_name=" + p_name + ", p_price=" + p_price + ", p_category=" + p_category
+				+ ", p_content=" + p_content + ", p_option=" + p_option + ", pr_filename=" + pr_filename + ", p_stock="
+				+ p_stock + ", p_thumb=" + p_thumb + ", p_regdate=" + p_regdate + "]";
 	}
 }

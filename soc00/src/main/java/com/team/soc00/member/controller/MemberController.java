@@ -33,6 +33,6 @@ public interface MemberController {
 	public ModelAndView modi(@ModelAttribute("member") MemberVO member,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
-	public String userList2(Model model, HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
 	
 }

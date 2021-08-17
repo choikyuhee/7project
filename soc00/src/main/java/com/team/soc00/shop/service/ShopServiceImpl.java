@@ -21,11 +21,19 @@ public class ShopServiceImpl implements ShopService {
 
 	@Autowired
 	private ShopDAO shopDAO;
-
+	
+	@Override
+	public List shopList1()throws DataAccessException {
+		return shopDAO.shopList1();
+	}
+	
+	
+	@Override
 	public int shopListCount()throws DataAccessException {
 		return shopDAO.shopListCount();
 	}
 	
+	@Override
 	public List shopList(int displayPost, int postNum)throws DataAccessException{
 		return shopDAO.shopList(displayPost, postNum);
 	}
@@ -33,6 +41,16 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public ShopVO prodInfo(int p_no)throws DataAccessException{
 		return shopDAO.prodInfo(p_no);
+	}
+	
+	@Override
+	public int deleteProd(int no)throws DataAccessException {
+		return shopDAO.deleteProd(no);
+	}
+	
+	@Override
+	public int prodModi(ShopVO vo)throws DataAccessException {
+		return shopDAO.prodModi(vo);
 	}
 	
 	@Override

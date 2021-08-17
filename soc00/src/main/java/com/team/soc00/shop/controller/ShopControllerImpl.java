@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,6 +30,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.soc00.board.controller.BoardPage;
+import com.team.soc00.board.vo.ArticleVO;
 import com.team.soc00.member.vo.MemberVO;
 import com.team.soc00.shop.service.ShopService;
 import com.team.soc00.shop.vo.CartListVO;
@@ -94,6 +96,60 @@ public class ShopControllerImpl implements ShopController {
 	}
 	
 	@Override
+	@RequestMapping(value="/shop/deleteProd.do", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView deleteProd(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		shopService.deleteProd(no);
+		ModelAndView mav = new ModelAndView("redirect:/admin/shopList.do?num=1");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/shop/prodModi.do", method=RequestMethod.POST)
+	public String prodModi(ShopVO vo, MultipartFile p_filename,
+			HttpServletRequest req, HttpServletResponse res)throws Exception {
+		
+		if(p_filename.getOriginalFilename() != null && p_filename.getOriginalFilename() != "") {
+			new File(uploadPath + req.getParameter("p_filename")).delete();
+			new File(uploadPath + req.getParameter("p_thumb")).delete();
+			
+			String imgUploadPath = uploadPath + File.separator + "imgUpload";
+			String ymdPath = FileUpload.calcPath(imgUploadPath);
+			String fileName = null;
+
+			if(p_filename.getOriginalFilename() != null && p_filename.getOriginalFilename() != "") {
+				fileName = FileUpload.fileUpload(imgUploadPath, p_filename.getOriginalFilename(), p_filename.getBytes(), ymdPath); 
+				
+				vo.setPr_filename(File.separator + "imgUpload" + ymdPath + File.separator + fileName);
+				vo.setP_thumb(File.separator + "imgUpload" + ymdPath + File.separator + "s" + File.separator + "s_" + fileName);
+				
+			} 
+			else {
+				
+				vo.setPr_filename(req.getParameter("p_filename"));
+				vo.setP_thumb(req.getParameter("p_thumb"));
+			}
+		}
+		int result=0;
+		result = shopService.prodModi(vo);
+		
+		return "redirect:/admin/shopList.do?num=1";
+	}
+	
+	@Override
+	@RequestMapping(value="/shop/prodModiView.do", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView prodModiView(@RequestParam("p_no") int p_no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		shopVO = shopService.prodInfo(p_no);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("prodInfo", shopVO);
+		return mav;
+	}
+	
+	@Override
 	@ResponseBody
 	@RequestMapping(value="/shop/insertCart.do", method=RequestMethod.POST)
 	public String insertCart(CartVO vo, HttpServletRequest req, HttpServletResponse res)throws Exception {
@@ -140,7 +196,7 @@ public class ShopControllerImpl implements ShopController {
 			c_no = Integer.parseInt(i);
 			vo.setC_no(c_no);
 			shopService.orderPageView(vo);
-			System.out.println(c_no);
+			
 			}
 		result = 0;
 		return mav;
@@ -184,7 +240,7 @@ public class ShopControllerImpl implements ShopController {
 		res.setContentType("text/html; charset=utf-8");
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		String u_id = member.getU_id();
-		System.out.println(u_id);
+		
 		
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);

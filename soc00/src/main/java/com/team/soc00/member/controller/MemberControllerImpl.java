@@ -203,26 +203,4 @@ public class MemberControllerImpl implements MemberController {
 		return viewName;
 	}
 	
-	@Override
-	@Scheduled(cron="0/10 * * * * * ?")
-	@RequestMapping(value="/list.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public String userList2(Model model, HttpServletRequest req, HttpServletResponse res)throws Exception {
-		
-		req.setCharacterEncoding("utf-8");
-		res.setContentType("text/html; charset=utf-8");
-		String batchResult = "성공";
-		try {
-			List membersList = memberService.userList();
-			model.addAttribute("membersList", membersList);
-		}
-		catch(Exception e) {
-			batchResult = "실패";
-		}
-		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		logger.info("스케쥴 실행 : [" + batchResult + "] " + dateFormat.format(calendar.getTime()));
-		return "/member/userList2"; 
-		
-	}
-
 }	

@@ -12,11 +12,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>회원 정보 출력창</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 <div class="container">
-	<table border="1" align="center" width="80%">
-		<tr align="center" bgcolor="lightgreen">
+	<h3>회원목록</h3>
+	<table class="table table" align="center" width="80%">
+		<tr align="center">
 			<td><b>아이디</b></td>
 			<td><b>비밀번호</b></td>
 			<td><b>이름</b></td>
@@ -24,6 +27,8 @@
 			<td><b>주소</b></td>
 			<td><b>번호</b></td>
 			<td><b>삭제</b></td>
+			<td><b>작성글보기</b></td>
+			<td><b>구매내역</b></td>
 		</tr>
 		<c:forEach var="member" items="${membersList }">
 			<tr align="center">
@@ -34,10 +39,11 @@
 				<td>${member.u_address }</td>
 				<td>${member.u_phone }</td>
 				<td><a href="${contextPath }/member/deleteMember.do?action=deleteMember&u_id=${member.u_id}">삭제하기</a></td>
+				<td><a href="${contextPath }/admin/userArticle.do?u_id=${member.u_id}">작성글보기</a></td>
+				<td><a href="">삭제하기</a></td>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="${contextPath }/member/joinForm.do"><h1 style="text-align:center">회원가입</h1></a>
 </div>
 </body>
 </html>

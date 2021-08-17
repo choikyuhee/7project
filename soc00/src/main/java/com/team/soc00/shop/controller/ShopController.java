@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,14 +27,21 @@ public interface ShopController {
 	public ModelAndView prodInfo(@RequestParam("p_no") int p_no,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
+	public ModelAndView deleteProd(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public String prodModi(ShopVO vo, MultipartFile p_filename,
+			HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	public ModelAndView prodModiView(@RequestParam("p_no") int p_no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
 	public String prodReg(ShopVO shopVO, @RequestParam("pr_filename") MultipartFile file,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
 	public String insertCart(CartVO vo,
 			HttpServletRequest req, HttpServletResponse res) throws Exception;
-	/*
-	
-	*/
+
 	public int deleteCart(@RequestParam(value = "chbox[]") List<String> chArr, CartVO cart) throws Exception;
 	
 	public ModelAndView cartList(@RequestParam("u_id") String u_id,

@@ -33,6 +33,9 @@ public interface BoardController {
 	public ModelAndView osModiView(@RequestParam("no") int no,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
+	public ModelAndView osDelete2(@RequestParam("no") int no, ArticleVO vo,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
 	//국내축구
 	public ModelAndView krSoccer(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
@@ -48,6 +51,9 @@ public interface BoardController {
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
 	public ModelAndView krModiView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView krDelete2(@RequestParam("no") int no, ArticleVO vo,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
 	// 뉴스
@@ -67,6 +73,9 @@ public interface BoardController {
 	public ModelAndView newsModiView(@RequestParam("no") int no,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
+	public ModelAndView newsDelete2(@RequestParam("no") int no, ArticleVO vo,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
 	
 	// 자유
 	public ModelAndView free(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception;
@@ -84,6 +93,8 @@ public interface BoardController {
 	
 	public ModelAndView freeModiView(@RequestParam("no") int no,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
-
+	
+	public ModelAndView freeDelete2(@RequestParam("no") int no, ArticleVO vo,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
 
 }

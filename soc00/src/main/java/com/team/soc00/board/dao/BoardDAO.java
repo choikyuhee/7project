@@ -8,7 +8,9 @@ import org.springframework.dao.DataAccessException;
 import com.team.soc00.board.vo.ArticleVO;
 
 public interface BoardDAO {
-
+	
+	
+	public List osUserFind(String u_id)throws DataAccessException;
 	public List osSoccerList() throws DataAccessException;
 	
 	public int articleCount()throws DataAccessException;
@@ -22,6 +24,7 @@ public interface BoardDAO {
 	public int osViewCount(int no)throws DataAccessException;
 	
 	// 국내축구
+	public List krUserFind(String u_id)throws DataAccessException;
 	public int krArticleCount()throws DataAccessException;
 	public List krSoccerList(int displayPost, int postNum)throws DataAccessException;
 	public void krWrite2(ArticleVO articleVO) throws DataAccessException;
@@ -32,6 +35,7 @@ public interface BoardDAO {
 	
 	
 	// 뉴스
+	public List newsUserFind(String u_id)throws DataAccessException;
 	public int newsArticleCount()throws DataAccessException;
 	public List newsList(int displayPost, int postNum)throws DataAccessException;
 	public void newsWrite2(ArticleVO articleVO) throws DataAccessException;
@@ -41,6 +45,7 @@ public interface BoardDAO {
 	public int newsDelete(int no)throws DataAccessException;
 	
 	// 자유
+	public List freeUserFind(String u_id)throws DataAccessException;
 	public int freeArticleCount()throws DataAccessException;
 	public List freeList(int displayPost, int postNum)throws DataAccessException;
 	public void freeWrite2(ArticleVO articleVO) throws DataAccessException;

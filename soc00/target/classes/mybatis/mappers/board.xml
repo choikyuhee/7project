@@ -15,6 +15,14 @@
 		<result property="u_id" column="u_id"/>
 	</resultMap>
 	
+	<select id="osUserFind" parameterType="articleVO" resultMap="osSoccerResult">
+		<![CDATA[
+			select*from soccer1
+			where u_id = #{u_id}
+			order by s1_no desc
+		]]>
+	</select>
+	
 	<select id="articleCount" resultType="int">
 		<![CDATA[
 			select count(s1_no) from soccer1
@@ -88,6 +96,14 @@
 		<result property="u_id" column="u_id"/>
 	</resultMap>
 	
+	<select id="krUserFind" parameterType="articleVO" resultMap="krSoccerResult">
+		<![CDATA[
+			select*from soccer2
+			where u_id = #{u_id}
+			order by s2_no desc
+		]]>
+	</select>
+	
 	<select id="krArticleCount" resultType="int">
 		<![CDATA[
 			select count(s2_no) from soccer2
@@ -153,6 +169,14 @@
 		<result property="category" column="n_category"/>
 	</resultMap>
 	
+	<select id="newsUserFind" parameterType="articleVO" resultMap="newsResult">
+		<![CDATA[
+			select*from news
+			where u_id = #{u_id}
+			order by n_no desc
+		]]>
+	</select>
+	
 	<select id="newsArticleCount" resultType="int">
 		<![CDATA[
 			select count(n_no) from news
@@ -217,6 +241,14 @@
 		<result property="view" column="f_view"/>
 		<result property="u_id" column="u_id"/>
 	</resultMap>
+	
+	<select id="freeUserFind" parameterType="articleVO" resultMap="freeResult">
+		<![CDATA[
+			select*from free
+			where u_id = #{u_id}
+			order by f_no desc
+		]]>
+	</select>
 	
 	<select id="freeArticleCount" resultType="int">
 		<![CDATA[

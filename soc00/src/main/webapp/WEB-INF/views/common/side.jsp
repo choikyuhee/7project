@@ -43,9 +43,7 @@
 	</c:choose>
 	<c:if test="${member.u_admin == 1 }">
 		<br>
-		<a href="${contextPath }/list.do" class="no-underline">회원관리</a><br>
-		<br>
-		<a href="${contextPath }/shop/prodRegForm.do" class="no-underline">상품등록</a><br>
+		<a href="${contextPath }/admin/adminPage.do" class="no-underline">관리자페이지</a><br>
 	</c:if>
 	
 </div>

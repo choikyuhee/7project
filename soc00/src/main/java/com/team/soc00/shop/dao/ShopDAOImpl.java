@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.team.soc00.board.vo.ArticleVO;
 import com.team.soc00.member.vo.MemberVO;
 import com.team.soc00.shop.vo.CartListVO;
 import com.team.soc00.shop.vo.CartVO;
@@ -21,6 +22,11 @@ public class ShopDAOImpl implements ShopDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
+	@Override
+	public List shopList1()throws DataAccessException {
+		return sqlSession.selectList("mapper.shop.shopList1");
+	}
 	
 	@Override
 	public int shopListCount()throws DataAccessException {
@@ -41,6 +47,17 @@ public class ShopDAOImpl implements ShopDAO {
 	@Override
 	public ShopVO prodInfo(int p_no)throws DataAccessException {
 		return sqlSession.selectOne("mapper.shop.prodInfo", p_no);
+	}
+	
+	@Override
+	public int deleteProd(int no)throws DataAccessException {
+		return sqlSession.delete("mapper.shop.deleteProd", no);
+	}
+	
+	@Override
+	public int prodModi(ShopVO vo)throws DataAccessException {
+		int result = sqlSession.update("mapper.shop.prodModi", vo);
+		return result;
 	}
 	
 	@Override

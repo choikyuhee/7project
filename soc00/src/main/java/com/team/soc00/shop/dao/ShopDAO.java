@@ -13,11 +13,17 @@ import com.team.soc00.shop.vo.ShopVO;
 
 public interface ShopDAO {
 	
+	public List shopList1()throws DataAccessException;
+	
 	public int shopListCount()throws DataAccessException;
 	
 	public List shopList(int displayPost, int postNum)throws DataAccessException;
 	
 	public ShopVO prodInfo(int p_no)throws DataAccessException;
+	
+	public int deleteProd(int no)throws DataAccessException;
+	
+	public int prodModi(ShopVO vo)throws DataAccessException;
 	
 	public void prodbuy(CartListVO vo)throws DataAccessException;
 	

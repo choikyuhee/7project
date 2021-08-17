@@ -133,6 +133,16 @@ public class BoardControllerImpl implements BoardController {
 		return mav;
 	}
 	
+	@Override
+	@RequestMapping(value="/board/osDelete2.do", method=RequestMethod.GET)
+	public ModelAndView osDelete2(@RequestParam("no") int no, ArticleVO vo,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		boardService.newsDelete(no);
+		ModelAndView mav = new ModelAndView("redirect:/admin/userArticle.do?u_id="+vo.getU_id());
+		return mav;
+	}
+	
 
 	//국내축구게시판
 	@Override
@@ -213,6 +223,16 @@ public class BoardControllerImpl implements BoardController {
 		request.setCharacterEncoding("utf-8");
 		boardService.krDelete(no);
 		ModelAndView mav = new ModelAndView("redirect:/board/krSoccer.do?num=1");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/board/krDelete2.do", method=RequestMethod.GET)
+	public ModelAndView krDelete2(@RequestParam("no") int no, ArticleVO vo,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		boardService.newsDelete(no);
+		ModelAndView mav = new ModelAndView("redirect:/admin/userArticle.do?u_id="+vo.getU_id());
 		return mav;
 	}
 	
@@ -299,6 +319,17 @@ public class BoardControllerImpl implements BoardController {
 		return mav;
 	}
 	
+	@Override
+	@RequestMapping(value="/board/newsDelete2.do", method=RequestMethod.GET)
+	public ModelAndView newsDelete2(@RequestParam("no") int no, ArticleVO vo,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		boardService.newsDelete(no);
+		ModelAndView mav = new ModelAndView("redirect:/admin/userArticle.do?u_id="+vo.getU_id());
+		return mav;
+	}
+	
+
 	//자유게시판
 	@Override
 	@RequestMapping(value="/board/free.do", method = RequestMethod.GET)
@@ -378,6 +409,16 @@ public class BoardControllerImpl implements BoardController {
 		request.setCharacterEncoding("utf-8");
 		boardService.freeDelete(no);
 		ModelAndView mav = new ModelAndView("redirect:/board/free.do?num=1");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/board/freeDelete2.do", method=RequestMethod.GET)
+	public ModelAndView freeDelete2(@RequestParam("no") int no, ArticleVO vo,
+			HttpServletRequest request, HttpServletResponse response)throws Exception {
+		request.setCharacterEncoding("utf-8");
+		boardService.freeDelete(no);
+		ModelAndView mav = new ModelAndView("redirect:/admin/userArticle.do?u_id="+vo.getU_id());
 		return mav;
 	}
 	

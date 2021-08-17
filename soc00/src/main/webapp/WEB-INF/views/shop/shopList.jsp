@@ -39,6 +39,7 @@
 
   <main>
   <h3>축구몰</h3>
+  
   <hr/>
   <nav class="navbar-expand">
 		<ul class="navbar-nav">

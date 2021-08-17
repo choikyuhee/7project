@@ -20,6 +20,11 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 	
 	@Override
+	public List osUserFind(String u_id)throws DataAccessException {
+		return sqlSession.selectList("mapper.board.osUserFind", u_id);
+	}
+	
+	@Override
 	public List osSoccerList()throws DataAccessException{
 		List<ArticleVO> osSoccerList = sqlSession.selectList("mapper.board.osSoccerList");
 		return osSoccerList;
@@ -75,6 +80,11 @@ public class BoardDAOImpl implements BoardDAO {
 	// 국내축구 
 	
 	@Override
+	public List krUserFind(String u_id)throws DataAccessException {
+		return sqlSession.selectList("mapper.board.krUserFind", u_id);
+	}
+	
+	@Override
 	public int krArticleCount()throws DataAccessException {
 		return sqlSession.selectOne("mapper.board.krArticleCount");
 	}
@@ -119,6 +129,12 @@ public class BoardDAOImpl implements BoardDAO {
 	// 뉴스
 	
 	@Override
+	public List newsUserFind(String u_id)throws DataAccessException {
+		return sqlSession.selectList("mapper.board.newsUserFind", u_id);
+	}
+	
+	
+	@Override
 	public List newsList(int displayPost, int postNum)throws DataAccessException{
 		HashMap data = new HashMap();
 		
@@ -161,6 +177,12 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	//자유
+	
+	@Override
+	public List freeUserFind(String u_id)throws DataAccessException {
+		return sqlSession.selectList("mapper.board.freeUserFind", u_id);
+	}
+	
 	@Override
 	public List freeList(int displayPost, int postNum)throws DataAccessException{
 		HashMap data = new HashMap();
