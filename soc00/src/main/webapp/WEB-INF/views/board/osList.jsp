@@ -40,19 +40,7 @@
 		<h3>해외축구</h3>
 	
 		<hr/>
-		<br>
-		<nav class="navbar-expand">
-			<ul class="navbar-nav">
-				<li class="nav-item btn btn-sm btn-default"><a href="#">공지사항</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">모두보기</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">EPL</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">세리에</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">라리가</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">분데스리가</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">리그앙</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">기타리그</a>
-			</ul>
-		</nav>
+		
 		<br>
 		<table class="table table-hover">
 			<tr align="center">

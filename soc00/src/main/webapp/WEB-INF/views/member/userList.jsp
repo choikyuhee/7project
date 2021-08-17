@@ -26,9 +26,9 @@
 			<td><b>이메일</b></td>
 			<td><b>주소</b></td>
 			<td><b>번호</b></td>
-			<td><b>삭제</b></td>
 			<td><b>작성글보기</b></td>
 			<td><b>구매내역</b></td>
+			<td><b>삭제</b></td>
 		</tr>
 		<c:forEach var="member" items="${membersList }">
 			<tr align="center">
@@ -38,9 +38,9 @@
 				<td>${member.u_email}</td>
 				<td>${member.u_address }</td>
 				<td>${member.u_phone }</td>
-				<td><a href="${contextPath }/member/deleteMember.do?action=deleteMember&u_id=${member.u_id}">삭제하기</a></td>
 				<td><a href="${contextPath }/admin/userArticle.do?u_id=${member.u_id}">작성글보기</a></td>
-				<td><a href="">삭제하기</a></td>
+				<td><a href="">조회하기</a></td>
+				<td><a role="button" class="btn btn-danger" href="${contextPath }/member/deleteMember.do?action=deleteMember&u_id=${member.u_id}">삭제하기</a></td>
 			</tr>
 		</c:forEach>
 	</table>

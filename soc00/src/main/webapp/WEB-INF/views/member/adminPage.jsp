@@ -16,10 +16,15 @@
 	<meta charset="utf=8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<style>
+		h3{text-align:center;}
+	</style>
 </head>
 <body>
 
 <div class="container">
+<h3>관리자 페이지</h3>
+<hr/>
 	<div class="row">
 		<div class="col">
 			<a role="button" class="btn btn-primary" href="${contextPath }/member/userList.do" class="no-underline">회원목록</a><br>

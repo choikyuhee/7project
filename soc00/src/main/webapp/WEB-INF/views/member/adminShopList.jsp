@@ -56,7 +56,7 @@
 			<c:forEach var="shopArticle" items="${shopList }">
 			<tr align="center" >
 				<td>${shopArticle.p_no }</td>
-				<td><img src="${contextPath }/${shopArticle.pr_filename}" width="30%"></td>
+				<td><img src="${contextPath }/${shopArticle.pr_filename}" width="100px;"></td>
 				<td><a href="${contextPath}/shop/prodInfo.do?p_no=${shopArticle.p_no}">
 					${shopArticle.p_name }</a>
 				</td>

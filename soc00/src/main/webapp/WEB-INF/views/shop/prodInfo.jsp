@@ -133,7 +133,7 @@
 				<div class="p-3 mb-4 bg-white rounded-3">
 					<div class="container-fluid py-1">
 						<h3 class="display-5 fw-bold">상품소개</h3><p></p>
-						<h6 class="col-md-8 fs-4">${prodInfo.p_content }</h6>
+						<h6>${prodInfo.p_content }</h6>
 					</div>
 				</div>
 

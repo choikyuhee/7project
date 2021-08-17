@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="${contextPath}/resources/summernote/summernote-lite.css">
   <!--  -->
 <style>
-
+	h3 {text-align:center;}
 </style>
 </head>
 <body>

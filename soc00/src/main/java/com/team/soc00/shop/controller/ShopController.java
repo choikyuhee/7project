@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +23,9 @@ import com.team.soc00.shop.vo.ShopVO;
 
 public interface ShopController {
 	
-	public ModelAndView shopList(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public void shopList(@RequestParam("num") int num, Model model)throws Exception;
+	
+	
 	
 	public ModelAndView prodInfo(@RequestParam("p_no") int p_no,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;

@@ -20,6 +20,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team.soc00.board.controller.BoardPage;
+import com.team.soc00.shop.controller.ShopPage;
 import com.team.soc00.board.vo.ArticleVO;
 import com.team.soc00.member.vo.MemberVO;
 import com.team.soc00.shop.service.ShopService;
@@ -61,11 +62,11 @@ public class ShopControllerImpl implements ShopController {
 	@Resource(name="uploadPath")
 	private String uploadPath;
 
-		
+	
 	@Override
-	@RequestMapping(value="/shop/shopList.do", method = RequestMethod.GET)
-	public ModelAndView shopList(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception{
-		ModelAndView mav = new ModelAndView();
+	@RequestMapping(value="/shop/shopList.do", method=RequestMethod.GET)
+	public void shopList(@RequestParam("num") int num, Model model)throws Exception {
+		
 		ShopPage page = new ShopPage();
 		
 		page.setNum(num);
@@ -74,14 +75,12 @@ public class ShopControllerImpl implements ShopController {
 		
 		List allList = null;
 		allList = shopService.shopList(page.getDisplayPost(), page.getPostNum());
-		mav.addObject("shopList", allList);
-		mav.addObject("page", page);
-		mav.addObject("select", num);
+		model.addAttribute("shopList", allList);
+		model.addAttribute("page", page);
+		model.addAttribute("select", num);
 		
-		return mav;
 	}
-	
-	
+
 	
 	@Override
 	@RequestMapping(value="/shop/prodInfo.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -260,6 +259,7 @@ public class ShopControllerImpl implements ShopController {
 		
 		od_vo.setO_no(o_no);
 		shopService.buyDetail(od_vo);
+		
 		shopService.deleteAllCart(u_id);
 		return "redirect:/shop/orderList.do";
 	}

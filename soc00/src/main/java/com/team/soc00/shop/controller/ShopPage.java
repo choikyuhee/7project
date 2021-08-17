@@ -4,7 +4,7 @@ public class ShopPage {
 
 	private int num;
 	private int count;
-	private int postNum = 6;
+	private int postNum = 4;
 	private int pageNum;
 	private int displayPost;
 	private int pageNum_count = 10;

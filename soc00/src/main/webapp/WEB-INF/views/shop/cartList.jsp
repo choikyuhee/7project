@@ -56,7 +56,7 @@
 
 	<div class="container">
 		<h3>장바구니</h3>
-		<p>${cartMap } 
+		
 		<hr/>
 		<br>
 		  <div class="allCheck">
@@ -159,7 +159,7 @@
 		</div>
 		<br>
 		<div class="orderInfo">
-		<p>${sum }</p>
+		
 		<form action="${contextPath }/shop/buy.do" method="post">
 				<input type="hidden" name="u_id" value="${member.u_id }"/>
 				<input type="hidden" name="o_price" value="${sum }"/>

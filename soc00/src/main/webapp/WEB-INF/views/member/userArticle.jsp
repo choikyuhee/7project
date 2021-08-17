@@ -41,6 +41,7 @@
 		<h3>작성글보기</h3>
 		<hr/>
 		<br>
+		<h4>해외축구 게시판</h4>
 		<table class="table table-hover">
 			<tr align="center">
 				<th>카테고리</th>
@@ -69,6 +70,7 @@
 		</table>
 		<hr/>
 		<br>
+		<h4>국내축구 게시판</h4>
 		<table class="table table-hover">
 			<tr align="center">
 				<th>카테고리</th>
@@ -97,6 +99,7 @@
 		</table>
 		<hr/>
 		<br>
+		<h4>뉴스 게시판</h4>
 		<table class="table table-hover">
 			<tr align="center">
 				<th>카테고리</th>
@@ -125,6 +128,7 @@
 		</table>
 		<hr/>
 		<br>
+		<h4>자유 게시판</h4>
 		<table class="table table-hover">
 			<tr align="center">
 				<th>카테고리</th>
