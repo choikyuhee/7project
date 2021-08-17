@@ -1,5 +1,6 @@
 package com.team.soc00.shop.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -20,11 +21,21 @@ public class ShopDAOImpl implements ShopDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
 	@Override
-	public List shopList()throws DataAccessException {
-		List<ShopVO> shopList = null;
-		shopList = sqlSession.selectList("mapper.shop.shopList");
-		return shopList;
+	public int shopListCount()throws DataAccessException {
+		return sqlSession.selectOne("mapper.shop.shopListCount");
+	}
+	
+	@Override
+	public List shopList(int displayPost, int postNum)throws DataAccessException {
+		
+		HashMap data = new HashMap();
+		
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		
+		return sqlSession.selectList("mapper.shop.shopList", data);
 	}
 	
 	@Override

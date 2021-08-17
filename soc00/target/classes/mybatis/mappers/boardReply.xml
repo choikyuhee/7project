@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.boardReply">
+
+	<resultMap id="osReplyMap" type="boardReplyVO">
+		<result property="r_no" column="r_no"/>
+		<result property="r_content" column="r_content"/>
+		<result property="r_regdate" column="r_regdate"/>
+		<result property="u_id" column="u_id"/>
+		<result property="no" column="s1_no"/>
+	</resultMap>
+	
+	<select id="osReplyList" resultMap="osReplyMap">
+		<![CDATA[
+			select r_no, r_content, r_regdate, u_id
+			from reply
+			where s1_no = #{no}
+		]]>
+	</select>
+	
+	<insert id="insertOsReply" parameterType="boardReplyVO">
+		<![CDATA[
+			insert into reply (r_no, r_content, r_regdate, u_id, s1_no)
+			values(null, #{r_content}, now(), #{u_id}, #{no})
+		]]>
+	</insert>
+	
+	<!-- 국내축구 댓글 -->
+	<resultMap id="krReplyMap" type="boardReplyVO">
+		<result property="r_no" column="r2_no"/>
+		<result property="r_content" column="r2_content"/>
+		<result property="r_regdate" column="r2_regdate"/>
+		<result property="u_id" column="u_id"/>
+		<result property="no" column="s2_no"/>
+	</resultMap>
+	
+	<select id="krReplyList" parameterType="boardReplyVO" resultMap="krReplyMap">
+		<![CDATA[
+			select r2_no, r2_content, r2_regdate, u_id
+			from reply_s2
+			where s2_no = #{no}
+		]]>
+	</select>
+	
+	<insert id="insertKrReply" parameterType="boardReplyVO">
+		<![CDATA[
+			insert into reply_s2 (r2_no, r2_content, r2_regdate, u_id, s2_no)
+			values(null, #{r_content}, now(), #{u_id}, #{no})
+		]]>
+	</insert>
+	
+	<!-- 뉴스게시판 댓글 -->
+	<resultMap id="newsReplyMap" type="boardReplyVO">
+		<result property="r_no" column="rn_no"/>
+		<result property="r_content" column="rn_content"/>
+		<result property="r_regdate" column="rn_regdate"/>
+		<result property="u_id" column="u_id"/>
+		<result property="no" column="n_no"/>
+	</resultMap>
+	
+	<select id="newsReplyList" parameterType="boardReplyVO" resultMap="newsReplyMap">
+		<![CDATA[
+			select rn_no, rn_content, rn_regdate, u_id
+			from reply_n
+			where n_no = #{no}
+		]]>
+	</select>
+	
+	<insert id="insertNewsReply" parameterType="boardReplyVO">
+		<![CDATA[
+			insert into reply_n (rn_no, rn_content, rn_regdate, u_id, n_no)
+			values(null, #{r_content}, now(), #{u_id}, #{no})
+		]]>
+	</insert>
+	
+	
+	<!-- 자유게시판 댓글 -->
+	<resultMap id="freeReplyMap" type="boardReplyVO">
+		<result property="r_no" column="rf_no"/>
+		<result property="r_content" column="rf_content"/>
+		<result property="r_regdate" column="rf_regdate"/>
+		<result property="u_id" column="u_id"/>
+		<result property="no" column="f_no"/>
+	</resultMap>
+	
+	<select id="freeReplyList" parameterType="boardReplyVO" resultMap="freeReplyMap">
+		<![CDATA[
+			select rf_no, rf_content, rf_regdate, u_id
+			from reply_f
+			where f_no = #{no}
+		]]>
+	</select>
+	
+	<insert id="insertFreeReply" parameterType="boardReplyVO">
+		<![CDATA[
+			insert into reply_f (rf_no, rf_content, rf_regdate, u_id, f_no)
+			values(null, #{r_content}, now(), #{u_id}, #{no})
+		]]>
+	</insert>
+</mapper>

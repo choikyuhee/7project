@@ -47,6 +47,7 @@
 		<br>
 		<a href="${contextPath }/shop/prodRegForm.do" class="no-underline">상품등록</a><br>
 	</c:if>
+	
 </div>
 </body>
 </html>

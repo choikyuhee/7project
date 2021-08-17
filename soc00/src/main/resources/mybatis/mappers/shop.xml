@@ -16,10 +16,25 @@
 		<result property="p_thumb" column="p_thumb"/>
 	</resultMap>
 	
-	<select id="shopList" resultMap="shopResult">
+	<select id="shopList1" resultMap="shopResult">
 		<![CDATA[
 			select*from products
 			order by p_no desc
+		]]>
+	</select>
+	
+	<select id="shopListCount" resultType="int">
+		<![CDATA[
+			select count(p_no) from products
+		]]>
+	</select>
+	
+	<select id="shopList" parameterType="hashMap" resultMap="shopResult" >
+		<![CDATA[
+			select*from
+			products
+			order by p_no desc
+			limit #{displayPost}, #{postNum}
 		]]>
 	</select>
 	

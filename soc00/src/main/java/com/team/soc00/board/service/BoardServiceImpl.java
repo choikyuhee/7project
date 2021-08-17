@@ -27,6 +27,16 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
+	public int articleCount()throws DataAccessException {
+		return boardDAO.articleCount();
+	}
+	
+	@Override
+	public List osListPage(int displayPost, int postNum)throws DataAccessException {
+		return boardDAO.osListPage(displayPost, postNum);
+	}
+	
+	@Override
 	public void osWrite2(ArticleVO articleVO)throws DataAccessException {
 		boardDAO.osWrite2(articleVO);
 	}
@@ -57,11 +67,16 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.s1Count();
 	}
 	
+	//국내축구
 	
 	@Override
-	public List<ArticleVO> krSoccerList() throws DataAccessException {
-		List<ArticleVO> krSoccerList = boardDAO.krSoccerList();
-		return krSoccerList;
+	public int krArticleCount()throws DataAccessException {
+		return boardDAO.krArticleCount();
+	}
+	
+	@Override
+	public List krSoccerList(int displayPost, int postNum)throws DataAccessException {
+		return boardDAO.krSoccerList(displayPost, postNum);
 	}
 	
 	@Override
@@ -75,17 +90,100 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public List<ArticleVO> newsList() throws DataAccessException {
-		List<ArticleVO> newsList = boardDAO.newsList();
-		return newsList;
+	public int krViewCount(int no)throws DataAccessException {
+		int result = boardDAO.krViewCount(no);
+		return result;
 	}
 	
 	@Override
-	public List<ArticleVO> freeList() throws DataAccessException {
-		List<ArticleVO> freeList = boardDAO.freeList();
-		return freeList;
+	public int krModi(ArticleVO vo)throws DataAccessException {
+		int result = boardDAO.krModi(vo);
+		return result;
 	}
 	
+	@Override
+	public int krDelete(int no)throws DataAccessException {
+		return boardDAO.krDelete(no);
+	}
+	
+	
+	// 뉴스
+	@Override
+	public int newsArticleCount()throws DataAccessException {
+		return boardDAO.newsArticleCount();
+	}
+	
+	@Override
+	public List newsList(int displayPost, int postNum)throws DataAccessException {
+		return boardDAO.newsList(displayPost, postNum);
+	}
+	
+	@Override
+	public void newsWrite2(ArticleVO articleVO)throws DataAccessException {
+		boardDAO.newsWrite2(articleVO);
+	}
+	
+	@Override
+	public ArticleVO newsView(int no)throws DataAccessException{
+		return boardDAO.newsView(no);
+	}
+	
+	@Override
+	public int newsViewCount(int no)throws DataAccessException {
+		int result = boardDAO.newsViewCount(no);
+		return result;
+	}
+	
+	@Override
+	public int newsModi(ArticleVO vo)throws DataAccessException {
+		int result = boardDAO.newsModi(vo);
+		return result;
+	}
+	
+	@Override
+	public int newsDelete(int no)throws DataAccessException {
+		return boardDAO.newsDelete(no);
+	}
+	
+	
+	
+	// 자유
+	@Override
+	public int freeArticleCount()throws DataAccessException {
+		return boardDAO.freeArticleCount();
+	}
+	
+	@Override
+	public List freeList(int displayPost, int postNum)throws DataAccessException {
+		return boardDAO.freeList(displayPost, postNum);
+	}
+	
+	@Override
+	public void freeWrite2(ArticleVO articleVO)throws DataAccessException {
+		boardDAO.freeWrite2(articleVO);
+	}
+	
+	@Override
+	public ArticleVO freeView(int no)throws DataAccessException{
+		return boardDAO.freeView(no);
+	}
+	
+	@Override
+	public int freeViewCount(int no)throws DataAccessException {
+		int result = boardDAO.freeViewCount(no);
+		return result;
+	}
+	
+	@Override
+	public int freeModi(ArticleVO vo)throws DataAccessException {
+		int result = boardDAO.freeModi(vo);
+		return result;
+	}
+	
+	@Override
+	public int freeDelete(int no)throws DataAccessException {
+		return boardDAO.freeDelete(no);
+	}
 	
 	
 	

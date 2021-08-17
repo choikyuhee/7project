@@ -88,4 +88,10 @@ public class ArticleVO {
 	public void setView(int view) {
 		this.view = view;
 	}
+
+	@Override
+	public String toString() {
+		return "ArticleVO [no=" + no + ", title=" + title + ", content=" + content + ", category=" + category
+				+ ", regdate=" + regdate + ", view=" + view + ", u_id=" + u_id + "]";
+	}
 }

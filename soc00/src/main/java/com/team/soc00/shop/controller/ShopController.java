@@ -21,7 +21,7 @@ import com.team.soc00.shop.vo.ShopVO;
 
 public interface ShopController {
 	
-	public ModelAndView shopList(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView shopList(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
 	public ModelAndView prodInfo(@RequestParam("p_no") int p_no,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;

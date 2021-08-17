@@ -17,6 +17,8 @@ public interface BoardController {
 
 	public ModelAndView osSoccer(HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
+	public void osList(@RequestParam("num") int num, Model model)throws Exception;
+	
 	public ModelAndView osModi(@ModelAttribute("article") ArticleVO vo,
 			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
@@ -31,20 +33,57 @@ public interface BoardController {
 	public ModelAndView osModiView(@RequestParam("no") int no,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
-	/*
-	 * public ResponseEntity osWrite(MultipartHttpServletRequest
-	 * multipartRequest,HttpServletResponse response) throws Exception;
-	 */
-	public ModelAndView krSoccer(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	//국내축구
+	public ModelAndView krSoccer(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
 	public String krWrite2(ArticleVO articleVO, HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
 	public ModelAndView krView(@RequestParam("no") int no,
 			HttpServletRequest request, HttpServletResponse response)throws Exception;
 	
-	public ModelAndView news(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView krModi(@ModelAttribute("article") ArticleVO vo,
+			HttpServletRequest req, HttpServletResponse res)throws Exception;
 	
-	public ModelAndView free(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView krDelete(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView krModiView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	// 뉴스
+	public ModelAndView news(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public String newsWrite2(ArticleVO articleVO, HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	public ModelAndView newsView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView newsModi(@ModelAttribute("article") ArticleVO vo,
+			HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	public ModelAndView newsDelete(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView newsModiView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	
+	// 자유
+	public ModelAndView free(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public String freeWrite2(ArticleVO articleVO, HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	public ModelAndView freeView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView freeModi(@ModelAttribute("article") ArticleVO vo,
+			HttpServletRequest req, HttpServletResponse res)throws Exception;
+	
+	public ModelAndView freeDelete(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
+	
+	public ModelAndView freeModiView(@RequestParam("no") int no,
+			HttpServletRequest request, HttpServletResponse response)throws Exception;
 
 
 }

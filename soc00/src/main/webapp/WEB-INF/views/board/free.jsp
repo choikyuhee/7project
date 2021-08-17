@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"
 	isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -12,7 +13,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>자유</title>
+	<title>자유게시판</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<style>
 		.container{
@@ -36,18 +37,10 @@
 </head>
 <body>
 	<div class="container">
-		<h3>자유</h3>
+		<h3>자유게시판</h3>
+	
 		<hr/>
-		<br>
-		<nav class="navbar-expand">
-			<ul class="navbar-nav">
-				<li class="nav-item btn btn-sm btn-default"><a href="#">공지사항</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">모두보기</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">자유</a>
-				<li class="nav-item btn btn-sm btn-default"><a href="#">유머</a>
-				
-			</ul>
-		</nav>
+
 		<br>
 		<table class="table table-hover">
 			<tr align="center">
@@ -57,24 +50,30 @@
 				<th>작성일</th>
 				<th>작성자</th>
 				<th>조회수</th>
-				<th>추천수</th>
+				
 			</tr>
-			<tr align="center">
-				<td>EPL</td>
-				<td>1</td>
-				<td>으아아아</td>
-				<td>2021.6.10</td>
-				<td>관리자1</td>
-				<td>1</td>
-				<td>1</td>
+			<c:forEach var="freeArticle" items="${allList }">
+			<tr align="center" >
+				<td>${freeArticle.category}</td>
+				<td>${freeArticle.no }</td>
+				<td><a href="${contextPath}/board/freeView.do?no=${freeArticle.no}">
+					${freeArticle.title }</a>
+				</td>
+				<td>
+					<fmt:formatDate value="${freeArticle.regdate }" pattern="yyyy-MM-dd"/>
+				</td>
+				<td>${freeArticle.u_id }</td>
+				<td>${freeArticle.view }</td>
+				
 			</tr>
+			</c:forEach>
 		</table>
 		<hr/>
 		<p id="a1">
-		<a id="a1" class="btn btn-primary" href="#">글쓰기</a>
+		<a id="a1" class="btn btn-primary" href="${contextPath }/board/freeWriteForm.do">글쓰기</a>
 		</p>
 		<br>
-		<br>
+		
 		<div class="row">
 		<div class="col-md-6" id="search2">
   			  <div class="input-group">
@@ -93,26 +92,32 @@
 		<br>
 		<nav aria-label="Page navigation">
  			<ul class="pagination">
+ 			<c:if test="${page.prev }">
     			<li class="page-item">
-      				<a class="page-link" href="#" aria-label="Previous">
+      				<a class="page-link" href="${contextPath }/board/freeList.do?num=${page.startPageNum - 1 }" aria-label="Previous">
         			<span aria-hidden="true">&laquo;</span>
         			<span class="sr-only">Previous</span>
       				</a>
     			</li>
-    			<li class="page-item"><a class="page-link" href="#">1</a></li>
-    			<li class="page-item"><a class="page-link" href="#">2</a></li>
-    			<li class="page-item"><a class="page-link" href="#">3</a></li>
-    			<li class="page-item"><a class="page-link" href="#">4</a></li>
-    			<li class="page-item"><a class="page-link" href="#">5</a></li>
+    		</c:if>
+    		<c:forEach begin="${page.startPageNum }" end="${page.endPageNum }" var="num">
+    		<c:if test="${select != num }">
+    			<li class="page-item"><a class="page-link" href="${contextPath }/board/freeList.do?num=${num }">${num }</a></li>
+    		</c:if>
+    		<c:if test="${select == num }">
+    			<li class="page-item active"><b class="page-link" >${num }</b></li>
+    		</c:if>
+			</c:forEach>
+			<c:if test="${page.next }">
     			<li class="page-item">
-      				<a class="page-link" href="#" aria-label="Next">
+      				<a class="page-link" href="${contextPath }/board/freeList.do?num=${page.endPageNum + 1}" aria-label="Next">
         			<span aria-hidden="true">&raquo;</span>
         			<span class="sr-only">Next</span>
       				</a>
     			</li>
+    		</c:if>
   			</ul>
 		</nav>
-		
 	</div>
 </body>
 </html>

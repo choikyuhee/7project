@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.soc00.board.controller.BoardPage;
 import com.team.soc00.member.vo.MemberVO;
 import com.team.soc00.shop.service.ShopService;
 import com.team.soc00.shop.vo.CartListVO;
@@ -61,16 +62,23 @@ public class ShopControllerImpl implements ShopController {
 		
 	@Override
 	@RequestMapping(value="/shop/shopList.do", method = RequestMethod.GET)
-	public ModelAndView shopList(HttpServletRequest request, HttpServletResponse response)throws Exception {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
-		String viewName = (String)request.getAttribute("viewName");
-		List shopList = shopService.shopList();
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("shopList", shopList);
+	public ModelAndView shopList(@RequestParam("num") int num, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		ModelAndView mav = new ModelAndView();
+		ShopPage page = new ShopPage();
+		
+		page.setNum(num);
+		page.setCount(shopService.shopListCount());
+		
+		
+		List allList = null;
+		allList = shopService.shopList(page.getDisplayPost(), page.getPostNum());
+		mav.addObject("shopList", allList);
+		mav.addObject("page", page);
+		mav.addObject("select", num);
+		
 		return mav;
-
 	}
+	
 	
 	
 	@Override
@@ -90,7 +98,7 @@ public class ShopControllerImpl implements ShopController {
 	@RequestMapping(value="/shop/insertCart.do", method=RequestMethod.POST)
 	public String insertCart(CartVO vo, HttpServletRequest req, HttpServletResponse res)throws Exception {
 		shopService.insertCart(vo);
-		return "redirect:/shop/shopList.do";
+		return "redirect:/shop/shopList.do?num=1";
 	}
 	
 	@Override
@@ -163,7 +171,7 @@ public class ShopControllerImpl implements ShopController {
 		}
 
 		shopService.prodReg(shopVO);
-		return "redirect:/shop/shopList.do";
+		return "redirect:/shop/shopList.do?num=1";
 	}
 	
 	

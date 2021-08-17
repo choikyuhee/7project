@@ -55,19 +55,40 @@
 			<td>${article.content }</td>
 		</tr>
 	</table>
-		<p>카테고리${article.category}</p>
-		<p>글번호${article.no }</p>
-		<p>글제목${article.title }</p>
-		<p>글제목${article.content }</p>
-		<p>등록일${article.regdate }</p>
-		<p>작성자${article.u_id }</p>
-		<p>조회수${article.view }</p>
-		<hr/>
 		<p id="a1">
-		<a id="a1" class="btn btn-primary" href="#">글쓰기</a>
+			<c:if test ="${member.u_id == article.u_id || member.u_admin == 1 }">
+				<a id="a1" class="btn btn-primary" href="${contextPath }/board/krModiView.do?no=${article.no}">글수정</a>
+				<a id="a1" class="btn btn-primary" href="${contextPath }/board/krDelete.do?no=${article.no}">글삭제</a>
+			</c:if>
+			<a id="a2" class="btn btn-primary" href="${contextPath }/board/krSoccer.do?num=1">글목록</a>
 		</p>
 		<br>
 
+		<div class="reply">
+		<c:forEach var="replyList" items="${replyList }">
+				<p>${replyList.u_id } / <fmt:formatDate value="${replyList.r_regdate }" pattern="yyyy-MM-dd HH:mm:ss"/></p>
+				<p>${replyList.r_content }</p>
+		</c:forEach>
+		<c:choose>
+			<c:when test="${isLogOn == true && member != null }">
+				<form action="${contextPath }/board/insertKrReply.do" method="post">
+					<p>
+					<input type="hidden" value="${member.u_id }" name="u_id" readonly/>
+					</p>
+					<p>
+						<input type="hidden" value="${article.no }" name="no"/>
+						<textarea cols="100" rows="3" name="r_content"></textarea>
+						<button type="submit">댓글달기</button>
+					</p>
+				</form>
+			</c:when>
+			<c:otherwise>
+				<p>로그인한 회원만 댓글을 작성할 수 있습니다</p>
+			</c:otherwise>
+		</c:choose>
+		
+		</div>
+	
 	</div>
 </body>
 </html>

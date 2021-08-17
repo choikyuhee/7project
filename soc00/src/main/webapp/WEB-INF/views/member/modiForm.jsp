@@ -47,20 +47,20 @@
     </div>
     <p></p>
      <div class="col-md-4 offset-md-4">
-    	<input type="text" name="u_name" class="form-control" placeholder="이름">
+    	<input type="text" name="u_name" class="form-control" placeholder="이름" value="${member.u_name }">
     </div>
     <p></p>
     <div class="col-md-4 offset-md-4">
-    	<input type="text" name="u_email" class="form-control" placeholder="이메일">
+    	<input type="text" name="u_email" class="form-control" placeholder="이메일" value="${member.u_email }">
     <p></p>
     <p></p>
     </div>
     <div class="col-md-4 offset-md-4">
-    	<input type="text" name="u_phone" class="form-control" placeholder="전화번호">
+    	<input type="text" name="u_phone" class="form-control" placeholder="전화번호" value="${member.u_phone }">
     </div>
     <p></p>
     <div class="col-md-4 offset-md-4">
-    	<input type="text" name="u_address" class="form-control" placeholder="주소">
+    	<input type="text" name="u_address" class="form-control" placeholder="주소" value="${member.u_address }">
     </div>
     <p></p>
     <br>
@@ -70,7 +70,7 @@
 	<span class="bar" aria-hidden="true"></span>
 	</div>
 	<div id="aa2" class="col-md-1" align="right">
-	<a target="_blank" id="cancle" href="" class="btn btn-primary">취소</a> 
+	<a href="${contextPath }/member/mypageForm.do" class="btn btn-primary">취소</a> 
 	<span class="bar" aria-hidden="true"></span>
   </div>
 </div>

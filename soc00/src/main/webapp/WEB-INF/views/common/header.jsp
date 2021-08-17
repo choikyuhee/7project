@@ -80,11 +80,11 @@
 	<nav id="nav1" class = "navbar-expand navbar-dark">
 		
 		<ul id="n1" class = "navbar-nav ">
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/board/osSoccer.do"><strong>해외축구</strong></a></li>
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/board/krSoccer.do"><strong>국내축구</strong></a></li>
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="#"><strong>뉴스</strong></a></li>
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="#"><strong>자유</strong></a></li>
-			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/shop/shopList.do"><strong>축구몰</strong></a></li>
+			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/board/osList.do?num=1"><strong>해외축구</strong></a></li>
+			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/board/krSoccer.do?num=1"><strong>국내축구</strong></a></li>
+			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/board/news.do?num=1"><strong>뉴스</strong></a></li>
+			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/board/free.do?num=1"><strong>자유</strong></a></li>
+			<li class = "btn btn-lg btn-default"><a class = "nav-link" href="${contextPath }/shop/shopList.do?num=1"><strong>축구몰</strong></a></li>
 	
 		</ul>
 	</nav>	

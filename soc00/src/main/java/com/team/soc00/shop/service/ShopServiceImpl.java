@@ -22,11 +22,12 @@ public class ShopServiceImpl implements ShopService {
 	@Autowired
 	private ShopDAO shopDAO;
 
-	@Override
-	public List shopList()throws DataAccessException {
-		List shopList = null;
-		shopList = shopDAO.shopList();
-		return shopList;
+	public int shopListCount()throws DataAccessException {
+		return shopDAO.shopListCount();
+	}
+	
+	public List shopList(int displayPost, int postNum)throws DataAccessException{
+		return shopDAO.shopList(displayPost, postNum);
 	}
 	
 	@Override

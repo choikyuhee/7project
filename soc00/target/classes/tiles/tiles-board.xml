@@ -29,32 +29,9 @@
 		<put-attribute name="body" value="/WEB-INF/views/board/osModiView.jsp"/>
 	</definition>
 	
-	
-	
-	<definition name="board/krSoccer" extends="baseLayout">
-		<put-attribute name="title" value="국내축구"/>
-		<put-attribute name="body" value="/WEB-INF/views/board/krSoccer.jsp"/>
-	</definition>
-	
-	<definition name="board/krWriteForm" extends="baseLayout">
-		<put-attribute name="title" value="해외축구 글쓰기"/>
-		<put-attribute name="body" value="/WEB-INF/views/board/krWriteForm.jsp"/>
-	</definition>
-	
-	<definition name="board/krView" extends="baseLayout">
+	<definition name="board/osList" extends="baseLayout">
 		<put-attribute name="title" value="해외축구"/>
-		<put-attribute name="body" value="/WEB-INF/views/board/krView.jsp"/>
-	</definition>
-	
-	
-	<definition name="board/news" extends="baseLayout">
-		<put-attribute name="title" value="뉴스"/>
-		<put-attribute name="body" value="/WEB-INF/views/board/news.jsp"/>
-	</definition>
-	
-	<definition name="board/free" extends="baseLayout">
-		<put-attribute name="title" value="자유"/>
-		<put-attribute name="body" value="/WEB-INF/views/board/free.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/osList.jsp"/>
 	</definition>
 	
 	<!-- 국내축구 -->
@@ -62,6 +39,65 @@
 		<put-attribute name="title" value="국내축구"/>
 		<put-attribute name="body" value="/WEB-INF/views/board/krSoccer.jsp"/>
 	</definition>
-
+	
+	<definition name="board/krWriteForm" extends="baseLayout">
+		<put-attribute name="title" value="국내축구 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krWriteForm.jsp"/>
+	</definition>
+	
+	<definition name="board/krView" extends="baseLayout">
+		<put-attribute name="title" value="국내축구"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krView.jsp"/>
+	</definition>
+	
+	<definition name="board/krModiView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/krModiView.jsp"/>
+	</definition>
+	
+	<!-- 뉴스 -->
+	
+	<definition name="board/news" extends="baseLayout">
+		<put-attribute name="title" value="뉴스"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/news.jsp"/>
+	</definition>
+	
+	<definition name="board/newsWriteForm" extends="baseLayout">
+		<put-attribute name="title" value="뉴스 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/newsWriteForm.jsp"/>
+	</definition>
+	
+	<definition name="board/newsView" extends="baseLayout">
+		<put-attribute name="title" value="뉴스"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/newsView.jsp"/>
+	</definition>
+	
+	<definition name="board/newsModiView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/newsModiView.jsp"/>
+	</definition>
+	
+	<!-- 자유 -->
+	
+	
+	<definition name="board/free" extends="baseLayout">
+		<put-attribute name="title" value="자유"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/free.jsp"/>
+	</definition>
+	
+	<definition name="board/freeWriteForm" extends="baseLayout">
+		<put-attribute name="title" value="자유 글쓰기"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/freeWriteForm.jsp"/>
+	</definition>
+	
+	<definition name="board/freeView" extends="baseLayout">
+		<put-attribute name="title" value="자유"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/freeView.jsp"/>
+	</definition>
+	
+	<definition name="board/freeModiView" extends="baseLayout">
+		<put-attribute name="title" value="게시글 수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/freeModiView.jsp"/>
+	</definition>
 </tiles-definitions>
 	

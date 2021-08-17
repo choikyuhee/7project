@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.team.soc00.board.vo.ArticleVO" alias="articleVO"/>
+		<typeAlias type="com.team.soc00.board.vo.BoardReplyVO" alias="boardReplyVO"/>
 		<typeAlias type="com.team.soc00.member.vo.MemberVO" alias="memberVO"/>
 		<typeAlias type="com.team.soc00.shop.vo.ShopVO" alias="shopVO"/>
 		<typeAlias type="com.team.soc00.shop.vo.OrderVO" alias="orderVO"/>

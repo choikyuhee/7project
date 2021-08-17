@@ -15,6 +15,21 @@
 		<result property="u_id" column="u_id"/>
 	</resultMap>
 	
+	<select id="articleCount" resultType="int">
+		<![CDATA[
+			select count(s1_no) from soccer1
+		]]>
+	</select>
+	
+	<select id="osListPage" parameterType="hashMap" resultMap="osSoccerResult" >
+		<![CDATA[
+			select*from
+			soccer1
+			order by s1_no desc
+			limit #{displayPost}, #{postNum}
+		]]>
+	</select>
+	
 	<select id="osSoccerList" resultMap="osSoccerResult">
 		<![CDATA[
 			select*from soccer1
@@ -73,9 +88,19 @@
 		<result property="u_id" column="u_id"/>
 	</resultMap>
 	
-	<select id="krSoccerList" resultMap="krSoccerResult">
+	<select id="krArticleCount" resultType="int">
 		<![CDATA[
-			select*from soccer2
+			select count(s2_no) from soccer2
+		]]>
+	</select>
+	
+	
+	<select id="krSoccerList" parameterType="hashMap" resultMap="krSoccerResult">
+		<![CDATA[
+			select*from
+			soccer2
+			order by s2_no desc
+			limit #{displayPost}, #{postNum}
 		]]>
 	</select>
 	
@@ -93,6 +118,30 @@
 		]]>
 	</select>
 	
+	<update id="krViewCount" parameterType="articleVO">
+		<![CDATA[
+			update soccer2
+			set s2_view = s2_view + 1
+			where s2_no = #{no}
+		]]>
+	</update>
+	
+	<update id="krModi" parameterType="articleVO" >
+		<![CDATA[
+			update soccer2
+			set
+			s2_category = #{category}, s2_title = #{title}, s2_content = #{content}, s2_regdate = now()
+			where s2_no = #{no}
+		]]>
+	</update>
+	
+	<delete id="krDelete" parameterType="articleVO">
+		<![CDATA[
+			delete from soccer2
+			where s2_no = #{no}
+		]]>
+	</delete>
+	
 	<!-- 뉴스 -->
 	<resultMap id="newsResult" type="articleVO">
 		<result property="no" column="n_no"/>
@@ -101,13 +150,62 @@
 		<result property="regdate" column="n_regdate"/>
 		<result property="view" column="n_view"/>
 		<result property="u_id" column="u_id"/>
+		<result property="category" column="n_category"/>
 	</resultMap>
 	
-	<select id="newsList" resultMap="newsResult">
+	<select id="newsArticleCount" resultType="int">
 		<![CDATA[
-			select*from news
+			select count(n_no) from news
 		]]>
 	</select>
+	
+	
+	<select id="newsList" parameterType="hashMap" resultMap="newsResult">
+		<![CDATA[
+			select*from
+			news
+			order by n_no desc
+			limit #{displayPost}, #{postNum}
+		]]>
+	</select>
+	
+	<insert id = "insertNews" parameterType="articleVO">
+		<![CDATA[
+			insert into news(n_no, n_title, n_category, n_content, n_regdate, u_id) 
+			values(null,#{title},#{category}, #{content},now(),#{u_id})
+		]]>
+	</insert>
+	
+	<select id="selectNewsView" parameterType="articleVO" resultMap="newsResult">
+		<![CDATA[
+			select*from news
+			where n_no = #{no}
+		]]>
+	</select>
+	
+	<update id="newsViewCount" parameterType="articleVO">
+		<![CDATA[
+			update news
+			set n_view = n_view + 1
+			where n_no = #{no}
+		]]>
+	</update>
+	
+	<update id="newsModi" parameterType="articleVO" >
+		<![CDATA[
+			update news
+			set
+			n_category = #{category}, n_title = #{title}, n_content = #{content}, n_regdate = now()
+			where n_no = #{no}
+		]]>
+	</update>
+	
+	<delete id="newsDelete" parameterType="articleVO">
+		<![CDATA[
+			delete from news
+			where n_no = #{no}
+		]]>
+	</delete>
 	
 	<!-- 자유 -->
 	<resultMap id="freeResult" type="articleVO">
@@ -120,11 +218,59 @@
 		<result property="u_id" column="u_id"/>
 	</resultMap>
 	
-	<select id="freeList" resultMap="freeResult">
+	<select id="freeArticleCount" resultType="int">
 		<![CDATA[
-			select*from free
+			select count(f_no) from free
 		]]>
 	</select>
+	
+	
+	<select id="freeList" parameterType="hashMap" resultMap="freeResult">
+		<![CDATA[
+			select*from
+			free
+			order by f_no desc
+			limit #{displayPost}, #{postNum}
+		]]>
+	</select>
+	
+	<insert id = "insertFree" parameterType="articleVO">
+		<![CDATA[
+			insert into free(f_no, f_title, f_category, f_content, f_regdate, u_id) 
+			values(null,#{title},#{category}, #{content},now(),#{u_id})
+		]]>
+	</insert>
+	
+	<select id="selectFreeView" parameterType="articleVO" resultMap="freeResult">
+		<![CDATA[
+			select*from free
+			where f_no = #{no}
+		]]>
+	</select>
+	
+	<update id="freeViewCount" parameterType="articleVO">
+		<![CDATA[
+			update free
+			set f_view = f_view + 1
+			where f_no = #{no}
+		]]>
+	</update>
+	
+	<update id="freeModi" parameterType="articleVO" >
+		<![CDATA[
+			update free
+			set
+			f_category = #{category}, f_title = #{title}, f_content = #{content}, f_regdate = now()
+			where f_no = #{no}
+		]]>
+	</update>
+	
+	<delete id="freeDelete" parameterType="articleVO">
+		<![CDATA[
+			delete from free
+			where f_no = #{no}
+		]]>
+	</delete>
 	
 	
 	

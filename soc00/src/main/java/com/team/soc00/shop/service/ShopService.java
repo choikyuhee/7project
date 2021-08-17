@@ -14,7 +14,9 @@ import com.team.soc00.shop.vo.ShopVO;
 
 public interface ShopService {
 
-	public List shopList() throws DataAccessException;
+	public int shopListCount()throws DataAccessException;
+	
+	public List shopList(int displayPost, int postNum)throws DataAccessException;
 	
 	public ShopVO prodInfo(int p_no)throws DataAccessException;
 	

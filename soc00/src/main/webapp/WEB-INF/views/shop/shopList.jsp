@@ -90,23 +90,30 @@
     <br>
     <nav aria-label="Page navigation">
  			<ul class="pagination">
+ 			<c:if test="${page.prev }">
     			<li class="page-item">
-      				<a class="page-link" href="#" aria-label="Previous">
+      				<a class="page-link" href="${contextPath }/shop/shopList.do?num=${page.startPageNum - 1 }" aria-label="Previous">
         			<span aria-hidden="true">&laquo;</span>
         			<span class="sr-only">Previous</span>
       				</a>
     			</li>
-    			<li class="page-item"><a class="page-link" href="#">1</a></li>
-    			<li class="page-item"><a class="page-link" href="#">2</a></li>
-    			<li class="page-item"><a class="page-link" href="#">3</a></li>
-    			<li class="page-item"><a class="page-link" href="#">4</a></li>
-    			<li class="page-item"><a class="page-link" href="#">5</a></li>
+    		</c:if>
+    		<c:forEach begin="${page.startPageNum }" end="${page.endPageNum }" var="num">
+    		<c:if test="${select != num }">
+    			<li class="page-item"><a class="page-link" href="${contextPath }/shop/shopList.do?num=${num }">${num }</a></li>
+    		</c:if>
+    		<c:if test="${select == num }">
+    			<li class="page-item active"><b class="page-link" >${num }</b></li>
+    		</c:if>
+			</c:forEach>
+			<c:if test="${page.next }">
     			<li class="page-item">
-      				<a class="page-link" href="#" aria-label="Next">
+      				<a class="page-link" href="${contextPath }/shop/shopList.do?num=${page.endPageNum + 1}" aria-label="Next">
         			<span aria-hidden="true">&raquo;</span>
         			<span class="sr-only">Next</span>
       				</a>
     			</li>
+    		</c:if>
   			</ul>
 		</nav>
 </main>
